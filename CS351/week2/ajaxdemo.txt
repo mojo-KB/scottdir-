@@ -1,0 +1,78 @@
+<html>
+<head>
+<title>Ajax Demo</title>
+
+<script type="text/javascript">
+
+function createRequestObject() { 
+  var req; 
+  if (window.XMLHttpRequest) { // Firefox, Safari, Opera... 
+    req = new XMLHttpRequest(); 
+//    alert('Detected a modern browser - very good!'); 
+  } else if (window.ActiveXObject) { // Internet Explorer 5+ 
+    req = new ActiveXObject("Microsoft.XMLHTTP"); 
+//    alert('Detected an old IE browser'); 
+  } else { 
+    // error creating the request object, 
+    // (maybe an old browser is being used?)
+    alert('There was a problem creating the XMLHttpRequest object'); 
+    req = '';
+  }
+  return req; 
+} 
+     
+     
+function sendRequest() { 
+  var now = new Date();
+  //http.open('get', 'http://www.myhostname.com/cgi-bin/myscript.pl?nocache='+now.getTime()); 
+  http.open('get', 'http://localhost:55555/cgi-bin/ajaxdemo.cgi?nocache='+now.getTime()); 
+  //http.open('get', 'http://localhost/cgi-bin/ajaxdemo.cgi'); 
+  http.onreadystatechange = handleResponse; 
+  http.send(null); 
+} 
+     
+function handleResponse() { 
+  if(http.readyState == 4 && http.status == 200){ 
+    var response = http.responseText; // Text returned FROM perl script 
+    if(response) { // UPDATE ajaxTest content 
+ alert('response was' + response);
+      document.getElementById("ajaxstuff").innerHTML = response; 
+      setTimeout('wipeout()', 2000); // wait 2 seconds, then clear message
+    } 
+  } 
+} 
+
+function wipeout() {
+  document.getElementById("ajaxstuff").innerHTML = ''; 
+  x = document.getElementById("mybutton");
+  x.disabled = false;
+}
+
+function doclick() {
+  x = document.getElementById("mybutton");
+  x.disabled = true;
+
+  document.getElementById("ajaxstuff").innerHTML = '<b>working...</b>'; 
+  sendRequest();
+  return true;
+}
+
+</script>
+</head>
+<body>
+
+<script>
+// Make the XMLHttpRequest object 
+var http = createRequestObject(); 
+//alert('IT DID!!!');
+</script>
+
+<p>Click here to begin:</p>
+<form><input type="button" id="mybutton" onClick="doclick()" value="Go!"><form>
+
+<hr/> 
+<p><em><div id="ajaxstuff" > &nbsp; </div></em></p>
+<hr/> 
+
+</body> 
+</html>

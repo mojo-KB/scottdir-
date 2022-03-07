@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html>
+        <head>
+                <meta charset=utf-8>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+-->
+                <title>CS351 App</title>
+                <style>
+                        body { margin: 0; }
+                        canvas { width: 100%; height: 100% }
+                </style>
+        </head>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!--  js included Before adding Bootstrap below -->
+<script src="../build/three.js"></script>
+<script src="js/controls/OrbitControls.js"></script>
+<script src="js/SkyShader.js"></script>
+<script src="js/Detector.js"></script>
+<script src="PMS/jquery-3.1.1.js"></script>
+<script src="js/libs/dat.gui.min.js"></script>
+
+<!-- <script src="js/libs/dat.gui.min.js"></script> -->
+
+<!-- #mycanvas{border:1px solid red;} -->
+
+<style>
+a{
+  display: block;
+}
+a.active{
+  background-color: red;
+}
+
+input[type="radio"] {
+        margin-right: 4px ;
+        margin-left: 4px ;
+}
+label {
+        margin-right: 4px ;
+        margin-left: 4px ;
+}
+    //#mycanvas {
+    /* Started with w3c Bootstrap template: */
+    /* http://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_temp_webpage&stacked=h */
+    body { margin: 0; }
+    /* canvas { width: 100%; height: 100% } */
+    /* canvas { width: 100%; height: 75% } */
+    /* Remove the navbar's default margin-bottom and rounded borders */
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;}
+    }
+  </style>
+
+
+
+<body>
+
+<table BORDER=5 CELLSPACING=3 CELLPADDING=5 width=100% COLS=8 BGCOLOR="#FFFF99">
+<tr>
+<td align=center bgcolor=black>
+<img src=CS351Welcome2.jpg width=120 heigth=100 alt="CS351Welcome" class="img-rounded">
+</td>
+<td align=center bgcolor=black>
+  <font color=white><B>SUNY Poly CS351</B></font>
+</td>
+</tr>
+<tr>
+<td colspan=2 bgcolor=tan>
+Welcome CS351 WebGL
+</td>
+</tr>
+</table>
+
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#"><img src=CS351Welcome2.jpg width=120 heigth=100 alt="CS351" class="img-rounded">
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="#" value="cs351">CS351<br>Home</a></li>
+        <li class="active"><a href="#" value="run">Run<br>WebGL</a></li>
+        <li><a href="#" value="display">Display<br>Results</a></li>
+        <li><a href="#" value="help">Help</a></li>
+        <li><a href="#" value="contact">Contact</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-3 sidenav">
+
+        <table width=10% BORDER=5 CELLSPACING=3 CELLPADDING=5 COLS=1 BGCOLOR="#FFFF99">
+
+        <tr id=displayRun>
+        <td>
+        <table>
+
+        <tr>
+        <td colspan=1>
+        Testcaserender:
+        </td>
+        </tr>
+        <tr>
+        <td colspan=1>
+        <div id="renderredRunID"> Testcasex </div>
+        </td>
+        </tr>
+
+        <!-- These are the names of the testruns within the testcase displayed in the row above -->
+        <!-- currently only rendering a single testrun at a time. -->
+        <tr>
+        <td colspan=1>
+        <form id="cs351FormRender">
+        <table BORDER=5 CELLSPACING=3 CELLPADDING=5 COLS=1 BGCOLOR="#FFFF99">
+        <tr>
+        <td colspan=1>
+        <select id="renderredOutputs" single size=3>
+        </select>
+        </td>
+        </tr>
+        </table>
+        </form>
+        </td>
+        </tr>
+
+        </table>
+        </td>
+        </tr>
+
+        <!-- These are the names of the output files within the testrun displayed in the row above -->
+        <tr id=displayRun2>
+        <td>
+        <table>
+
+        <tr>
+        <td colspan=1>
+        Testcaserunid:
+        </td>
+        </tr>
+
+        <tr>
+        <td colspan=1>
+        <div id="renderredRunID2"> Testcasez </div>
+        </td>
+        </tr>
+
+        <tr>
+        <td colspan=1>
+        <form id="cs351FormRender2">
+        <table BORDER=5 CELLSPACING=3 CELLPADDING=5 COLS=1 BGCOLOR="#FFFF99">
+        <tr>
+        <td colspan=1>
+        <select id="renderredOutputs2" multiple>
+        </select>
+        </td>
+        </tr>
+        </table>
+        </form>
+        </td>
+        </tr>
+
+        </table>
+        </td>
+        </tr>
+
+        <tr id=displayTest>
+        <td>
+        <table>
+
+        <tr>
+        <td colspan=1>
+        Testcasedisp:
+        </td>
+        </tr>
+        <tr>
+        <td colspan=1>
+        <div id="displayedRunID"> Testcasex </div>
+        </td>
+        </tr>
+
+        <tr>
+        <td colspan=1>
+        <form id="cs351FormDisplayed">
+        <table BORDER=5 CELLSPACING=3 CELLPADDING=5 COLS=1 BGCOLOR="#FFFF99">
+        <tr>
+        <td colspan=1>
+        <select id="displayedOutputs" single size=3>
+        <!--<option>Single</option>
+        <option>Single2</option> -->
+        </select>
+        </td>
+        </tr>
+        </table>
+        </form>
+        </td>
+        </tr>
+
+        </table>
+        </td>
+        </tr>
+
+        <tr id=displayTest2>
+        <td>
+        <table>
+
+        <tr>
+        <td colspan=1>
+        Testcasedispid:
+        </td>
+<!--
+        <td colspan=1>
+        <div id="displayedRunID2"> Outputsx; </div>
+        </td>
+        </tr>
+-->
+
+        <tr>
+        <td colspan=1>
+        <!-- <form id="cs351FormDisplayed"> -->
+        <form id="cs351FormDisplayed2">
+        <table BORDER=5 CELLSPACING=3 CELLPADDING=5 COLS=1 BGCOLOR="#FFFF99">
+        <tr>
+        <td colspan=1>
+        <select id="displayedOutputs2" multiple>
+        <!--<option>Single</option>
+        <option>Single2</option> -->
+        </select>
+        </td>
+        </tr>
+        </table>
+        </form>
+        </td>
+        </tr>
+
+        </table>
+        </td>
+        </tr>
+
+
+        <tr id=runidRow>  <!-- Start table with rnid and buttons -->
+                <td colspan=1>
+                <form><input type="button" id="mybutton2" onClick="doclick2()" value="Show Faces"><form>
+                </td>
+                <td colspan=1>
+                <form><input type="button" id="mybutton3" onClick="doclick3()" value="Show Vertices"><form>
+                </td>
+        </tr>  <!-- End table with rnid and buttons -->
+
+
+        </table>
+
+        <!-- was sendRequest2 -->
+<!--
+      <p><a href="#">Link</a></p>
+      <p><a href="#">Link</a></p>
+      <p><a href="#">Link</a></p>
+-->
+    </div>
+    <div class="col-sm-9 text-left"> 
+
+
+<table width=100% BORDER=5 CELLSPACING=3 CELLPADDING=5 width=100% COLS=8 BGCOLOR="#FFFF99">
+
+<tr id=pickdisplayoutput>
+
+<td colspan = 8>
+<table width=100% BORDER=5 CELLSPACING=3 CELLPADDING=5 width=100% COLS=8 BGCOLOR="#FFFF99">
+
+<tr id=cs351DisplayRow>
+<td>
+<b>Pick an output from a run of the testcase
+<br>
+you just selected to render and display:</b>
+</td>
+<td colspan=2>
+<table>
+
+<tr>
+<td colspan=1>
+Testcase(disp): 
+<div id="cs351testcase" > &nbsp; </div>
+</td>
+</tr>
+<tr id=runiddisp>
+<td colspan=1>
+RunID(disp):
+</td>
+<td colspan=1>
+<div id="cs351runid" > &nbsp; </div>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+
+<tr id="cs351FormDisplay">
+<form>
+<td>
+  <select id="singleDisplay">
+    <!--<option>Single</option>
+    <option>Single2</option> -->
+  </select>
+ <!-- was sendRequest2 -->
+</td>
+<td>
+ <input type="button" id="myDisplaybutton" onClick="doclickdisplaytestcase()" value="Select Existing Test Run Results">
+ <input type="button" id="myDisplaybuttonx" onClick="doclickcleartestcase()" value="Clear">
+</td>
+</form>
+</tr>
+
+<tr id="cs351FormDisplay3">
+<form>
+<td>
+  <select id="singleDisplay2">
+    <!--<option>Single</option>
+    <option>Single2</option> -->
+  </select>
+ <!-- was sendRequest2 -->
+</td>
+<td>
+ <input type="button" id="myDisplaybutton2" onClick="doclickdisplaytestcase2()" value="Render Existing Output">
+ <input type="button" id="myDisplaybuttony" onClick="doclickcleartestcase()" value="Clear">
+</td>
+</form>
+</tr>
+
+</table>
+
+
+</td>
+</tr>
+<!-- End of ROW -->
+<tr id=cs351RenderRow>
+<td>
+<b>Pick a testcase output from the output of
+<br>
+the testcase just run to render and display:</b>
+</td>
+<td colspan=2>
+<table>
+
+<tr>
+<td colspan=1>
+Testcase(run): 
+<div id="cs351testcase2" > &nbsp; </div>
+</td>
+</tr>
+<tr id=runiddisp2>
+<td colspan=1>
+RunID(run):
+</td>
+<td colspan=1>
+<div id="cs351runid2" > &nbsp; </div>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+
+<tr id=cs351RenderRow2>
+<form id="cs351Form2">
+<td>
+  <select id="singleRender">
+    <!--<option>Single</option>
+    <option>Single2</option> -->
+  </select>
+ <!-- was sendRequest2 -->
+</td>
+<td>
+ <input type="button" id="myDisplaybutton" onClick="doclickruntestcase()" value="Render a Testcase">
+ <input type="button" id="myDisplaybutton" onClick="doclickcleartestcase()" value="Clear">
+</td>
+</form>
+</tr>
+</table>
+
+
+</td>
+</tr>
+<!-- End of ROW -->
+
+<tr id=picktestRow>
+<td>
+
+<form id="cs351Form">
+<table BORDER=5 CELLSPACING=3 CELLPADDING=5 width=100% width=100% COLS=8 BGCOLOR="#FFFF99">
+<tr>
+<!-- <td colspan=4> -->
+<td id=testcasebanner colspan=100%>
+<!-- <b>Pick a testcase to run</b> -->
+</td>
+</tr>
+<tr>
+<td>
+
+<table>
+<tr>
+
+    <!--<option>Single</option>
+  <select id="single">
+  </select>
+    <option>Single2</option> -->
+<!--
+<td>
+ <input type="radio" name="testcase" value="test6" id="testcase6" /><label for="testcase6">test6</label>
+</td>
+-->
+<td>
+ <input type="button" id="mybutton" onClick="doclicktestcase()" value="Pick Testcase">
+</td>
+
+<td>
+<table>
+<tr id=myTestcases>
+<td>
+</td>
+</tr>
+</table>
+</td>
+
+
+</tr>
+</table>
+
+</tr>
+</table>
+</form>
+
+</td>
+</tr>
+<!-- End of ROW -->
+
+
+
+<tr>
+<td colspan=4>
+<!-- <canvas id="mycanvas" width="400" height="400" style="margin: 30px;"></canvas> -->
+
+<div id="mycanvas">
+
+</div>
+
+
+</td>
+<!--
+<canvas id="canvas"></canvas>
+-->
+</tr>
+
+<tr>
+<td colspan=4>
+<div id="faces" > &nbsp; </div>
+</td>
+</tr>
+<tr>
+<td colspan=4>
+<div id="vertices" > &nbsp; </div>
+</td>
+</tr>
+<tr>
+<td colspan=4>
+<div id="contactRow" > stuff&nbsp; </div>
+</td>
+</tr>
+<tr>
+<td colspan=4>
+<div id="helpRow" > stuff&nbsp; </div>
+</td>
+</tr>
+</table>
+
+<!--
+      <h1>Welcome</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <hr>
+      <h3>Test</h3>
+      <p>Lorem ipsum...</p>
+
+    </div>
+-->
+
+<!--
+    <div class="col-sm-2 sidenav">
+      <div class="well">
+        <p>ADS</p>
+      </div>
+      <div class="well">
+        <p>ADS</p>
+      </div>
+    </div>
+-->
+
+  </div>
+</div>
+
+<footer class="container-fluid text-center">
+  <p><!-- <H1>CS351</H1> --> <img src=CS351Welcome2.jpg width=200></p>
+</footer>
+<script>
+
+
+
+function doGetMyPickScreen(runordisplay) {
+        var now = new Date();
+
+        http.open('get', '/cgi-bin/exampleWebGL.cgi?mypicktype=' + runordisplay + '&mydat=' + myResultPick + '&myfunc=getpicks&nocache='+now.getTime()); 
+        http.onreadystatechange = handleGetMyPickScreen; 
+        http.send(null); 
+
+}
+
+function handleGetMyPickScreen() { 
+  if(http.readyState == 4 && http.status == 200){ 
+    var response = http.responseText; // Text returned FROM perl script 
+    if(response) { // UPDATE ajaxTest content 
+      //alert("DOjsonData");
+
+        response = response.replace(/&quot;/g, '"');
+        //alert('handleGetMyPickScreen:' + response);
+
+        jsonData = JSON.parse(response);
+         //alert('JSON DATA IS:' + jsonData);
+        if ( jsonData[0] == "run" ) {
+                $( "#testcasebanner" ).innerHTML = "<b>Pick a testcase to run</b>";
+        }
+        else { // display  
+                $( "#testcasebanner" ).innerHTML = "<b>Pick a testcase to display</b>";
+        }
+        $( "#testcasebanner" ).show();
+
+        for (var i = 1; i < jsonData.length; i++) { // Start with 1 to skip the output directory name
+        $( "#myTestcases" ).append(
+         '<td><input type="radio" name="testcase" value="' + jsonData[i] + '" id="' + jsonData[i] +'" /><label for="' + jsonData[i] + '">' + jsonData[i] + '</label></td>'
+        );
+
+        }
+        $( "#picktestRow" ).show();
+        $( "#pickdisplayoutput" ).hide();
+        $( "#runidRow" ).hide();
+
+        $( "#displayTest" ).hide(); 
+        $( "#displayTest2" ).hide(); 
+
+
+    } 
+  } 
+} 
+
+
+// Initialize some variables
+var runCS351Loaded = false;
+var displayResultsLoaded = false;
+var homeLoaded = false;
+var helpLoaded = false;
+var contactLoaded = false;
+var runOrDisplay;
+
+$( "#pickdisplayoutput" ).hide();
+$( "#mycanvas" ).hide();
+$( "#runidRow" ).hide();
+$( "#helpRow" ).hide();
+$( "#contactRow" ).hide();
+$( "#vertices" ).hide();
+$( "#faces" ).hide();
+
+//alert($('ul.nav > li').value());
+//$('ul.nav > li').o
+//$(".nav li").each( function() {
+
+
+// This code makes sure the navbar tab that you want to start active
+// is set active and runs the startup code for it
+
+var initialNavTab = 'display';
+var didPickTestcaseInit = false;
+
+$("ul.nav li").each( function() {
+        $(this).removeClass("active"); 
+//alert('THIS' + $(this).find('a').attr('value'));
+        //if ( ($this).find('a:display') ) {
+        if ($(this).find('a').attr('value') == initialNavTab) {
+                $(this).addClass('active');
+        if ( 'cs351' == initialNavTab ) {
+                initHome();
+        }
+        if ( 'run' == initialNavTab ) {
+                initRun();
+        }
+        if ( 'display' == initialNavTab ) {
+                initDisplay();
+        }
+        if ( 'help' == initialNavTab ) {
+                initHelp();
+        }
+        if ( 'contact' == initialNavTab ) {
+                initContact();
+        }
+   }
+})
+
+                //alert('FOUND IT');
+//$(".nav li a:active").removeClass('active');//remove pseudo class
+//}
+//$(".nav li#display").addClass('active');
+//$(".nav #display").addClass('active');
+
+function initRun() { 
+                //alert('it was help');
+                $( "#helpRow" ).hide();
+                //$( "#helpRow" ).load("CS351FE_UserGuide.html");
+                $( "#cs351Form" ).show();
+                $( "#picktestRow" ).show();
+                $( "#runidRow" ).hide();
+                $( "#mycanvas" ).hide();
+                $( "#contactRow" ).hide();
+                if (didPickTestcaseInit == false) {
+                        doGetMyPickScreen("run");
+                        didPickTestcaseInit = true;
+                }
+                runOrDisplay = "run";
+                $( "#pickdisplayoutput" ).hide();
+                $( "#cs351FormDisplay" ).hide();
+        $( "#renderedOutputs" ).hide();
+        $( "#cs351FormRender" ).hide();
+        $( "#displayedOutputs" ).hide();
+        $( "#cs351FormDisplayed" ).hide(); 
+        $( "#displayedOutputs2" ).hide();
+        $( "#cs351FormDisplayed2" ).hide(); 
+        $( "#displayTest" ).hide(); 
+        $( "#displayTest2" ).hide(); 
+        $( "#displayRun" ).hide(); 
+        $( "#displayRun2" ).hide(); 
+        $( "#cs351RenderRow" ).hide(); 
+        $( "#cs351RenderRow2" ).hide(); 
+}
+function initDisplay() { 
+                $( "#helpRow" ).hide();
+                //$( "#helpRow" ).load("CS351FE_UserGuide.html");
+                $( "#cs351Form" ).show();
+                $( "#picktestRow" ).show();
+                $( "#runidRow" ).hide();
+                $( "#mycanvas" ).hide();
+                $( "#contactRow" ).hide();
+                if (didPickTestcaseInit == false) {
+                        doGetMyPickScreen("display");
+                        didPickTestcaseInit = true;
+                }
+                runOrDisplay = "display";
+                $( "#cs351RenderRow" ).hide();
+                $( "#cs351RenderRow2" ).hide();
+
+        $( "#renderedOutputs" ).hide();
+        $( "#cs351FormRender" ).hide();
+        $( "#displayedOutputs" ).hide();
+        $( "#cs351FormDisplayed" ).hide(); 
+        $( "#displayedOutputs2" ).hide();
+        $( "#cs351FormDisplayed2" ).hide(); 
+
+        $( "#pickdisplayoutput" ).hide();
+        $( "#displayTest" ).hide(); 
+        $( "#displayTest2" ).hide(); 
+        $( "#displayRun" ).hide(); 
+        $( "#displayRun2" ).hide(); 
+
+}
+function initHelp() { 
+
+                //alert('it was help');
+                $( "#helpRow" ).show();
+                if (helpLoaded == false) {
+                        $( "#helpRow" ).load("CS351FE_UserGuide.html");
+                        helpLoaded = true;
+                }
+                $( "#cs351Form" ).hide();
+                $( "#picktestRow" ).hide();
+                $( "#mycanvas" ).hide();
+                $( "#contactRow" ).hide();
+                $( "#cs351RenderRow" ).hide();
+                $( "#cs351RenderRow2" ).hide();
+                $( "#pickdisplayoutput" ).hide();
+                $( "#cs351FormDisplay" ).hide();
+                $( "#runidRow" ).hide();
+        $( "#renderedOutputs" ).hide();
+        $( "#cs351FormRender" ).hide();
+        $( "#displayedOutputs" ).hide();
+        $( "#cs351FormDisplayed" ).hide(); 
+        $( "#displayedOutputs2" ).hide();
+        $( "#cs351FormDisplayed2" ).hide(); 
+        $( "#displayTest" ).hide(); 
+        $( "#displayTest2" ).hide(); 
+        $( "#displayRun" ).hide(); 
+        $( "#displayRun2" ).hide(); 
+
+
+}
+function initHome() { 
+                //alert('it was help');
+                $( "#helpRow" ).hide();
+                $( "#homeRow" ).show();
+                if (homeLoaded == false) {
+                        $( "#homeRow" ).load("CS351FE_Home.html");
+                        homeLoaded = true;
+                }
+                $( "#cs351Form" ).hide();
+                $( "#picktestRow" ).hide();
+                $( "#mycanvas" ).hide();
+                $( "#cs351RenderRow" ).hide();
+                $( "#cs351RenderRow2" ).hide();
+                $( "#pickdisplayoutput" ).hide();
+                $( "#cs351FormDisplay" ).hide();
+                $( "#runidRow" ).hide();
+        $( "#renderedOutputs" ).hide();
+        $( "#cs351FormRender" ).hide();
+        $( "#displayedOutputs" ).hide();
+        $( "#cs351FormDisplayed" ).hide(); 
+        $( "#displayedOutputs2" ).hide();
+        $( "#cs351FormDisplayed2" ).hide(); 
+        $( "#displayTest" ).hide(); 
+        $( "#displayTest2" ).hide(); 
+        $( "#displayRun" ).hide(); 
+        $( "#displayRun2" ).hide(); 
+
+}
+function initContact() { 
+                //alert('it was help');
+                $( "#helpRow" ).hide();
+                $( "#contactRow" ).show();
+                if (contactLoaded == false) {
+                        $( "#contactRow" ).load("CS351FE_Contacts.html");
+                        contactLoaded = true;
+                }
+                $( "#cs351Form" ).hide();
+                $( "#picktestRow" ).hide();
+                $( "#mycanvas" ).hide();
+                $( "#cs351RenderRow" ).hide();
+                $( "#cs351RenderRow2" ).hide();
+                $( "#pickdisplayoutput" ).hide();
+                $( "#cs351FormDisplay" ).hide();
+                $( "#runidRow" ).hide();
+
+        $( "#renderedOutputs" ).hide();
+        $( "#cs351FormRender" ).hide();
+        $( "#displayedOutputs" ).hide();
+        $( "#cs351FormDisplayed" ).hide(); 
+        $( "#displayedOutputs2" ).hide();
+        $( "#cs351FormDisplayed2" ).hide(); 
+        $( "#displayTest" ).hide(); 
+        $( "#displayTest2" ).hide(); 
+        $( "#displayRun" ).hide(); 
+        $( "#displayRun2" ).hide(); 
+
+}
+
+$(document).ready(function () {
+        $('ul.nav > li').click(function (e) {
+            e.preventDefault();
+            $('ul.nav > li').removeClass('active');
+            $(this).addClass('active');                
+            //alert('MYNAV:' + e);
+            //alert('Value: ' + $(a, this).attr('value'));
+            //alert('Value: ' + $(this).find('a').attr('value'));
+            var myValue=$(this).find('a').attr('value');
+            // Run CS351 may altready have been selected or this may be the first run
+            // If this is the first time, Just show the Pick Tesstcase Row
+            // Otherwise, show the state of Run CS351 from the last use
+            // 1) If testcase wasn't submitted, just show the testcase line
+            // 2) testcase was submitted, hide Pick Testcase line and 
+            //    display any outputs which have been created (maybe none)
+            //    Each output will have a canvas and a link to it in the
+            //    left column.
+            //    When an output canvas has been created, the data set (.dat)
+            //    file for the canvas is removed from the display.
+            //    Each canvas has associated with it a control panel
+            //    that can control WebGL variables, including animation.
+            if (myValue == 'display') {
+                initDisplay();
+                //alert('it was help');
+            }
+            if (myValue == 'run') {
+                initRun();
+            }
+            if (myValue == 'help') {
+                initHelp();
+            }
+            if (myValue == 'contact') {
+                initContact();
+            }
+            if (myValue == 'home') {
+                initHome();
+            }
+        });            
+    });
+
+</script>
+
+</body>
+

@@ -1,0 +1,16 @@
+127.0.0.1 - - [29/Jan/2018 16:37:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jan/2018 16:37:59] "GET /CS351WelcomeSmall.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jan/2018 16:37:59] code 404, message File not found
+127.0.0.1 - - [29/Jan/2018 16:37:59] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [29/Jan/2018 16:38:55] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jan/2018 16:38:55] "GET /CS351WelcomeSmall.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jan/2018 16:39:11] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jan/2018 16:39:11] "GET /CS351WelcomeSmall.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jan/2018 16:39:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jan/2018 16:39:19] "GET /CS351WelcomeSmall.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jan/2018 16:39:25] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jan/2018 16:39:25] "GET /CS351WelcomeSmall.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jan/2018 16:39:42] "GET /cgi-bin/hello.cgi HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jan/2018 16:41:14] "GET /cgi-bin/hello.cgi HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jan/2018 17:03:43] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jan/2018 17:03:43] "GET /CS351WelcomeSmall.jpg HTTP/1.1" 200 -

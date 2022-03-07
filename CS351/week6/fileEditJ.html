@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>File Editor</title>
+<meta charset="utf-8">
+
+<script src="PMS/jquery-3.1.1.js"></script>
+
+<script type="text/javascript">
+
+function createRequestObject() { 
+  var req; 
+  if (window.XMLHttpRequest) { // Firefox, Safari, Opera... 
+    req = new XMLHttpRequest(); 
+//    alert('Detected a modern browser - very good!'); 
+  } else if (window.ActiveXObject) { // Internet Explorer 5+ 
+    req = new ActiveXObject("Microsoft.XMLHTTP"); 
+//    alert('Detected an old IE browser'); 
+  } else { 
+    // error creating the request object, 
+    // (maybe an old browser is being used?)
+    alert('There was a problem creating the XMLHttpRequest object'); 
+    req = '';
+  }
+  return req; 
+} 
+// Make the XMLHttpRequest object 
+var http = createRequestObject(); 
+
+
+function getRadioVal2() {
+var selectedFood = new Array();
+var val;
+var getFiles;
+var fname, newfval, fval;
+$('input[name="filecase"]:checked').each(function() {
+	   selectedFood.push(this.value);
+           getFiles=this.value.split(";");
+           fname=getFiles[0];
+           fval=getFiles[1];
+           newfval = document.getElementById(fval).value;
+           alert('fname' + fname);
+           alert('newfval' + newfval);
+
+           if (typeof val === "undefined") {
+	    val = fname + "%3D" + newfval;
+           }
+           else {
+	    val = fname + "%3D" + newfval + '%26' + val;
+           }
+});
+//alert("Number of selected Food: "+selectedFood.length+"\n"+"And, they are: "+selectedFood);
+alert("Number of values selected: "+selectedFood.length+"\n"+"And, they are: "+ val);
+return val
+}
+
+     
+function getRadioVal3() {
+    var val;
+        //alert('getRadioVal');
+       var thisForm = document.getElementById("editForm");
+    //var radios = form.elements[name];
+    //var radios = form.elements;
+        //radios = form.getElementsByName(name)
+//alert('radios length='+ radios.length);
+var y = document.getElementsByName("filecase");
+var getFiles;
+        //alert('getRadioVal y=' + y);
+    var fname, newfval, fval;
+    // loop through list of radio buttons
+    for (var i=0, len=y.length; i<len; i++) {
+        alert('getRadioVal=' + i + "name=" + y[i].value);
+        if ( y[i].checked ) { // radio checked?
+           //if( val == '') {
+	   //(fname,fval)=y[i].value.split(";");
+	   getFiles=y[i].value.split(";");
+	   fname=getFiles[0];
+	   fval=getFiles[1];
+	   newfval = document.getElementById(fval).value;
+	   alert('fname' + fname);
+	   alert('newfval' + newfval);
+           if (typeof val === "undefined") {
+            //val = y[i].value ; // if so, hold its value in val
+	    val = fname + "%3D" + newfval;
+           }
+           else {
+            //val = y[i].value + '%3B' + val; // if so, hold its value in val
+	    val = fname + "%3D" + newfval + '%26' + val;
+           }
+           //alert('found getRadioVal=' + val);
+           //break; // and break out of for loop
+        }
+        else {
+           //alert('NOTCHECKED getRadioVal=' + y[i].value);
+
+        }
+    }
+    alert('RETURN getRadioVal=' + val);
+    return val; // return value of checked radio or undefined if none checked
+}
+function getRadioVal() {
+    var val;
+        //alert('getRadioVal');
+       var thisForm = document.getElementById("cbform");
+    //var radios = form.elements[name];
+    //var radios = form.elements;
+        //radios = form.getElementsByName(name)
+//alert('radios length='+ radios.length);
+var y = document.getElementsByName("testcase");
+        //alert('getRadioVal y=' + y);
+
+    // loop through list of radio buttons
+    for (var i=0, len=y.length; i<len; i++) {
+        //alert('getRadioVal=' + i + "name=" + y[i].value);
+        if ( y[i].checked ) { // radio checked?
+           //if( val == '') {
+           if (typeof val === "undefined") {
+            val = y[i].value ; // if so, hold its value in val
+           }
+           else {
+            val = y[i].value + '%3B' + val; // if so, hold its value in val
+           }
+           //alert('found getRadioVal=' + val);
+           //break; // and break out of for loop
+        }
+        else {
+           //alert('NOTCHECKED getRadioVal=' + y[i].value);
+
+        }
+    }
+    //alert('RETURN getRadioVal=' + val);
+    return val; // return value of checked radio or undefined if none checked
+}
+
+     
+function sendRequest() { 
+  var now = new Date();
+  //http.open('get', 'http://www.myhostname.com/cgi-bin/myscript.pl?nocache='+now.getTime()); 
+  alert('before send');
+  http.open('get', '/cgi-bin/fileEdit.cgi?myfunc=getfilenames&nocache='+now.getTime()); 
+  //http.open('get', 'http://localhost:55555/cgi-bin/ajaxdemo.cgi?nocache='+now.getTime()); 
+  //http.open('get', 'http://localhost/cgi-bin/ajaxdemo.cgi'); 
+  http.onreadystatechange = handleResponse; 
+  http.send(null); 
+} 
+function sendRequest3(theList) { 
+  var now = new Date();
+  alert('before send3');
+  http.open('get', '/cgi-bin/fileEdit.cgi?myfunc=saveContents&getTheList='
+	+ theList + '&nocache='+now.getTime()); 
+  http.onreadystatechange = handleResponse3; 
+  http.send(null); 
+} 
+function handleResponse3() { 
+  if(http.readyState == 4 && http.status == 200){ 
+     var response = http.responseText; // Text returned FROM perl script 
+     alert('in handleResponse3' + response);
+     if(response) { // UPDATE ajaxTest content 
+ alert('response3 was' + response);
+      document.getElementById("ajaxstuff").innerHTML = response; 
+	$( "#mainrow" ).show();
+$( "#getFiles" ).hide();
+$( "#getContents" ).hide();
+$( "#saveContents" ).hide();
+
+      //setTimeout('wipeout()', 2000); // wait 2 seconds, then clear message
+    } 
+  } 
+} 
+
+function sendRequest2(theList) { 
+  var now = new Date();
+  alert('before send2');
+  http.open('get', '/cgi-bin/fileEdit.cgi?myfunc=getContents&getTheList='
+	+ theList + '&nocache='+now.getTime()); 
+  http.onreadystatechange = handleResponse2; 
+  http.send(null); 
+} 
+     
+function handleResponse2() { 
+  if(http.readyState == 4 && http.status == 200){ 
+     var response = http.responseText; // Text returned FROM perl script 
+     alert('in handleResponse2' + response);
+     if(response) { // UPDATE ajaxTest content 
+ alert('response2 was' + response);
+      document.getElementById("ajaxstuff").innerHTML = response; 
+          myvals = response.split("&");
+ 	  var newvals;
+          for (var i = 0; i < myvals.length; i++) {
+               console.log("value " + i + " is " + myvals[i]);
+		//myFunction(myvals[i]);
+          	newvals = myvals[i].split("=");
+		alert("Send newvals+" + newvals[0] + " @ " + newvals[1]);
+		rowFunction("editRows",newvals[0],newvals[1]);
+          }
+	//$( "#mainrow" ).show();
+$( "#getFiles" ).hide();
+$( "#checkboxes" ).hide();
+$( "#getContents" ).hide();
+$( "#saveContents" ).show();
+
+      //setTimeout('wipeout()', 2000); // wait 2 seconds, then clear message
+    } 
+  } 
+} 
+function handleResponse() { 
+  if(http.readyState == 4 && http.status == 200){ 
+     var response = http.responseText; // Text returned FROM perl script 
+     alert('in handleResponse' + response);
+     if(response) { // UPDATE ajaxTest content 
+ alert('response was' + response);
+      document.getElementById("ajaxstuff").innerHTML = response; 
+          myvals = response.split(";");
+          for (var i = 0; i < myvals.length-1; i++) {
+               console.log("value " + i + " is " + myvals[i]);
+		myFunction(myvals[i]);
+          }
+	$( "#mainrow" ).hide();
+$( "#getFiles" ).hide();
+$( "#getContents" ).show();
+$( "#saveContents" ).hide();
+$( "#checkboxes" ).show();
+
+      //setTimeout('wipeout()', 2000); // wait 2 seconds, then clear message
+    } 
+  } 
+} 
+
+//function wipeout() {
+  //document.getElementById("ajaxstuff").innerHTML = ''; 
+  //x = document.getElementById("mybutton");
+  //x.disabled = false;
+//}
+
+function doclick3() {
+alert("doClick3");
+  var myradios=getRadioVal2();
+  //x = document.getElementById("mybutton");
+  //x.disabled = true;
+
+  //document.getElementById("ajaxstuff").innerHTML = '<b>working...</b>'; 
+  sendRequest3(myradios);
+  return true;
+}
+function doclick2() {
+alert("doClick2");
+var myradios=getRadioVal();
+  //x = document.getElementById("mybutton");
+  //x.disabled = true;
+
+  //document.getElementById("ajaxstuff").innerHTML = '<b>working...</b>'; 
+  sendRequest2(myradios);
+  return true;
+}
+function doclick() {
+  //x = document.getElementById("mybutton");
+  //x.disabled = true;
+
+  document.getElementById("ajaxstuff").innerHTML = '<b>working...</b>'; 
+  sendRequest();
+  return true;
+}
+
+function myFunction(mytext) {
+    var newCheckBox = document.createElement('input');
+    newCheckBox.type = 'checkbox';
+	    newCheckBox.id = 'testcase'; // need unique Ids!
+	    newCheckBox.name = 'testcase'; // need unique Ids!
+	    //newCheckBox.value = check_value[count] + '<br/>';
+  var x = document.createElement("P");
+  var t = document.createTextNode(mytext);
+  x.appendChild(t);
+    newCheckBox.value = mytext;
+    x.appendChild(newCheckBox);
+
+    document.body.appendChild(x);
+    //document.body.appendChild(newCheckBox);
+}
+function myFunction2(mytext) {
+ alert("myFunction " + mytext);
+  var x = document.createElement("P");
+  var t = document.createTextNode(mytext);
+  //var w = document.createTextNode("<br>");
+  //var z = document.createTextNode("This is a paragraph2.");
+  x.appendChild(t);
+  //x.appendChild("<br>");
+  var w=document.createElement("br");
+  //x.appendChild(w);
+  //x.appendChild(z);
+  document.body.appendChild(x);
+}
+
+
+</script>
+      <script>
+var cntRows=1;
+         function rowFunction(x,fname,fcontent) {
+	    alert("rowFunction" + fname);
+            //var myvals = invals.split("=");
+            var a = document.getElementById(x).insertRow(0);
+            var b = a.insertCell(0);
+            var c = a.insertCell(1);
+            var d = a.insertCell(2);
+            var newInput = document.createElement('input');
+		newInput.type='text';
+		newInput.value=fcontent;
+		newInput.id="row" + cntRows;
+            d.appendChild(newInput);
+
+            c.innerHTML = fname;
+            //d.innerHTML = fcontent;
+		//c.innerHTML =invals;
+                //document.getElementById("inText").value;
+                //document.getElementByName("inText").value;
+            var newCheckBox = document.createElement('input');
+            newCheckBox.type = 'checkbox';
+	    newCheckBox.id = 'filecase'; // need unique Ids!
+	    newCheckBox.name = 'filecase'; // need unique Ids!
+    	    newCheckBox.value = fname + ";" + newInput.id;
+            b.appendChild(newCheckBox);
+		cntRows++;
+         }
+      </script>
+</head>
+<body>
+
+
+<H2>File Editor</H2>
+<!-- 
+<div id=getlogin>
+<p>Click here to login:</p>
+<form><input type="button" id="otherbutton" onClick="alert("under Construction") value="Login"><form>
+</div>
+<p>Click here to continue as guest:</p>
+<form><input type="button" id="mybutton" onClick="doclick()" value="!"></form>
+-->
+
+<form id=cbform>
+<table id=mytable width=200>
+<tr id="getFiles">
+<td bgcolor=tan>
+<input type="button" id="getFiles" onClick="doclick()" value="Get Files!">
+</td>
+</tr>
+<tr id="getContents">
+<td bgcolor=tan>
+<input type="button" id="getContents" onClick="doclick2()" value="getContents!">
+</td>
+</tr>
+<tr id="saveContents">
+<td bgcolor=tan>
+<input type="button" id="saveContents" onClick="doclick3()" value="saveContents!">
+</td>
+</tr>
+<tr id="mainrow">
+<td bgcolor=tan>
+<hr/>
+<p><em><div id="ajaxstuff" > &nbsp; </div></em></p>
+<hr/>
+</td>
+</tr>
+</table>
+</form>
+
+      <table id="checkboxes" style="border:2px solid black" id="editRows">
+<!--
+      <input id=inText width=20 value="hello" name=mytext>
+         <tr>
+            <td>One</td>
+            <td>Two</td>
+         </tr>
+         <tr>
+            <td>Three</td>
+            <td>Four</td>
+         </tr>
+         <tr>
+            <td>Five</td>
+            <td>Six</td>
+         </tr>
+-->
+      </table>
+
+
+<script>
+var hidden=true;
+$( "#mainrow" ).hide();
+$( "#getFiles" ).show();
+$( "#getContents" ).hide();
+$( "#saveContents" ).hide();
+$( "#checkboxes" ).show();
+</script>
+
+</body> 
+</html>

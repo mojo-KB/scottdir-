@@ -1,0 +1,1560 @@
+<!DOCTYPE html>
+<html>
+        <head>
+                <meta charset=utf-8>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+-->
+                <title>CS351 App</title>
+                <style>
+                        body { margin: 0; }
+                        canvas { width: 100%; height: 100% }
+                </style>
+        </head>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!--  js included Before adding Bootstrap below -->
+<!-- <script src="../build/three.js"></script> -->
+<script src="build/three.js"></script>
+<script src="js/controls/OrbitControls.js"></script>
+<script src="js/SkyShader.js"></script>
+<script src="js/Detector.js"></script>
+<script src="PMS/jquery-3.1.1.js"></script>
+<script src="js/libs/dat.gui.min.js"></script>
+
+<!-- <script src="js/libs/dat.gui.min.js"></script> -->
+
+<!-- #mycanvas{border:1px solid red;} -->
+
+<style>
+a{
+  display: block;
+}
+a.active{
+  background-color: red;
+}
+
+input[type="radio"] {
+        margin-right: 4px ;
+        margin-left: 4px ;
+}
+label {
+        margin-right: 4px ;
+        margin-left: 4px ;
+}
+    //#mycanvas {
+    /* Started with w3c Bootstrap template: */
+    /* http://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_temp_webpage&stacked=h */
+    body { margin: 0; }
+    /* canvas { width: 100%; height: 100% } */
+    /* canvas { width: 100%; height: 75% } */
+    /* Remove the navbar's default margin-bottom and rounded borders */
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;}
+    }
+  </style>
+
+
+<script>
+
+function doclickrun() {
+	var y = document.getElementById("single");
+	//var x = y.elements.length;
+  	var text = "";
+  	var i;
+  	alert('LENGTH=' + y.length);
+  	for (i = 0; i < y.length; i++) {
+    	  //text += document.getElementById('single').elements[i].value + "<br>";
+	  text += $('#single').val();
+  	  alert('TEXT IS' + text);
+        }
+  	alert('CALL getRadioVal');
+  	//var val = getRadioVal( document.forms['single'], 'datfile' );
+  //var val = getSelectVal( document.forms['exampleForm'], 'single' );
+  var val = $( "#single option:selected" ).text();
+ 
+  // myResultPick = $( "#singleRender option:selected" ).text();
+  // $("#singleRender option:selected").remove();
+  // var option = new Option(myResultPick, myResultPick);
+  //    $( "#renderedOutputs" ).append($(option));
+
+
+  	alert('VALIS2:' + val);
+  	sendRequest2(val);
+  	return true;
+}
+function doclicktestcase() {
+
+var y = document.getElementById("exampleForm");
+//var x = y.elements.length;
+//alert('exampleForm elements=' + x);
+  //var x = document.forms["exampleForm"];
+  var text = "";
+  var i;
+  for (i = 0; i < y.length; i++) {
+    text += document.getElementById("exampleForm").elements[i].value + "<br>";
+//alert('ho ' + text);
+  }
+  //alert(' myform=' + myform.getElementById['testcase']);
+  //var val = getRadioVal( document.getElementById('exampleForm'), 'testcase' );
+  var val = getRadioVal( document.forms['exampleForm'], 'testcase' );
+  //alert('VALIS:' + val);
+  //return val; // return value of checked radio or undefined if none checked
+  sendRequest1(val);
+  return true;
+}
+//function doclick() {
+  //x = document.getElementById("mybutton");
+  //x.disabled = true;
+
+  ////document.getElementById("ajaxstuff").innerHTML = 'sending request to execute...'; 
+  //sendRequest1();
+  //return true;
+//}
+function doclick2() {
+  x = document.getElementById("mybutton4");
+  if (x.value == "Show Faces") {
+        x.value = "Hide Faces";
+        for (var i = 0; i < faceData.length; i++) {
+                var counter = faceData[i];
+                document.getElementById("faces").innerHTML += counter + "--"; 
+        }
+  }
+  else {
+        x.value = "Show Faces";
+        document.getElementById("faces").innerHTML = "";
+  }
+}
+function doclick3() {
+  x = document.getElementById("mybutton3");
+  if (x.value == "Show Vertices") {
+        x.value = "Hide Vertices";
+        for (var i = 0; i < vertexData.length; i++) {
+                var counter = vertexData[i];
+                document.getElementById("vertices").innerHTML += counter + "--"; 
+        }
+  }
+  else {
+        x.value = "Show Vertices";
+        document.getElementById("vertices").innerHTML = "";
+  }
+}
+
+</script>
+
+<table BORDER=5 CELLSPACING=3 CELLPADDING=5 COLS=4 BGCOLOR="#FFFF99">
+
+<tr id=selectrow>
+<td colspan = 2>
+
+<form id="exampleForm2">
+
+  <select id="single">
+  </select>
+</form>
+
+</td>
+<td colspan = 2>
+ <input type="button" id="mybutton2" onClick="doclickrun()" value="run Testcase">
+</td>
+</tr>
+
+
+<tr id="radiorow">
+<td colspan = 4>
+
+<form id="exampleForm">
+
+ <input type="radio" name="testcase" value="test1" id="testcase1" >test1</input>
+ <input type="radio" name="testcase" value="test2" id="testcase2" >test2</input>
+ <input type="radio" name="testcase" value="test3" id="testcase3" >test3</input>
+ <input type="radio" name="testcase" value="test4" id="testcase4" >test4</input>
+ <input type="radio" name="testcase" value="test5" id="testcase5" >test5</input>
+ <input type="radio" name="testcase" value="test6" id="testcase6" >test6</input>
+ <input type="button" id="mybutton" onClick="doclicktestcase()" value="Pick Testcase">
+</form>
+</td>
+</tr>
+
+
+<tr>
+
+<td>
+<table>
+<tr>
+<td>
+RunID: 
+</td>
+<td>
+<div id="examplerunid" > &nbsp; </div>
+</td>
+</tr>
+</table>
+</td>
+
+<td>
+<form><input type="button" id="mybutton4" onClick="doclick2()" value="Show Faces"><form>
+</td>
+<td>
+<form><input type="button" id="mybutton3" onClick="doclick3()" value="Show Vertices"><form>
+</td>
+
+</td>
+</tr>
+
+
+<tr>
+<td colspan=4>
+<div id="faces" > &nbsp; </div>
+</td>
+</tr>
+<tr>
+<td colspan=4>
+<div id="vertices" > &nbsp; </div>
+</td>
+</tr>
+</table>
+
+<!-- 
+-->
+
+<script>
+
+function getSelectVal(form, name) {
+    var val;
+alert('getSelectVal=' + name);
+alert('getSelectVal=' + form.getElementById[name]);
+    // get list of radio buttons with specified name
+    //var radios = form.elements[name];
+    var radios = form.elements[name];
+
+    // loop through list of radio buttons
+    for (var i=0, len=radios.length; i<len; i++) {
+alert('getSelectVal=' + i + "name=" + name);
+        if ( radios[i].checked ) { // radio checked?
+            val = radios[i].value; // if so, hold its value in val
+alert('found getSelectVal=' + name);
+            break; // and break out of for loop
+        }
+    }
+    return val; // return value of checked radio or undefined if none checked
+}
+function getRadioVal(form, name) {
+    var val;
+alert('getRadioVal=' + name);
+//alert('getRadioVal=' + form.getElementById[name]);
+    // get list of radio buttons with specified name
+    //var radios = form.elements[name];
+    var radios = form.elements[name];
+
+    // loop through list of radio buttons
+    for (var i=0, len=radios.length; i<len; i++) {
+//alert('getRadioVal=' + i + "name=" + name);
+        if ( radios[i].checked ) { // radio checked?
+            val = radios[i].value; // if so, hold its value in val
+//alert('found getRadioVal=' + name);
+            break; // and break out of for loop
+        }
+    }
+    return val; // return value of checked radio or undefined if none checked
+}
+
+</script>
+
+
+
+<hr/> 
+
+
+<script type="text/javascript">
+      var faces;
+      var vetices;
+      var geom ;
+      var scene;
+      var renderer;
+
+      var rotation_increment;
+      var camera;
+      var controls;
+
+function doRenderWebGL() {
+//$( "#exampleForm2" ).hide();
+      geom = new THREE.Geometry();
+                        rotation_increment = 0.01;
+//alert('before scene');
+                        scene = new THREE.Scene();
+//alert('after scene');
+
+                        var helper = new THREE.GridHelper( 5000, 2, 0xffffff, 0xffffff );
+                        scene.add( helper );
+
+                        camera = new THREE.PerspectiveCamera( 110, window.innerWidth/window.innerHeight, 0.1, 5000 );
+
+                        controls = null;
+                        renderer = new THREE.WebGLRenderer();
+                        renderer.setSize( window.innerWidth, window.innerHeight );
+                        // Set the background color of the scene.
+                        // doesn''t work, from treehouse renderer.setClearColorHex(0x333F47, 1);
+                        renderer.setClearColor( 0x505050 ); // make background gray instead of black
+                        document.body.appendChild( renderer.domElement );
+                        //document.body.appendChild( controls);
+
+}
+
+
+function initMesh() {
+
+                                // Add Sky Mesh
+                                sky = new THREE.Sky();
+                                scene.add( sky.mesh );
+
+                                /// GUI
+
+                                var effectController  = {
+                                        turbidity: 10,
+                                        rayleigh: 2,
+                                        mieCoefficient: 0.005,
+                                        mieDirectionalG: 0.8,
+                                        luminance: 1,
+                                        inclination: 0.49, // elevation / inclination
+                                        azimuth: 0.25, // Facing front,
+                                        sun: ! true
+                                };
+
+                                var distance = 400000;
+
+                                function guiChanged() {
+
+                                        if (rotation_increment == 0.01)
+                                             rotation_increment = 0.00;
+                                        else rotation_increment = 0.01;
+                                        var uniforms = sky.uniforms;
+                                        uniforms.turbidity.value = effectController.turbidity;
+                                        uniforms.rayleigh.value = effectController.rayleigh;
+                                        uniforms.luminance.value = effectController.luminance;
+                                        uniforms.mieCoefficient.value = effectController.mieCoefficient;
+                                        uniforms.mieDirectionalG.value = effectController.mieDirectionalG;
+
+                                        var theta = Math.PI * ( effectController.inclination - 0.5 );
+                                        var phi = 2 * Math.PI * ( effectController.azimuth - 0.5 );
+
+                                        //sunSphere.position.x = distance * Math.cos( phi );
+                                        //sunSphere.position.y = distance * Math.sin( phi ) * Math.sin( theta );
+                                        //sunSphere.position.z = distance * Math.sin( phi ) * Math.cos( theta );
+
+                                        //sunSphere.visible = effectController.sun;
+
+                                        //sky.uniforms.sunPosition.value.copy( sunSphere.position );
+
+                                        renderer.render( scene, camera );
+
+                                }
+
+                                var gui = new dat.GUI();
+
+                                gui.add( effectController, "turbidity", 1.0, 20.0, 0.1 ).onChange( guiChanged );
+                                gui.add( effectController, "rayleigh", 0.0, 4, 0.001 ).onChange( guiChanged );
+                                gui.add( effectController, "mieCoefficient", 0.0, 0.1, 0.001 ).onChange( guiChanged );
+                                gui.add( effectController, "mieDirectionalG", 0.0, 1, 0.001 ).onChange( guiChanged );
+                                gui.add( effectController, "luminance", 0.0, 2 ).onChange( guiChanged );
+                                gui.add( effectController, "inclination", 0, 1, 0.0001 ).onChange( guiChanged );
+                                gui.add( effectController, "azimuth", 0, 1, 0.0001 ).onChange( guiChanged );
+                                gui.add( effectController, "sun" ).onChange( guiChanged );
+
+                                guiChanged();
+}
+
+function createRequestObject() { 
+  var req; 
+  if (window.XMLHttpRequest) { // Firefox, Safari, Opera... 
+    req = new XMLHttpRequest(); 
+//    alert('Detected a modern browser - very good!'); 
+  } else if (window.ActiveXObject) { // Internet Explorer 5+ 
+    req = new ActiveXObject("Microsoft.XMLHTTP"); 
+//    alert('Detected an old IE browser'); 
+  } else { 
+    // error creating the request object, 
+    // (maybe an old browser is being used?)
+    alert('There was a problem creating the XMLHttpRequest object'); 
+    req = '';
+  }
+  return req; 
+} 
+     
+// Make the XMLHttpRequest object 
+var http = createRequestObject(); 
+     
+function sendRequest1(theTestCase) { 
+  var now = new Date();
+  //http.open('get', 'http://www.myhostname.com/cgi-bin/myscript.pl?nocache='+now.getTime()); 
+  //http.open('get', 'http://localhost:55555/cgi-bin/ajaxdemo.cgi?nocache='+now.getTime()); 
+  //http.open('get', 'http://localhost:55555/cgi-bin/exampleWebGL2.cgi?myfunc=execexample&nocache='+now.getTime()); 
+  http.open('get', 'http://localhost:55555/cgi-bin/exampleWebGL.cgi?myfunc=execexample&exampleTestCase=' + theTestCase + '&nocache='+now.getTime()); 
+  //http.open('get', 'http://localhost:55555/cgi-bin/ajaxdemo.cgi'); 
+  http.onreadystatechange = handleResponse1; 
+  //http.send("myfunc=vertices"); 
+  http.send(null); 
+} 
+function sendRequest2(example_runid) { 
+  var now = new Date();
+  //alert('sendRequest2 got:' + example_runid);
+  //http.open('get', 'http://www.myhostname.com/cgi-bin/myscript.pl?nocache='+now.getTime()); 
+  //http.open('get', 'http://localhost:55555/cgi-bin/ajaxdemo.cgi?nocache='+now.getTime()); 
+  myRunID = document.getElementById("examplerunid").innerHTML;
+  alert('sendRequest2: myRunID=' + myRunID + ' myDat=' + example_runid);
+  http.open('get', 'http://localhost:55555/cgi-bin/exampleWebGL.cgi?myrunid=' + example_runid + '&myfunc=vertices&nocache='+now.getTime()); 
+  //http.open('get', 'http://localhost:55555/cgi-bin/ajaxdemo.cgi'); 
+  http.onreadystatechange = handleResponse2; 
+  //http.send("myfunc=vertices"); 
+  http.send(null); 
+} 
+function sendRequest3(example_runid) { 
+  var now = new Date();
+  //http.open('get', 'http://www.myhostname.com/cgi-bin/myscript.pl?nocache='+now.getTime()); 
+  //http.open('get', 'http://localhost:55555/cgi-bin/ajaxdemo.cgi?nocache='+now.getTime()); 
+  http.open('get', 'http://localhost:55555/cgi-bin/exampleWebGL.cgi?myrunid=' + example_runid + '&myfunc=faces&nocache='+now.getTime()); 
+  //http.open('get', 'http://localhost:55555/cgi-bin/ajaxdemo.cgi'); 
+  http.onreadystatechange = handleResponse3; 
+  //http.send("myfunc=vertices"); 
+  http.send(null); 
+} 
+     
+function handleResponse1() { 
+  if(http.readyState == 4 && http.status == 200){ 
+    var response = http.responseText; // Text returned FROM perl script 
+    var option ;
+    if(response) { // UPDATE ajaxTest content 
+      //document.getElementById("ajaxstuff").innerHTML = response; 
+      //setTimeout('wipeout()', 2000); // wait 2 seconds, then clear message
+      //var jsonData = eval ("(" + txt + ")");
+      //alert("DOjsonData");
+
+     response = response.replace(/&quot;/g, '"');
+     alert('Response1:' + response);
+
+      //jsonData = JSON.parse(this.responseText);
+      jsonData = JSON.parse(response);
+         alert('JSON DATA IS:' + jsonData);
+      for (var i = 1; i < jsonData.length; i++) { // Start with 1 to skip the output directory name
+         //var counter = jsonData[i];
+         //document.getElementById("vertices").innerHTML += counter + "--"; 
+         //console.log(counter.counter_name);
+         alert(jsonData[i]);
+        //option = new Option(text, value);
+        option = new Option(jsonData[i], jsonData[i]);
+        //option = new Option("datfile", jsonData[i]);
+        //option = new Option(jsonData[i], "datfile");
+        $( "#single" ).append($(option));
+        //$('select').append($(option));
+
+         //if (var == 0) {
+             //$( "#single" ).val( jsonData[i] ); // set defaule value
+         //}
+      }
+		$( "#selectrow" ).show();
+        //$( "#exampleForm2" ).show();
+        $( "#radiorow" ).hide();
+
+      //alert("AFTER DOjsonData1");
+      //alert(jsonData[0]);
+      //alert("AFTER DOjsonData2");
+      //document.getElementById("examplerunid").innerHTML += jsonData[0] + "--"; 
+
+      //document.getElementById("examplerunid").innerHTML = jsonData[0] ;
+
+      //alert("handleresponde1 AFTER DOjsonData3 RUNID");
+
+      document.getElementById("examplerunid").innerHTML = jsonData[0];
+      //alert('BOX ID:' + document.getElementById("examplerunid"));
+
+      //sendRequest2(jsonData[0]);
+      //return jsonData[0];
+
+    } 
+  } 
+} 
+function handleResponse2() { 
+  if(http.readyState == 4 && http.status == 200){ 
+    var response = http.responseText; // Text returned FROM perl script 
+    if(response) { // UPDATE ajaxTest content 
+    	vertices = response;
+      	alert("handleResponse2 DOjsonData" + vertices);
+     	response = response.replace(/&quot;/g, '"');
+
+    //jsonData = JSON.parse(this.responseText);
+      //alert("AFTER DOjsonData1");
+      //alert(jsonData);
+      //alert("AFTER DOjsonData2");
+    //for (var i = 0; i < jsonData.length; i++) {
+         //var counter = jsonData[i];
+         //document.getElementById("vertices").innerHTML += counter + "--"; 
+         //console.log(counter.counter_name);
+         //alert(counter);
+    //}
+      // tried to grab the runid from the form, but may need to parse it.
+      //alert('handleResponse2 sendRequest3' + document.getElementById("examplerunid").value);
+      
+      //sendRequest3(document.getElementById("examplerunid").innerHTML);
+      var element = document.getElementById("examplerunid");
+        value = element.innerHTML;
+      //console.log(value);
+      alert('handleResponse2 sendRequest3' + value);
+      sendRequest3(value);
+
+    } 
+  } 
+} 
+function handleResponse3() { 
+  if(http.readyState == 4 && http.status == 200){ 
+    var response = http.responseText; // Text returned FROM perl script 
+    if(response) { // UPDATE ajaxTest content 
+      faces = response;
+      //document.getElementById("faces").innerHTML = response; 
+
+
+      //setTimeout('wipeout()', 2000); // wait 2 seconds, then clear message
+      //var jsonData = eval ("(" + txt + ")");
+      alert("handleResponse3 DOjsonData " + faces);
+
+     //response = response.replace(/&quot;/g, '"');
+    //jsonData = JSON.parse(this.responseText);
+      //alert("AFTER DOjsonData1");
+      //alert(jsonData);
+      //alert("AFTER DOjsonData2");
+      //for (var i = 0; i < jsonData.length; i++) {
+        //var counter = jsonData[i];
+        //document.getElementById("faces").innerHTML += counter + "--"; 
+        //console.log(counter.counter_name);
+        //alert(counter);
+      //}
+      //alert("AFTER DOjsonData3");
+
+     sendWebGL();
+
+    } 
+  } 
+} 
+function sendWebGL() { 
+
+      doRenderWebGL()
+
+      //var element = document.getElementById("faces");
+      //value = element.innerHTML;
+      //faceData = JSON.parse(value);
+      faceData = JSON.parse(faces);
+      //alert("sendWebGL FACES:" + faceData);
+      //alert(faceData);
+      var allfaces;
+      var myvals;
+      for (var i = 0; i < faceData.length; i++) {
+        var counter = faceData[i];
+        allfaces += " ## " + counter;
+        //document.getElementById("faces").innerHTML += counter + "--"; 
+        //geom.faces.push( new THREE.Face3( counter ));
+        //alert('FACE' + counter );
+        //myvals = faceData[i].toString().split(";");
+        myvals = counter.split(";");
+        geom.faces.push( new THREE.Face3(myvals[0],myvals[1],myvals[2]) );
+      }
+      //alert("sendWebGL FACES[0]:" + faceData[0]);
+      //alert("sendWebGL FACES2:" + allfaces);
+      //alert("sendWebGL FACES2:" + document.getElementById("faces").innerHTML);
+
+      //var element = document.getElementById("vertices");
+      //value = element.innerHTML;
+      //vertexData = JSON.parse(value);
+      vertexData = JSON.parse(vertices);
+
+      //alert("sendWebGL VERTICES:" + vertexData);
+      //alert(vertexData);
+      var allvertices;
+      for (var i = 0; i < vertexData.length; i++) {
+        var counter = vertexData[i];
+        allvertices += " ## " + counter;
+        //document.getElementById("vertices").innerHTML += counter + "--"; 
+        //alert('VERTEX' + counter );
+        //myvals = vertexData[i].toString().split(";");
+        myvals = counter.split(";");
+        geom.vertices.push( new THREE.Vector3(myvals[0],myvals[1],myvals[2]) );
+      }
+      //alert("sendWebGL VERTICES[0]:" + vertexData[0]);
+      alert("sendWebGL VERTICES2:" + allvertices);
+      //alert("sendWebGL VERTICES2:" + document.getElementById("faces").innerHTML);
+
+
+      //geom.vertices.push( new THREE.Vector3( 0.900812E-04, 0.000000E+00, -0.292807E-06 ));
+      //geom.faces.push( new THREE.Face3( 1, 3, 2 ));
+
+      geom.computeBoundingSphere();
+
+
+
+//alert('call initMesh');
+                        initMesh();
+//alert('after call initMesh');
+
+                        // Create an event listener that resizes the renderer with the browser window.
+                        window.addEventListener('resize', function() {
+                                                var WIDTH = window.innerWidth,
+                                                        HEIGHT = window.innerHeight;
+                                                renderer.setSize(WIDTH, HEIGHT);
+                                                camera.aspect = WIDTH / HEIGHT;
+                                                camera.updateProjectionMatrix();
+                        });
+
+ 
+                        // Create a light, set its position, and add it to the scene.
+                        var light = new THREE.PointLight(0xffffff);
+                        light.position.set(-100,200,100);
+                        scene.add(light);
+
+
+                        var object = new THREE.Mesh( geom, new THREE.MeshNormalMaterial() );
+                        //object.scale.set(3,3,3);
+                        object.scale.set(16,16,16);
+
+                        object.position.z = -10;//move a bit back - size of 500 is a bit big
+                        object.rotation.y = -Math.PI * .5;//triangle is pointing in depth, rotate it -90 degrees on Y
+
+                        scene.add(object);
+
+       //alert('camera position');
+                        camera.position.x = 10;
+                        camera.position.z = -10;
+                        camera.position.y = -10;
+
+                         // Add OrbitControls so that we can pan around with the mouse.
+                        //controls = new THREE.OrbitControls(camera, renderer.domElement);
+                        controls = new THREE.OrbitControls( camera, renderer.domElement );
+
+       //alert('controls');
+                        object.rotation.z += Math.PI -1
+
+       var cnt=0;
+                        var render = function () {
+
+       //alert('requestAnimationFrame');
+       //console.log('requestAnimationFrame' + cnt++);
+                                requestAnimationFrame( render );
+
+                                object.rotation.y += rotation_increment;
+                                //object.rotation.y += 0.01;
+                                //object.rotation.x += 0.01;
+                                //object.rotation.z += 0.01;
+
+                                renderer.render(scene, camera);
+                                controls.update();
+                        };
+
+       //alert('render');
+                        render();
+
+
+
+} 
+
+function wipeout() {
+  document.getElementById("ajaxstuff").innerHTML = ''; 
+  x = document.getElementById("mybutton");
+  x.disabled = false;
+}
+
+
+$( "#selectrow" ).hide();
+
+</script>
+</head>
+</html>
+
+
+
+
+
+<body>
+
+<table BORDER=5 CELLSPACING=3 CELLPADDING=5 width=100% COLS=8 BGCOLOR="#FFFF99">
+<tr>
+<td align=center bgcolor=black>
+<img src=CS351Welcome2.jpg width=120 heigth=100 alt="CS351Welcome" class="img-rounded">
+</td>
+<td align=center bgcolor=black>
+  <font color=white><B>SUNY Poly CS351</B></font>
+</td>
+</tr>
+<tr>
+<td colspan=2 bgcolor=tan>
+Welcome CS351 WebGL
+</td>
+</tr>
+</table>
+
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#"><img src=CS351Welcome2.jpg width=120 heigth=100 alt="CS351" class="img-rounded">
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="#" value="cs351">CS351<br>Home</a></li>
+        <li class="active"><a href="#" value="run">Run<br>WebGL</a></li>
+        <li><a href="#" value="display">Display<br>Results</a></li>
+        <li><a href="#" value="help">Help</a></li>
+        <li><a href="#" value="contact">Contact</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-3 sidenav">
+
+        <table width=10% BORDER=5 CELLSPACING=3 CELLPADDING=5 COLS=1 BGCOLOR="#FFFF99">
+
+        <tr id=displayRun>
+        <td>
+        <table>
+
+        <tr>
+        <td colspan=1>
+        Testcaserender:
+        </td>
+        </tr>
+        <tr>
+        <td colspan=1>
+        <div id="renderredRunID"> Testcasex </div>
+        </td>
+        </tr>
+
+        <!-- These are the names of the testruns within the testcase displayed in the row above -->
+        <!-- currently only rendering a single testrun at a time. -->
+        <tr>
+        <td colspan=1>
+        <form id="cs351FormRender">
+        <table BORDER=5 CELLSPACING=3 CELLPADDING=5 COLS=1 BGCOLOR="#FFFF99">
+        <tr>
+        <td colspan=1>
+        <select id="renderredOutputs" single size=3>
+        </select>
+        </td>
+        </tr>
+        </table>
+        </form>
+        </td>
+        </tr>
+
+        </table>
+        </td>
+        </tr>
+
+        <!-- These are the names of the output files within the testrun displayed in the row above -->
+        <tr id=displayRun2>
+        <td>
+        <table>
+
+        <tr>
+        <td colspan=1>
+        Testcaserunid:
+        </td>
+        </tr>
+
+        <tr>
+        <td colspan=1>
+        <div id="renderredRunID2"> Testcasez </div>
+        </td>
+        </tr>
+
+        <tr>
+        <td colspan=1>
+        <form id="cs351FormRender2">
+        <table BORDER=5 CELLSPACING=3 CELLPADDING=5 COLS=1 BGCOLOR="#FFFF99">
+        <tr>
+        <td colspan=1>
+        <select id="renderredOutputs2" multiple>
+        </select>
+        </td>
+        </tr>
+        </table>
+        </form>
+        </td>
+        </tr>
+
+        </table>
+        </td>
+        </tr>
+
+        <tr id=displayTest>
+        <td>
+        <table>
+
+        <tr>
+        <td colspan=1>
+        Testcasedisp:
+        </td>
+        </tr>
+        <tr>
+        <td colspan=1>
+        <div id="displayedRunID"> Testcasex </div>
+        </td>
+        </tr>
+
+        <tr>
+        <td colspan=1>
+        <form id="cs351FormDisplayed">
+        <table BORDER=5 CELLSPACING=3 CELLPADDING=5 COLS=1 BGCOLOR="#FFFF99">
+        <tr>
+        <td colspan=1>
+        <select id="displayedOutputs" single size=3>
+        <!--<option>Single</option>
+        <option>Single2</option> -->
+        </select>
+        </td>
+        </tr>
+        </table>
+        </form>
+        </td>
+        </tr>
+
+        </table>
+        </td>
+        </tr>
+
+        <tr id=displayTest2>
+        <td>
+        <table>
+
+        <tr>
+        <td colspan=1>
+        Testcasedispid:
+        </td>
+<!--
+        <td colspan=1>
+        <div id="displayedRunID2"> Outputsx; </div>
+        </td>
+        </tr>
+-->
+
+        <tr>
+        <td colspan=1>
+        <!-- <form id="cs351FormDisplayed"> -->
+        <form id="cs351FormDisplayed2">
+        <table BORDER=5 CELLSPACING=3 CELLPADDING=5 COLS=1 BGCOLOR="#FFFF99">
+        <tr>
+        <td colspan=1>
+        <select id="displayedOutputs2" multiple>
+        <!--<option>Single</option>
+        <option>Single2</option> -->
+        </select>
+        </td>
+        </tr>
+        </table>
+        </form>
+        </td>
+        </tr>
+
+        </table>
+        </td>
+        </tr>
+
+
+        <tr id=runidRow>  <!-- Start table with rnid and buttons -->
+                <td colspan=1>
+                <form><input type="button" id="mybutton2" onClick="doclick2()" value="Show Faces"><form>
+                </td>
+                <td colspan=1>
+                <form><input type="button" id="mybutton3" onClick="doclick3()" value="Show Vertices"><form>
+                </td>
+        </tr>  <!-- End table with rnid and buttons -->
+
+
+        </table>
+
+        <!-- was sendRequest2 -->
+<!--
+      <p><a href="#">Link</a></p>
+      <p><a href="#">Link</a></p>
+      <p><a href="#">Link</a></p>
+-->
+    </div>
+    <div class="col-sm-9 text-left"> 
+
+
+<table width=100% BORDER=5 CELLSPACING=3 CELLPADDING=5 width=100% COLS=8 BGCOLOR="#FFFF99">
+
+<tr id=pickdisplayoutput>
+
+<td colspan = 8>
+<table width=100% BORDER=5 CELLSPACING=3 CELLPADDING=5 width=100% COLS=8 BGCOLOR="#FFFF99">
+
+<tr id=cs351DisplayRow>
+<td>
+<b>Pick an output from a run of the testcase
+<br>
+you just selected to render and display:</b>
+</td>
+<td colspan=2>
+<table>
+
+<tr>
+<td colspan=1>
+Testcase(disp): 
+<div id="cs351testcase" > &nbsp; </div>
+</td>
+</tr>
+<tr id=runiddisp>
+<td colspan=1>
+RunID(disp):
+</td>
+<td colspan=1>
+<div id="cs351runid" > &nbsp; </div>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+
+<tr id="cs351FormDisplay">
+<form>
+<td>
+  <select id="singleDisplay">
+    <!--<option>Single</option>
+    <option>Single2</option> -->
+  </select>
+ <!-- was sendRequest2 -->
+</td>
+<td>
+ <input type="button" id="myDisplaybutton" onClick="doclickdisplaytestcase()" value="Select Existing Test Run Results">
+ <input type="button" id="myDisplaybuttonx" onClick="doclickcleartestcase()" value="Clear">
+</td>
+</form>
+</tr>
+
+<tr id="cs351FormDisplay3">
+<form>
+<td>
+  <select id="singleDisplay2">
+    <!--<option>Single</option>
+    <option>Single2</option> -->
+  </select>
+ <!-- was sendRequest2 -->
+</td>
+<td>
+ <input type="button" id="myDisplaybutton2" onClick="doclickdisplaytestcase2()" value="Render Existing Output">
+ <input type="button" id="myDisplaybuttony" onClick="doclickcleartestcase()" value="Clear">
+</td>
+</form>
+</tr>
+
+</table>
+
+
+</td>
+</tr>
+<!-- End of ROW -->
+<tr id=cs351RenderRow>
+<td>
+<b>Pick a testcase output from the output of
+<br>
+the testcase just run to render and display:</b>
+</td>
+<td colspan=2>
+<table>
+
+<tr>
+<td colspan=1>
+Testcase(run): 
+<div id="cs351testcase2" > &nbsp; </div>
+</td>
+</tr>
+<tr id=runiddisp2>
+<td colspan=1>
+RunID(run):
+</td>
+<td colspan=1>
+<div id="cs351runid2" > &nbsp; </div>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+
+<tr id=cs351RenderRow2>
+<form id="cs351Form2">
+<td>
+  <select id="singleRender">
+    <!--<option>Single</option>
+    <option>Single2</option> -->
+  </select>
+ <!-- was sendRequest2 -->
+</td>
+<td>
+ <input type="button" id="myDisplaybutton" onClick="doclickruntestcase()" value="Render a Testcase">
+ <input type="button" id="myDisplaybutton" onClick="doclickcleartestcase()" value="Clear">
+</td>
+</form>
+</tr>
+</table>
+
+
+</td>
+</tr>
+<!-- End of ROW -->
+
+<tr id=picktestRow>
+<td>
+
+<form id="cs351Form">
+<table BORDER=5 CELLSPACING=3 CELLPADDING=5 width=100% width=100% COLS=8 BGCOLOR="#FFFF99">
+<tr>
+<!-- <td colspan=4> -->
+<td id=testcasebanner colspan=100%>
+<!-- <b>Pick a testcase to run</b> -->
+</td>
+</tr>
+<tr>
+<td>
+
+<table>
+<tr>
+
+    <!--<option>Single</option>
+  <select id="single">
+  </select>
+    <option>Single2</option> -->
+<!--
+<td>
+ <input type="radio" name="testcase" value="test6" id="testcase6" /><label for="testcase6">test6</label>
+</td>
+-->
+<td>
+ <input type="button" id="mybutton" onClick="doclicktestcase()" value="Pick Testcase">
+</td>
+
+<td>
+<table>
+<tr id=myTestcases>
+<td>
+</td>
+</tr>
+</table>
+</td>
+
+
+</tr>
+</table>
+
+</tr>
+</table>
+</form>
+
+</td>
+</tr>
+<!-- End of ROW -->
+
+
+
+<tr>
+<td colspan=4>
+<!-- <canvas id="mycanvas" width="400" height="400" style="margin: 30px;"></canvas> -->
+
+<div id="mycanvas">
+
+</div>
+
+
+</td>
+<!--
+<canvas id="canvas"></canvas>
+-->
+</tr>
+
+<tr>
+<td colspan=4>
+<div id="faces" > &nbsp; </div>
+</td>
+</tr>
+<tr>
+<td colspan=4>
+<div id="vertices" > &nbsp; </div>
+</td>
+</tr>
+<tr>
+<td colspan=4>
+<div id="contactRow" > contact stuff&nbsp; </div>
+</td>
+</tr>
+<tr>
+<td colspan=4>
+<div id="helpRow" > help stuff&nbsp; </div>
+</td>
+</tr>
+</table>
+
+<!--
+      <h1>Welcome</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <hr>
+      <h3>Test</h3>
+      <p>Lorem ipsum...</p>
+
+    </div>
+-->
+
+<!--
+    <div class="col-sm-2 sidenav">
+      <div class="well">
+        <p>ADS</p>
+      </div>
+      <div class="well">
+        <p>ADS</p>
+      </div>
+    </div>
+-->
+
+  </div>
+</div>
+
+<footer class="container-fluid text-center">
+  <p><!-- <H1>CS351</H1> --> <img src=CS351Welcome2.jpg width=200></p>
+</footer>
+<script>
+
+
+
+function doGetMyPickScreen(runordisplay) {
+        var now = new Date();
+
+      alert("send doGetMyPickScreen " + runordisplay);
+        http.open('get', '/cgi-bin/exampleWebGL.cgi?mypicktype=' + runordisplay + '&mydat=' + myResultPick + '&myfunc=getpicks&nocache='+now.getTime()); 
+        http.onreadystatechange = handleGetMyPickScreen; 
+        http.send(null); 
+
+}
+
+function handleGetMyPickScreen() { 
+  if(http.readyState == 4 && http.status == 200){ 
+    var response = http.responseText; // Text returned FROM perl script 
+    if(response) { // UPDATE ajaxTest content 
+      alert("handleGetMyPickScreen DOjsonData" + response);
+
+        response = response.replace(/&quot;/g, '"');
+        alert('handleGetMyPickScreen:' + response);
+
+        jsonData = JSON.parse(response);
+         alert('JSON DATA IS:' + jsonData);
+        if ( jsonData[0] == "run" ) {
+         alert('RUN JSON DATA 0 IS:' + jsonData[0]);
+                $( "#testcasebanner" ).innerHTML = "<b>Pick a testcase to run</b>";
+        }
+        else { // display  
+         alert('DISPLAY JSON DATA 0 IS:' + jsonData[0]);
+                $( "#testcasebanner" ).innerHTML = "<b>Pick a testcase to display</b>";
+        }
+        $( "#testcasebanner" ).show();
+        $( "#cs351Form" ).show();
+        $( "#picktestRow" ).show();
+        $( "#pickdisplayoutput" ).show();
+
+
+               $( "#cs351Form" ).show();
+                $( "#picktestRow" ).show();
+                $( "#mycanvas" ).show();
+                $( "#cs351RenderRow" ).show();
+                $( "#cs351RenderRow2" ).show();
+                $( "#pickdisplayoutput" ).show();
+                $( "#cs351FormDisplay" ).show();
+                $( "#runidRow" ).show();
+
+        $( "#renderedOutputs" ).show();
+        $( "#cs351FormRender" ).show();
+        $( "#displayedOutputs" ).show();
+        $( "#cs351FormDisplayed" ).show();
+        $( "#displayedOutputs2" ).show();
+        $( "#cs351FormDisplayed2" ).show();
+        $( "#displayTest" ).show();
+        $( "#displayTest2" ).show();
+        $( "#displayRun" ).show();
+        $( "#displayRun2" ).show();
+
+
+
+
+
+         alert('testcasebanner SHOWN:' + jsonData[0]);
+
+        for (var i = 1; i < jsonData.length; i++) { // Start with 1 to skip the output directory name
+        $( "#myTestcases" ).append(
+         '<td><input type="radio" name="testcase" value="' + jsonData[i] + '" id="' + jsonData[i] +'" /><label for="' + jsonData[i] + '">' + jsonData[i] + '</label></td>'
+        );
+
+        }
+        $( "#picktestRow" ).show();
+        $( "#pickdisplayoutput" ).hide();
+        $( "#runidRow" ).hide();
+
+        $( "#displayTest" ).hide(); 
+        $( "#displayTest2" ).hide(); 
+
+
+    } 
+  } 
+} 
+
+
+var myRunID;
+var myResultPick;
+var myResultPick2;
+var myDisplayTestDir;
+
+
+// Initialize some variables
+var runCS351Loaded = false;
+var displayResultsLoaded = false;
+var homeLoaded = false;
+var helpLoaded = false;
+var contactLoaded = false;
+var runOrDisplay;
+
+$( "#pickdisplayoutput" ).hide();
+$( "#mycanvas" ).hide();
+$( "#runidRow" ).hide();
+$( "#helpRow" ).hide();
+$( "#contactRow" ).hide();
+$( "#vertices" ).hide();
+$( "#faces" ).hide();
+
+//alert($('ul.nav > li').value());
+//$('ul.nav > li').o
+//$(".nav li").each( function() {
+
+
+// This code makes sure the navbar tab that you want to start active
+// is set active and runs the startup code for it
+
+var initialNavTab = 'cs351';
+//var initialNavTab = 'display';
+//var initialNavTab = 'help';
+var didPickTestcaseInit = false;
+
+$("ul.nav li").each( function() {
+        $(this).removeClass("active"); 
+alert('THIS' + $(this).find('a').attr('value'));
+//this doesn't work: alert('THIS2' + $(this).find('a:display'));
+        //if ( ($this).find('a:display') ) {
+        if ($(this).find('a').attr('value') == initialNavTab) {
+                $(this).addClass('active');
+        if ( 'cs351' == initialNavTab ) {
+                initHome();
+        }
+        if ( 'run' == initialNavTab ) {
+                initRun();
+        }
+        if ( 'display' == initialNavTab ) {
+alert('THIS' + $(this).find('a').attr('value'));
+                initDisplay();
+        }
+        if ( 'help' == initialNavTab ) {
+                initHelp();
+        }
+        if ( 'contact' == initialNavTab ) {
+                initContact();
+        }
+   }
+})
+
+                //alert('FOUND IT');
+//$(".nav li a:active").removeClass('active');//remove pseudo class
+//}
+//$(".nav li#display").addClass('active');
+//$(".nav #display").addClass('active');
+
+function initRun() { 
+                //alert('it was help');
+                $( "#helpRow" ).hide();
+                //$( "#helpRow" ).load("CS351FE_UserGuide.html");
+                $( "#cs351Form" ).show();
+                $( "#picktestRow" ).show();
+                $( "#runidRow" ).hide();
+                $( "#mycanvas" ).hide();
+                $( "#contactRow" ).hide();
+                if (didPickTestcaseInit == false) {
+                        doGetMyPickScreen("run");
+                        didPickTestcaseInit = true;
+                }
+                runOrDisplay = "run";
+                $( "#pickdisplayoutput" ).hide();
+                $( "#cs351FormDisplay" ).hide();
+        $( "#renderedOutputs" ).hide();
+        $( "#cs351FormRender" ).hide();
+        $( "#displayedOutputs" ).hide();
+        $( "#cs351FormDisplayed" ).hide(); 
+        $( "#displayedOutputs2" ).hide();
+        $( "#cs351FormDisplayed2" ).hide(); 
+        $( "#displayTest" ).hide(); 
+        $( "#displayTest2" ).hide(); 
+        $( "#displayRun" ).hide(); 
+        $( "#displayRun2" ).hide(); 
+        $( "#cs351RenderRow" ).hide(); 
+        $( "#cs351RenderRow2" ).hide(); 
+}
+function initDisplay() { 
+                $( "#helpRow" ).hide();
+                //$( "#helpRow" ).load("CS351FE_UserGuide.html");
+                $( "#cs351Form" ).show();
+                $( "#picktestRow" ).show();
+                $( "#runidRow" ).hide();
+                $( "#mycanvas" ).hide();
+                $( "#contactRow" ).hide();
+                if (didPickTestcaseInit == false) {
+                        doGetMyPickScreen("display");
+                        didPickTestcaseInit = true;
+                }
+                runOrDisplay = "display";
+                $( "#cs351RenderRow" ).hide();
+                $( "#cs351RenderRow2" ).hide();
+
+        $( "#renderedOutputs" ).hide();
+        $( "#cs351FormRender" ).hide();
+        $( "#displayedOutputs" ).hide();
+        $( "#cs351FormDisplayed" ).hide(); 
+        $( "#displayedOutputs2" ).hide();
+        $( "#cs351FormDisplayed2" ).hide(); 
+
+        $( "#pickdisplayoutput" ).hide();
+        $( "#displayTest" ).hide(); 
+        $( "#displayTest2" ).hide(); 
+        $( "#displayRun" ).hide(); 
+        $( "#displayRun2" ).hide(); 
+
+}
+function initHelp() { 
+
+                alert('it was help');
+                $( "#helpRow" ).show();
+                if (helpLoaded == false) {
+                        $( "#helpRow" ).load("CS351FE_UserGuide.html");
+                        helpLoaded = true;
+                }
+                $( "#cs351Form" ).hide();
+                $( "#picktestRow" ).hide();
+                $( "#mycanvas" ).hide();
+                $( "#contactRow" ).hide();
+                $( "#cs351RenderRow" ).hide();
+                $( "#cs351RenderRow2" ).hide();
+                $( "#pickdisplayoutput" ).hide();
+                $( "#cs351FormDisplay" ).hide();
+                $( "#runidRow" ).hide();
+        $( "#renderedOutputs" ).hide();
+        $( "#cs351FormRender" ).hide();
+        $( "#displayedOutputs" ).hide();
+        $( "#cs351FormDisplayed" ).hide(); 
+        $( "#displayedOutputs2" ).hide();
+        $( "#cs351FormDisplayed2" ).hide(); 
+        $( "#displayTest" ).hide(); 
+        $( "#displayTest2" ).hide(); 
+        $( "#displayRun" ).hide(); 
+        $( "#displayRun2" ).hide(); 
+
+
+}
+function initHome() { 
+                //alert('it was help');
+                $( "#helpRow" ).hide();
+                $( "#homeRow" ).show();
+                if (homeLoaded == false) {
+                        $( "#homeRow" ).load("CS351FE_Home.html");
+                        homeLoaded = true;
+                }
+                $( "#cs351Form" ).hide();
+                $( "#picktestRow" ).hide();
+                $( "#mycanvas" ).hide();
+                $( "#cs351RenderRow" ).hide();
+                $( "#cs351RenderRow2" ).hide();
+                $( "#pickdisplayoutput" ).hide();
+                $( "#cs351FormDisplay" ).hide();
+                $( "#runidRow" ).hide();
+        $( "#renderedOutputs" ).hide();
+        $( "#cs351FormRender" ).hide();
+        $( "#displayedOutputs" ).hide();
+        $( "#cs351FormDisplayed" ).hide(); 
+        $( "#displayedOutputs2" ).hide();
+        $( "#cs351FormDisplayed2" ).hide(); 
+        $( "#displayTest" ).hide(); 
+        $( "#displayTest2" ).hide(); 
+        $( "#displayRun" ).hide(); 
+        $( "#displayRun2" ).hide(); 
+
+}
+function initContact() { 
+                //alert('it was help');
+                $( "#helpRow" ).hide();
+                $( "#contactRow" ).show();
+                if (contactLoaded == false) {
+                        $( "#contactRow" ).load("CS351FE_Contacts.html");
+                        contactLoaded = true;
+                }
+                $( "#cs351Form" ).hide();
+                $( "#picktestRow" ).hide();
+                $( "#mycanvas" ).hide();
+                $( "#cs351RenderRow" ).hide();
+                $( "#cs351RenderRow2" ).hide();
+                $( "#pickdisplayoutput" ).hide();
+                $( "#cs351FormDisplay" ).hide();
+                $( "#runidRow" ).hide();
+
+        $( "#renderedOutputs" ).hide();
+        $( "#cs351FormRender" ).hide();
+        $( "#displayedOutputs" ).hide();
+        $( "#cs351FormDisplayed" ).hide(); 
+        $( "#displayedOutputs2" ).hide();
+        $( "#cs351FormDisplayed2" ).hide(); 
+        $( "#displayTest" ).hide(); 
+        $( "#displayTest2" ).hide(); 
+        $( "#displayRun" ).hide(); 
+        $( "#displayRun2" ).hide(); 
+
+}
+
+
+
+//dontdoready(function () {})
+//$(document).ready(function () 
+        //$('ul.nav > li').click(function (e)) {
+            //e.preventDefault();
+            //$('ul.nav > li').removeClass('active');
+            //$(this).addClass('active');                
+//alert('called DOCUMENT READY');
+            //alert('MYNAV:' + e);
+            //alert('Value: ' + $(a, this).attr('value'));
+            //alert('Value: ' + $(this).find('a').attr('value'));
+            var myValue=$(this).find('a').attr('value');
+            // Run CS351 may altready have been selected or this may be the first run
+            // If this is the first time, Just show the Pick Tesstcase Row
+            // Otherwise, show the state of Run CS351 from the last use
+            // (1) If testcase wasn't submitted, just show the testcase line
+            // (2) testcase was submitted, hide Pick Testcase line and 
+            //    display any outputs which have been created (maybe none)
+            //    Each output will have a canvas and a link to it in the
+            //    left column.
+            //    When an output canvas has been created, the data set (.dat)
+            //    file for the canvas is removed from the display.
+            //    Each canvas has associated with it a control panel
+            //    that can control WebGL variables, including animation.
+            //if (myValue == 'display') {
+                //initDisplay();
+                //alert('it was help');
+            //}
+            //if (myValue == 'run') {
+                //initRun();
+            //}
+            //if (myValue == 'help') {
+                //initHelp();
+            //}
+            //if (myValue == 'contact') {
+                //initContact();
+            //}
+            //if (myValue == 'home') {
+                //initHome();
+            //}
+        //}            
+//}
+    //)
+
+// **********************
+$(document).ready(function () {
+        $('ul.nav > li').click(function (e) {
+            e.preventDefault();
+            $('ul.nav > li').removeClass('active');
+            $(this).addClass('active');                
+ 	    alert('READY' + e);
+ 	    //alert('MYNAV:' + e);
+	    //alert('Value: ' + $(a, this).attr('value'));
+	    //alert('Value: ' + $(this).find('a').attr('value'));
+ 	    var myValue=$(this).find('a').attr('value');
+	    // Run may altready have been selected or this may be the first run
+	    // If this is the first time, Just show the Pick Tesstcase Row
+	    // Otherwise, show the state of Run from the last use
+	    // 1) If testcase wasn't submitted, just show the testcase line
+	    // 2) testcase was submitted, hide Pick Testcase line and 
+	    //    display any outputs which have been created (maybe none)
+	    //    Each output will have a canvas and a link to it in the
+	    //    left column.
+	    //    When an output canvas has been created, the data set (.dat)
+	    //    file for the canvas is removed from the display.
+	    //    Each canvas has associated with it a control panel
+	    //    that can control WebGL variables, including animation.
+	    if (myValue == 'display') {
+		initDisplay();
+		alert('it was help');
+	    }
+	    if (myValue == 'run') {
+		initRun();
+	    }
+	    if (myValue == 'help') {
+		initHelp();
+	    }
+	    if (myValue == 'contact') {
+		initContact();
+	    }
+	    if (myValue == 'home') {
+		alert('it was Home');
+		initHome();
+	    }
+	});            
+    });
+
+//var myLis=getElementByType("ul.nav");
+//var myLis= document.getElementsByTagName('ul');
+//for (var i=0, len=myLis.length; i<len; i++) {
+  //alert("element " + i + " = " + myLis[i]);
+//}
+
+</script>
+
+</body>
+

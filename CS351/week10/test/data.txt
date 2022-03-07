@@ -1,0 +1,17 @@
+food,Pepperoni,1
+clothing,Pants,20
+clothing,Scarf,14
+beverages,Iced Tea,23
+food,Granola Bars,24
+beverages,Gatorade,46
+shoes,Running,28
+shoes,Hiking,0
+food,Bread,16
+food,Mustard,10
+food,Tofu,0
+beverages,Apple Juice,11
+beverages,Grape Juice,8
+clothing,Men's Jacket,21
+clothing,Women's Jacket,9
+shoes,Men's Dress Shoes,30
+shoes,High Heels,26

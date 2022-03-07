@@ -1,0 +1,4 @@
+syntax error at ./bootstrapStore.cgi line 57, near ") {"
+syntax error at ./bootstrapStore.cgi line 64, near "}"
+Can't redeclare "my" in "my" at ./bootstrapStore.cgi line 72, at end of line
+Execution of ./bootstrapStore.cgi aborted due to compilation errors.

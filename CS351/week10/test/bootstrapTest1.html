@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Store Inventory with Bootstrap</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <style>
+    footer {
+        position: absolute;
+        bottom: 60px;
+        width: 100%;
+        background: black;
+        color: white;
+        padding: 20px;
+    }
+    </style>
+  <script>
+      function submit_2(item) {
+        //var itemSubmitted = item;
+        document.getElementById("results").innerHTML = "<h3>Working!</h3>";
+        var http = createRequestObject();
+        http.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var response = http.responseText;
+                document.getElementById("results").innerHTML = response;
+                alert("In submit_2 if statment and response = " + response);
+            }
+        }
+        alert("In submit_2. item = " + item);
+        http.open('get', '/cgi-bin/bootstrapStore.cgi?num=2&selection='+item, true);
+        http.send();
+        alert("In submit_2. Response = " + response);
+      }
+
+      function submit_3() {
+          alert("In submit_3");
+        var checkName = document.getElementByID("elementID").name;
+        var itemSubmitted = [];
+        var j = 0;
+        var y = document.getElementById("checkbox_form").elements.length;
+        var formElements = document.forms["checkbox_form"].elements[checkName];
+        for(var i=0; i<y; i++) {
+            if(formElements[i].checked) {
+                itemSubmitted[j] = formElements[i].value;
+                j++;
+            }
+        }
+        document.getElementById("results").innerHTML = "<h3>Working!</h3>";
+        var http = createRequestObject();
+        http.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              var response = http.responseText;
+              document.getElementById("results").innerHTML = response;
+            }
+        }
+        http.open('get', '/cgi-bin/bootstrapStore.cgi?num=3&selection'+itemSubmitted, true);
+        http.send();
+      }
+
+      function createRequestObject() {
+        var req;
+        if (window.XMLHttpRequest) {
+          req = new XMLHttpRequest();
+        } else if (window.ActiveXObject) {
+          req = new ActiveXObject("Microsoft.XMLHTTP");
+        } else {
+          alert("There was a problem creating XMLHttpRequest object");
+          req = '';
+        }
+        return req;
+      }
+  </script>
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            
+          <!-- Logo -->
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainNavBar">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+              <a href="#" class="navbar-brand">STORE</a>
+          </div>
+
+          <!-- Menu Items -->
+          <div class="collapse navbar-collapse" id="mainNavBar">
+              <ul class="nav navbar-nav">
+                  <li><a id="Food" onclick="submit_2('Food');return false;" href="#">Food</a></li>
+                  <li><a id="Beverages" onclick="submit_2('Beverages');return false;" href="#">Beverages</a></li>
+                  <li><a id="Clothing" onclick="submit_2('Clothing');return false;" href="#">Clothing</a></li>
+                  <li><a id="Shoes" onclick="submit_2('Shoes');return false;" href="#">Shoes</a></li>
+              </ul>
+          </div>
+        
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+
+        <h2>Stuff goes here:</h2>
+
+        <div class="well" id="results"></div>
+        
+    </div>
+
+<footer class="container-fluid text-center">
+  <p>Enjoy your purchase.</p> This theme is from <a href="https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_temp_webpage&stacked=h">w3schools</a>
+</footer>
+</body>
+</html>

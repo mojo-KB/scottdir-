@@ -1,0 +1,18 @@
+function handleResponse1() { 
+  if(http.readyState == 4 && http.status == 200){ 
+    var response = http.responseText; // Text returned FROM perl script 
+    var option ;
+    if(response) { // UPDATE ajaxTest content 
+     response = response.replace(/&quot;/g, '"');
+      jsonData = JSON.parse(response);
+      for (var i = 1; i < jsonData.length; i++) { // Start with 1 to skip the output directory name
+        option = new Option(jsonData[i], jsonData[i]);
+        $( "#single" ).append($(option))
+      }
+	$( "#selectrow" ).show();
+        $( "#radiorow" ).hide();
+
+      document.getElementById("examplerunid").innerHTML = jsonData[0];
+    } 
+  } 
+} 

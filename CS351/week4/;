@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>CS351 Form Store</title>
+<meta charset="utf-8">
+</head>
+
+<script>
+
+function doclicktestcase() {
+alert('Form elements=' );
+var y = document.getElementById("Form");
+var x = y.elements.length;
+alert('Form elements=' + x);
+  var text = "";
+  var i;
+  for (i = 0; i < y.length; i++) {
+    text += document.forms["Form"].elements[i].value + "<br>";
+    // alert('ho' + text);
+  }
+  var val = getRadioVal( document.forms['Form'], 'testcase' );
+  //alert(val); //you can pass this value as parameter
+  alert('doclicktestcase2' + val); //you can pass this value as parameter
+  sendRequest(val);
+  return true;
+}
+
+function getRadioVal(form, name) {
+    var val;
+	//alert('getRadioVal=' + name);
+    var radios = form.elements[name];
+
+    // loop through list of radio buttons
+    for (var i=0, len=radios.length; i<len; i++) {
+	alert('getRadioVal=' + i + "name=" + name);
+        if ( radios[i].checked ) { // radio checked?
+           //if( val == '') {
+           if (typeof val === "undefined") {
+            val = radios[i].value ; // if so, hold its value in val
+	   }
+	   else {
+            val = radios[i].value + '%3B' + val; // if so, hold its value in val
+           }
+	   alert('found getRadioVal=' + val);
+           //break; // and break out of for loop
+        }
+    }
+    return val; // return value of checked radio or undefined if none checked
+}
+
+
+
+function createRequestObject() {
+  var req;
+  if (window.XMLHttpRequest) { // Firefox, Safari, Opera...
+    req = new XMLHttpRequest();
+  } else if (window.ActiveXObject) { // Internet Explorer 5+
+    req = new ActiveXObject("Microsoft.XMLHTTP");
+  } else {
+    alert('There was a problem creating the XMLHttpRequest object');
+    req = '';
+  }
+  return req;
+}
+
+// Make the XMLHttpRequest object
+var http = createRequestObject();
+
+function sendRequest(mypick) {
+  var now = new Date();
+  alert('sendRequest mypick=' + mypick);
+  // send in the category of merchandise
+  http.open('get', '/cgi-bin/mystore.cgi?category=' + mypick + '&myfunc=category&nocache='+now.getTime());
+  http.onreadystatechange = handleResponse;
+
+alert('send');
+  http.send();
+}
+
+// The response from asking for a category is a list of elements
+// available for the category of merchandise
+function handleResponse() {
+  if(http.readyState == 4 && http.status == 200){
+    var response = http.responseText; // Text returned FROM perl script
+    if(response) { // UPDATE ajaxTest content
+      alert("Category items " + response);
+      document.getElementById("ajaxstuff").innerHTML = response;
+    }
+      alert("AFTER DOjsonData3");
+
+    }
+}
+
+</script>
+
+<body>
+
+<select name="listElements" id="listElements" multiple>
+<!-- <option value="TEXT">Plain Text</option>
+<option value="HTML">HTML</option> -->
+</select>
+<form id="Form">
+ <input type="radio" name="testcase" value="food" id="food" >food</input>
+ <input type="radio" name="testcase" value="beverage" id="beverage" >beverage</input>
+ <input type="radio" name="testcase" value="snack" id="snack" >snack</input>
+</form>
+<form><input type="button" id="mybutton" onClick="doclicktestcase()" value="Type of Food"><form>
+
+<div id="ajaxstuff">&nbsp;</div>
+
+<script>
+//We could access the desired element in this way:
+var listelements = document.getElementsByName('listElements');
+alert('js elements=' + listelements);
+$( "#listElements" ).hide();
+</script>
+
+</body>
+</html>

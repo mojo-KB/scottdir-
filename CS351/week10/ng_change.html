@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+<p>{{ x1 }}</p>
+<p>{{ x2 }}</p>
+<input ng-change="myFunction()"name= myinput ng-model="x3">
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.x1 = "John";
+    $scope.x2 = angular.uppercase($scope.x2);
+        alert("do Initial UPPER");
+    $scope.myFunction = function() {
+        alert("do UPPER");
+        $scope.x2 = angular.uppercase($scope.x3);
+    }
+});
+</script>
+
+</body>
+</html>

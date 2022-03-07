@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>File Editor</title>
+<meta charset="utf-8">
+
+<script src="PMS/jquery-3.1.1.js"></script>
+
+<script type="text/javascript">
+
+function createRequestObject() { 
+  var req; 
+  if (window.XMLHttpRequest) { // Firefox, Safari, Opera... 
+    req = new XMLHttpRequest(); 
+//    alert('Detected a modern browser - very good!'); 
+  } else if (window.ActiveXObject) { // Internet Explorer 5+ 
+    req = new ActiveXObject("Microsoft.XMLHTTP"); 
+//    alert('Detected an old IE browser'); 
+  } else { 
+    // error creating the request object, 
+    // (maybe an old browser is being used?)
+    alert('There was a problem creating the XMLHttpRequest object'); 
+    req = '';
+  }
+  return req; 
+} 
+     
+function getRadioVal() {
+    var val;
+        alert('getRadioVal');
+       var thisForm = document.getElementById("cbform");
+    //var radios = form.elements[name];
+    //var radios = form.elements;
+        //radios = form.getElementsByName(name)
+//alert('radios length='+ radios.length);
+var y = document.getElementsByName("testcase");
+        alert('getRadioVal y=' + y);
+
+    // loop through list of radio buttons
+    for (var i=0, len=y.length; i<len; i++) {
+        alert('getRadioVal=' + i + "name=" + y[i].value);
+        if ( y[i].checked ) { // radio checked?
+           //if( val == '') {
+           if (typeof val === "undefined") {
+            val = y[i].value ; // if so, hold its value in val
+           }
+           else {
+            val = y[i].value + '%3B' + val; // if so, hold its value in val
+           }
+           alert('found getRadioVal=' + val);
+           //break; // and break out of for loop
+        }
+        else {
+           alert('NOTCHECKED getRadioVal=' + y[i].value);
+
+        }
+    }
+    alert('RETURN getRadioVal=' + val);
+    return val; // return value of checked radio or undefined if none checked
+}
+
+     
+function sendRequest() { 
+  var now = new Date();
+  //http.open('get', 'http://www.myhostname.com/cgi-bin/myscript.pl?nocache='+now.getTime()); 
+  alert('before send');
+  http.open('get', '/cgi-bin/fileEdit.cgi?myfunc=getfilenames&nocache='+now.getTime()); 
+  //http.open('get', 'http://localhost:55555/cgi-bin/ajaxdemo.cgi?nocache='+now.getTime()); 
+  //http.open('get', 'http://localhost/cgi-bin/ajaxdemo.cgi'); 
+  http.onreadystatechange = handleResponse; 
+  http.send(null); 
+} 
+     
+function handleResponse() { 
+  if(http.readyState == 4 && http.status == 200){ 
+     var response = http.responseText; // Text returned FROM perl script 
+     alert('in handleResponse' + response);
+     if(response) { // UPDATE ajaxTest content 
+ alert('response was' + response);
+      document.getElementById("ajaxstuff").innerHTML = response; 
+          myvals = response.split(";");
+          for (var i = 0; i < myvals.length; i++) {
+               console.log("value " + i + " is " + myvals[i]);
+		myFunction(myvals[i]);
+          }
+	$( "#mainrow" ).show();
+
+      //setTimeout('wipeout()', 2000); // wait 2 seconds, then clear message
+    } 
+  } 
+} 
+
+function wipeout() {
+  document.getElementById("ajaxstuff").innerHTML = ''; 
+  x = document.getElementById("mybutton");
+  x.disabled = false;
+}
+
+function doclick2() {
+alert("doClick2");
+var myradios=getRadioVal();
+  //x = document.getElementById("mybutton");
+  //x.disabled = true;
+
+  //document.getElementById("ajaxstuff").innerHTML = '<b>working...</b>'; 
+  sendRequest2(myradios);
+  return true;
+}
+function doclick() {
+  x = document.getElementById("mybutton");
+  x.disabled = true;
+
+  document.getElementById("ajaxstuff").innerHTML = '<b>working...</b>'; 
+  sendRequest();
+  return true;
+}
+
+function myFunction(mytext) {
+    var newCheckBox = document.createElement('input');
+    newCheckBox.type = 'checkbox';
+	    newCheckBox.id = 'testcase'; // need unique Ids!
+	    newCheckBox.name = 'testcase'; // need unique Ids!
+	    //newCheckBox.value = check_value[count] + '<br/>';
+  var x = document.createElement("P");
+  var t = document.createTextNode(mytext);
+  x.appendChild(t);
+    newCheckBox.value = mytext;
+    x.appendChild(newCheckBox);
+
+    document.body.appendChild(x);
+    //document.body.appendChild(newCheckBox);
+}
+function myFunction2(mytext) {
+ alert("myFunction " + mytext);
+  var x = document.createElement("P");
+  var t = document.createTextNode(mytext);
+  //var w = document.createTextNode("<br>");
+  //var z = document.createTextNode("This is a paragraph2.");
+  x.appendChild(t);
+  //x.appendChild("<br>");
+  var w=document.createElement("br");
+  //x.appendChild(w);
+  //x.appendChild(z);
+  document.body.appendChild(x);
+}
+
+
+</script>
+</head>
+<body>
+
+<script>
+// Make the XMLHttpRequest object 
+var http = createRequestObject(); 
+//alert('IT DID!!!');
+</script>
+
+<H2>File Editor</H2>
+
+<div id=getlogin>
+<p>Click here to login:</p>
+<!-- <form><input type="button" id="otherbutton" onClick="alert("under Construction") value="Login"><form>
+-->
+<p>Click here to continue as guest:</p>
+<form><input type="button" id="mybutton" onClick="doclick()" value="Guest!"></form>
+</div>
+
+
+<form id=cbform>
+<input type="button" id="mybutton" onClick="doclick2()" value="getFile!">
+<table id=mytable width=200>
+<tr id="mainrow">
+<td bgcolor=tan>
+<hr/>
+<p><em><div id="ajaxstuff" > &nbsp; </div></em></p>
+<hr/>
+</td>
+</tr>
+</table>
+</form>
+
+<script>
+var hidden=true;
+$( "#mainrow" ).show();
+</script>
+
+
+</body> 
+</html>

@@ -1,0 +1,2 @@
+Use of uninitialized value $ENV{"QUERY_STRING"} in concatenation (.) or string at ./storeproduct.cgi line 16.
+Undefined subroutine &main::param called at ./storeproduct.cgi line 47.

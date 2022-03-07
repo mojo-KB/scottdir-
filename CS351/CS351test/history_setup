@@ -1,0 +1,67 @@
+   210	16:08	cd www/cgi-bin/
+   211	16:09	more README_startup_python_httpd
+   212	16:10	python -m http.server --cgi 44444
+   213	16:10	python3 -m http.server --cgi 44444
+   214	16:10	bg
+   215	16:19	jobs
+   216	16:25	ls -l cgi-bin/
+   217	16:25	ls -ld cgi-bin/
+   218	16:48	cd week1
+   219	16:48	ls
+   220	16:48	more grad_output
+   221	16:49	ls ../week2
+   222	16:49	cd ..
+   223	16:49	ls
+   224	16:49	ls -ld grad*
+   225	16:50	ls -l cgi-bin/grad*
+   226	16:50	cp gradation.cgi cgi-bin/
+   227	16:54	rm gradation.cgi
+   228	16:54	ln gradation.html gradation.cgi
+   229	16:54	ls -l cgi-bin/grad*
+   230	16:54	ls -ld grad*
+   231	16:54	ls -ldi grad*
+   232	16:57	wget http://localhost:55555/gradation
+   233	16:57	wget http://localhost:44444/gradation
+   234	16:57	more gradation.1
+   235	17:01	jobs
+   236	17:01	vi gradation
+   237	7:59	cd www
+   238	7:59	cp index.html index.html_25Jan2018
+   239	7:59	vi index.html
+   240	8:03	[wd
+   241	8:03	jobs
+   242	8:03	fg
+   251	16:59	cd www/CS350
+   252	16:59	cd queries/
+   253	16:59	ls -l
+   254	16:59	more query.php
+   255	17:46	$cvalue
+   262	9:12	ls
+   263	9:21	pushd ~/www/CS350
+   264	9:21	ls
+   265	9:21	cd ../CS351
+   266	9:21	ls
+   267	9:22	mkdir HW1
+   268	9:22	mkdir HW2
+   269	9:22	mkdir cgi-bin
+   270	9:22	vi README_example
+   271	9:23	vi index.html
+   272	9:30	cp ~/www/classes/CS351/CS351WelcomeSmall.jpg .
+   273	9:31	fg
+   274	9:38	ls -l cgi-bin/
+   275	9:38	cp ~/www/cgi-bin/cgi-bin/* cgi-bin/
+   276	9:38	cp ~/www/cgi-bin/README_startup_python_httpd .
+   277	9:39	more README_startup_python_httpd
+   278	9:39	python -m CGIHTTPServer 55555
+   279	9:39	ps axuww | grep scott
+   280	9:39	kill -9 48711
+   281	9:39	python -m CGIHTTPServer 55555
+   282	9:40	bg
+   283	9:40	ls -l HW1
+   284	9:41	cp cgi-bin/hello.cgi HW1
+   285	9:41	cp HW1/hello.cgi HW1/hello_cgi
+   286	9:42	cp HW1/hello.cgi HW1/hello.html
+   287	9:42	vi HW1/hello.html
+   288	9:43	fg
+   289	9:44	history
+   290	9:44	history > history_setup

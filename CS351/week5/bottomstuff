@@ -1,0 +1,234 @@
+<script>
+
+// Initialize some variables
+var runLoaded = false;
+var displayResultsLoaded = false;
+var homeLoaded = false;
+var helpLoaded = false;
+var contactLoaded = false;
+var runOrDisplay;
+
+$( "#pickdisplayoutput" ).hide();
+$( "#mycanvas" ).hide();
+$( "#runidRow" ).hide();
+$( "#helpRow" ).hide();
+$( "#contactRow" ).hide();
+$( "#vertices" ).hide();
+$( "#faces" ).hide();
+
+//alert($('ul.nav > li').value());
+//$('ul.nav > li').o
+//$(".nav li").each( function() {
+
+
+// This code makes sure the navbar tab that you want to start active
+// is set active and runs the startup code for it
+
+var initialNavTab = 'display';
+var didPickTestcaseInit = false;
+
+$("ul.nav li").each( function() {
+        $(this).removeClass("active"); 
+//alert('THIS' + $(this).find('a').attr('value'));
+        //if ( ($this).find('a:display') ) {
+        if ($(this).find('a').attr('value') == initialNavTab) {
+                $(this).addClass('active');
+        if ( 'home' == initialNavTab ) {
+                initHome();
+        }
+        if ( 'run' == initialNavTab ) {
+                initRun();
+        }
+        if ( 'display' == initialNavTab ) {
+                initDisplay();
+        }
+        if ( 'help' == initialNavTab ) {
+                initHelp();
+        }
+        if ( 'contact' == initialNavTab ) {
+                initContact();
+        }
+   }
+})
+
+                //alert('FOUND IT');
+//$(".nav li a:active").removeClass('active');//remove pseudo class
+//}
+//$(".nav li#display").addClass('active');
+//$(".nav #display").addClass('active');
+
+function initRun() { 
+                //alert('it was help');
+                $( "#helpRow" ).hide();
+                //$( "#helpRow" ).load("FE_UserGuide.html");
+                $( "#myForm" ).show();
+                $( "#picktestRow" ).show();
+                $( "#runidRow" ).hide();
+                $( "#mycanvas" ).hide();
+                $( "#contactRow" ).hide();
+                if (didPickTestcaseInit == false) {
+                        doGetMyPickScreen("run");
+                        didPickTestcaseInit = true;
+                }
+                runOrDisplay = "run";
+                $( "#pickdisplayoutput" ).hide();
+                $( "#myFormDisplay" ).hide();
+        $( "#renderedOutputs" ).hide();
+        $( "#myFormRender" ).hide();
+        $( "#displayedOutputs" ).hide();
+        $( "#myFormDisplayed" ).hide(); 
+        $( "#displayedOutputs2" ).hide();
+        $( "#myFormDisplayed2" ).hide(); 
+        $( "#displayTest" ).hide(); 
+        $( "#displayTest2" ).hide(); 
+        $( "#displayRun" ).hide(); 
+        $( "#displayRun2" ).hide(); 
+}
+function initDisplay() { 
+                $( "#helpRow" ).hide();
+                //$( "#helpRow" ).load("FE_UserGuide.html");
+                $( "#myForm" ).show();
+                $( "#picktestRow" ).show();
+                $( "#runidRow" ).hide();
+                $( "#mycanvas" ).hide();
+                $( "#contactRow" ).hide();
+                if (didPickTestcaseInit == false) {
+                        doGetMyPickScreen("display");
+                        didPickTestcaseInit = true;
+                }
+                runOrDisplay = "display";
+                $( "#myRenderRow" ).hide();
+                $( "#myRenderRow2" ).hide();
+
+        $( "#renderedOutputs" ).hide();
+        $( "#myFormRender" ).hide();
+        $( "#displayedOutputs" ).hide();
+        $( "#myFormDisplayed" ).hide(); 
+        $( "#displayedOutputs2" ).hide();
+        $( "#myFormDisplayed2" ).hide(); 
+
+        $( "#pickdisplayoutput" ).hide();
+        $( "#displayTest" ).hide(); 
+        $( "#displayTest2" ).hide(); 
+        $( "#displayRun" ).hide(); 
+        $( "#displayRun2" ).hide(); 
+
+}
+function initHelp() { 
+
+                //alert('it was help');
+                $( "#helpRow" ).show();
+                if (helpLoaded == false) {
+                        $( "#helpRow" ).load("FE_UserGuide.html");
+                        helpLoaded = true;
+                }
+                $( "#myForm" ).hide();
+                $( "#picktestRow" ).hide();
+                $( "#mycanvas" ).hide();
+                $( "#contactRow" ).hide();
+                $( "#myRenderRow" ).hide();
+                $( "#myRenderRow2" ).hide();
+                $( "#pickdisplayoutput" ).hide();
+                $( "#myFormDisplay" ).hide();
+                $( "#runidRow" ).hide();
+        $( "#renderedOutputs" ).hide();
+        $( "#myFormRender" ).hide();
+        $( "#displayedOutputs" ).hide();
+        $( "#myFormDisplayed" ).hide(); 
+        $( "#displayedOutputs2" ).hide();
+        $( "#myFormDisplayed2" ).hide(); 
+        $( "#displayTest" ).hide(); 
+        $( "#displayTest2" ).hide(); 
+        $( "#displayRun" ).hide(); 
+        $( "#displayRun2" ).hide(); 
+
+
+}
+function initHome() { 
+                //alert('it was help');
+                $( "#helpRow" ).hide();
+                $( "#homeRow" ).show();
+                if (homeLoaded == false) {
+                        $( "#homeRow" ).load("FE_Home.html");
+                        homeLoaded = true;
+                }
+                $( "#myForm" ).hide();
+                $( "#picktestRow" ).hide();
+                $( "#mycanvas" ).hide();
+                $( "#myRenderRow" ).hide();
+                $( "#myRenderRow2" ).hide();
+                $( "#pickdisplayoutput" ).hide();
+                $( "#myFormDisplay" ).hide();
+                $( "#runidRow" ).hide();
+        $( "#renderedOutputs" ).hide();
+        $( "#myFormRender" ).hide();
+        $( "#displayedOutputs" ).hide();
+        $( "#myFormDisplayed" ).hide(); 
+        $( "#displayedOutputs2" ).hide();
+        $( "#myFormDisplayed2" ).hide(); 
+        $( "#displayTest" ).hide(); 
+        $( "#displayTest2" ).hide(); 
+        $( "#displayRun" ).hide(); 
+        $( "#displayRun2" ).hide(); 
+
+}
+function initContact() { 
+                //alert('it was help');
+                $( "#helpRow" ).hide();
+                $( "#contactRow" ).show();
+                if (contactLoaded == false) {
+                        $( "#contactRow" ).load("FE_Contacts.html");
+                        contactLoaded = true;
+                }
+                $( "#myForm" ).hide();
+                $( "#picktestRow" ).hide();
+                $( "#mycanvas" ).hide();
+                $( "#myRenderRow" ).hide();
+                $( "#myRenderRow2" ).hide();
+                $( "#pickdisplayoutput" ).hide();
+                $( "#myFormDisplay" ).hide();
+                $( "#runidRow" ).hide();
+
+        $( "#renderedOutputs" ).hide();
+        $( "#myFormRender" ).hide();
+        $( "#displayedOutputs" ).hide();
+        $( "#myFormDisplayed" ).hide(); 
+        $( "#displayedOutputs2" ).hide();
+        $( "#myFormDisplayed2" ).hide(); 
+        $( "#displayTest" ).hide(); 
+        $( "#displayTest2" ).hide(); 
+        $( "#displayRun" ).hide(); 
+        $( "#displayRun2" ).hide(); 
+
+}
+
+$(document).ready(function () {
+        $('ul.nav > li').click(function (e) {
+            e.preventDefault();
+            $('ul.nav > li').removeClass('active');
+            $(this).addClass('active');                
+            //alert('MYNAV:' + e);
+            //alert('Value: ' + $(a, this).attr('value'));
+            //alert('Value: ' + $(this).find('a').attr('value'));
+            var myValue=$(this).find('a').attr('value');
+            if (myValue == 'display') {
+                initDisplay();
+                //alert('it was help');
+            }
+            if (myValue == 'run') {
+                initRun();
+            }
+            if (myValue == 'help') {
+                initHelp();
+            }
+            if (myValue == 'contact') {
+                initContact();
+            }
+            if (myValue == 'home') {
+                initHome();
+            }
+        });            
+    });
+
+</script>
+

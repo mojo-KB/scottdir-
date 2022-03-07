@@ -1,0 +1,49 @@
+function handleResponse1() { 
+  if(http.readyState == 4 && http.status == 200){ 
+    var response = http.responseText; // Text returned FROM perl script 
+    var option ;
+    if(response) { // UPDATE ajaxTest content 
+     response = response.replace(/&quot;/g, '"');
+     alert('Response1:' + response);
+
+      //jsonData = JSON.parse(this.responseText);
+      jsonData = JSON.parse(response);
+         alert('JSON DATA IS:' + jsonData);
+      for (var i = 1; i < jsonData.length; i++) { // Start with 1 to skip the output directory name
+         //var counter = jsonData[i];
+         //document.getElementById("vertices").innerHTML += counter + "--"; 
+         //console.log(counter.counter_name);
+         alert(jsonData[i]);
+        //option = new Option(text, value);
+        option = new Option(jsonData[i], jsonData[i]);
+        //option = new Option("datfile", jsonData[i]);
+        //option = new Option(jsonData[i], "datfile");
+        $( "#single" ).append($(option));
+        //$('select').append($(option));
+
+         //if (var == 0) {
+             //$( "#single" ).val( jsonData[i] ); // set defaule value
+         //}
+      }
+		$( "#selectrow" ).show();
+        //$( "#exampleForm2" ).show();
+        $( "#radiorow" ).hide();
+
+      //alert("AFTER DOjsonData1");
+      //alert(jsonData[0]);
+      //alert("AFTER DOjsonData2");
+      //document.getElementById("examplerunid").innerHTML += jsonData[0] + "--"; 
+
+      //document.getElementById("examplerunid").innerHTML = jsonData[0] ;
+
+      //alert("handleresponde1 AFTER DOjsonData3 RUNID");
+
+      document.getElementById("examplerunid").innerHTML = jsonData[0];
+      //alert('BOX ID:' + document.getElementById("examplerunid"));
+
+      //sendRequest2(jsonData[0]);
+      //return jsonData[0];
+
+    } 
+  } 
+} 

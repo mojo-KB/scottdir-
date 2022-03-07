@@ -1,0 +1,10 @@
+Here is what you can do to create a directory structure and execute cgi programs:
+chmod 711 ~
+mkdir www
+chmod 755 www
+cd www
+touch index.html
+chmod 644 index.html
+mkdir CS330
+mkdir CS350/HW1
+mkdir CS350/HW2

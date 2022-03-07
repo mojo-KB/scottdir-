@@ -1,0 +1,88 @@
+<html>
+<head>
+<title>Ajax Demo</title>
+
+<script type="text/javascript">
+
+function createRequestObject() { 
+  var req; 
+  if (window.XMLHttpRequest) { // Firefox, Safari, Opera... 
+    req = new XMLHttpRequest(); 
+  } else if (window.ActiveXObject) { // Internet Explorer 5+ 
+    req = new ActiveXObject("Microsoft.XMLHTTP"); 
+  } else { 
+    // error creating the request object, 
+    // (maybe an old browser is being used?)
+    alert('There was a problem creating the XMLHttpRequest object'); 
+    req = '';
+  }
+  return req; 
+} 
+     
+// Make the XMLHttpRequest object 
+var http = createRequestObject(); 
+     
+function sendRequest(mypick) { 
+  var now = new Date();
+alert('send mypick=' + mypick);
+  http.open('get', 'http://localhost:55555/cgi-bin/ptest.cgi?testcase=' + mypick + '&myfunc=vertices&nocache='+now.getTime()); 
+  http.onreadystatechange = handleResponse; 
+alert('send');
+       http.send();
+} 
+     
+function handleResponse() { 
+  if(http.readyState == 4 && http.status == 200){ 
+    var response = http.responseText; // Text returned FROM perl script 
+    if(response) { // UPDATE ajaxTest content 
+      alert("DOjsonData before");
+      document.getElementById("ajaxstuff").innerHTML = response; 
+      //setTimeout('wipeout()', 2000); // wait 2 seconds, then clear message
+      var jsonData = eval ("(" + txt + ")");
+      alert("DOjsonData after");
+
+     //response = response.replace(/&quot;/g, '"');
+    //jsonData = JSON.parse(this.responseText);
+      alert("AFTER DOjsonData1");
+      alert(jsonData);
+      alert("AFTER DOjsonData2");
+for (var i = 0; i < jsonData.length; i++) {
+    var counter = jsonData[i];
+      document.getElementById("ajaxstuff").innerHTML += counter + "--"; 
+    //console.log(counter.counter_name);
+    //alert(counter);
+}
+      alert("AFTER DOjsonData3");
+
+    } 
+  } 
+} 
+
+function wipeout() {
+  document.getElementById("ajaxstuff").innerHTML = ''; 
+  x = document.getElementById("mybutton");
+  x.disabled = false;
+}
+
+function doclick() {
+  x = document.getElementById("mybutton");
+  x.disabled = true;
+
+  document.getElementById("ajaxstuff").innerHTML = 'working...'; 
+  setTimeout('wipeout()', 2000); // wait 2 seconds, then clear message
+  return true;
+}
+
+</script>
+</head>
+<body>
+
+<p>Click here to begin:</p>
+<form><input type="button" id="mybutton" onClick="doclick()" value="Go!"><form>
+
+<hr/> 
+<p><em><div id="ajaxstuff" > &nbsp; </div></em></p>
+<hr/> 
+
+</body> 
+</html>

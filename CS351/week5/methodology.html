@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>CS351 Web Development Methodology</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.01Gold (X11; I; FreeBSD 2.2-RELEASE i386) [Netscape]">
+   <link rel="stylesheet" href="/~scott/classes/mystyle.css">
+</HEAD>
+<BODY TEXT="#FFFFFF" BGCOLOR="#000000" LINK="#00EE00" VLINK="lightgreen" ALINK="#FF
+0000">
+
+<table ALIGN=LEFT BORDER=4 CELLSPACING=4 CELLPADDING=4 COLS=2 WIDTH="440" BGCOLOR="#000000" NOSAVE >
+<tr>
+<td colspan=2>
+<center>
+<H3><B><FONT COLOR="#FF0808">CS351 Methodology for implementing 
+<br>and debugging Web applications
+</FONT></B></H1>
+</center>
+
+<ul>
+<li>
+Based on problem description, define HTML display
+needed for each of the steps and add them to the
+problem html page, to display all needed html (some empty
+dynamic elements.
+<li>
+Add standard Javascript libraries needed to parse html
+elements like radio, checkbox, and select.
+Add Javascript entries to send and receive messages and
+responses to implement each step in the processing of
+interaction with the Web server.
+<li>
+Initialize the form by creating an httpRequest object
+and hiding elements not needed in the first step.
+Use either an onLoad function or add initialization to the end
+of the html page.
+<li>
+Starting with an initialization event on the initial display,
+like a button click, trigger the beginning of a sequence of
+events that will solve the problem.
+<li>
+Implement a CGI program to implement the server side for each
+of the steps in the interaction of your Javascript/HTML 
+interface with the Web server. A single CGI program will be
+sufficient for this course, to parse the request messages and
+determine which step in processing they correspond to. 
+<li>
+Debug the program by triggering the first event and verifying that
+each step is performed properly. Alerts can be used, along with the
+debugging console, to assure that the proper dynamic HTML code is 
+produced for each step and trace the program execution until it
+executes correctly.
+<li>
+<font color=yellow>
+Hint: Start with HTML from a page you worked on:
+<ul>
+<li>
+Modify the HTML definition to the new problem requirements
+<li>
+Modify the variable names in the Javascript functions to
+match the names in your new HTML code.
+<li>
+Modify the names in the Javascript sentTo functions to
+represent the names you are using for the steps in your new code.
+</ul>
+Hint: Start with a CGI program you worked on:
+<ul>
+<li>
+Modify the variables in the CGI program that define the entry points
+for each step in the interaction with the Javascript program running
+on the Web browser.
+<li>
+Modify the CGI code (Perl) to implement the functions needed by the
+Javascript program on the browser and print any needed response data
+for the response to the Web browser.
+</ul>
+</ul>

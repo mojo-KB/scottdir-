@@ -1,0 +1,472 @@
+START doMyParse verticesSTART QUERY_STRING=myfunc=execexample&exampleTestCase=test3&nocache=1583763926883
+ myFunc=execexample 
+JSON IS: ["test3/CS351_tmp92022","mydata2.dat","mydata3.dat","mydata.dat"]START doMyParse verticesSTART QUERY_STRING=myfunc=execexample&exampleTestCase=test3&nocache=1583763946115
+ myFunc=execexample 
+JSON IS: ["test3/CS351_tmp40512","mydata2.dat","mydata3.dat","mydata.dat"]START doMyParse verticesSTART QUERY_STRING=myfunc=execexample&exampleTestCase=test3&nocache=1585755373011
+ myFunc=execexample 
+JSON IS: ["test3/CS351_tmp13451","mydata2.dat","mydata3.dat","mydata.dat"]START doMyParse verticesSTART QUERY_STRING=num=1&nocache=1585755891604START doMyParse verticesSTART QUERY_STRING=num=2&nocache=1585755893606START doMyParse verticesSTART QUERY_STRING=num=3&nocache=1585755895607START doMyParse verticesSTART QUERY_STRING=num=4&nocache=1585755897609START doMyParse verticesSTART QUERY_STRING=num=5&nocache=1585755899610START doMyParse verticesSTART QUERY_STRING=num=1&nocache=1585755963731START doMyParse verticesSTART QUERY_STRING=num=2&nocache=1585755965735START doMyParse verticesSTART QUERY_STRING=num=3&nocache=1585755967736START doMyParse verticesSTART QUERY_STRING=num=4&nocache=1585755969739START doMyParse verticesSTART QUERY_STRING=num=5&nocache=1585755971742START doMyParse verticesSTART QUERY_STRING=num=1&nocache=1585755978100START doMyParse verticesSTART QUERY_STRING=num=2&nocache=1585755980102START doMyParse verticesSTART QUERY_STRING=num=3&nocache=1585755982106START doMyParse verticesSTART QUERY_STRING=num=4&nocache=1585755984107START doMyParse verticesSTART QUERY_STRING=num=5&nocache=1585755986109START doMyParse verticesSTART QUERY_STRING=num=1&nocache=1585756020604START doMyParse verticesSTART QUERY_STRING=num=2&nocache=1585756022606START doMyParse verticesSTART QUERY_STRING=num=1&nocache=1585756024972START doMyParse verticesSTART QUERY_STRING=num=2&nocache=1585756025962START doMyParse verticesSTART QUERY_STRING=num=3&nocache=1585756026973START doMyParse verticesSTART QUERY_STRING=num=4&nocache=1585756027966START doMyParse verticesSTART QUERY_STRING=num=5&nocache=1585756028976START doMyParse verticesSTART QUERY_STRING=myfunc=execexample&exampleTestCase=test3&nocache=1585756577058
+ myFunc=execexample 
+JSON IS: ["test3/CS351_tmp90766","mydata2.dat","mydata3.dat","mydata.dat"]START doMyParse verticesSTART QUERY_STRING=myfunc=execexample&exampleTestCase=test3&nocache=1585756924951
+ myFunc=execexample 
+JSON IS: ["test3/CS351_tmp36082","mydata2.dat","mydata3.dat","mydata.dat"]START doMyParse verticesSTART QUERY_STRING=myfunc=execexample&exampleTestCase=test3&nocache=1585757070980
+ myFunc=execexample 
+JSON IS: ["test3/CS351_tmp7036","mydata2.dat","mydata3.dat","mydata.dat"]START doMyParse verticesSTART QUERY_STRING=myrunid=mydata3.dat&myfunc=vertices&nocache=1585757087951
+ myFunc=vertices 
+
+ myFunc=vertices myRunid=mydata3.dat myDat= 
+call doMyParse 1 verticescall doMyParse 2 verticesls of DATA vertices mydat_500
+myData1
+mydata.dat
+mydata.dat_Apr26
+mydata.dat_BKP
+mydata.dat_lines
+mydata.dat_mesh
+mydata.dat_other
+mydata.dat_test
+mydata.dat_Week5Works
+README
+simp3dpt_lines.dat
+tecplot_brick.tec.dat
+TEST28FEB2018
+START doMyParse verticesSTART QUERY_STRING=myrunid=test3/CS351_tmp7036&myfunc=faces&nocache=1585757094324
+ myFunc=faces 
+START doMyParse verticesSTART QUERY_STRING=myfunc=execexample&exampleTestCase=test3&nocache=1585757630343
+ myFunc=execexample 
+JSON IS: ["test3/CS351_tmp71644","mydata2.dat","mydata3.dat","mydata.dat"]START doMyParse verticesSTART QUERY_STRING=myfunc=execexample&exampleTestCase=test3&nocache=1585757847544
+ myFunc=execexample 
+JSON IS: ["test3/CS351_tmp44831","mydata2.dat","mydata3.dat","mydata.dat"]START doMyParse verticesSTART QUERY_STRING=myrunid=mydata2.dat&myfunc=vertices&nocache=1585757861579
+ myFunc=vertices 
+
+ myFunc=vertices myRunid=mydata2.dat myDat= 
+call doMyParse 1 verticescall doMyParse 2 verticesls of DATA vertices mydat_500
+myData1
+mydata.dat
+mydata.dat_Apr26
+mydata.dat_BKP
+mydata.dat_lines
+mydata.dat_mesh
+mydata.dat_other
+mydata.dat_test
+mydata.dat_Week5Works
+README
+simp3dpt_lines.dat
+tecplot_brick.tec.dat
+TEST28FEB2018
+START doMyParse verticesSTART QUERY_STRING=myrunid=test3/CS351_tmp44831&myfunc=faces&nocache=1585757867802
+ myFunc=faces 
+START doMyParse verticesSTART QUERY_STRING=myfunc=execexample&exampleTestCase=test3&nocache=1585772226554
+ myFunc=execexample 
+JSON IS: ["test3/CS351_tmp18958","mydata2.dat","mydata3.dat","mydata.dat"]START doMyParse verticesSTART QUERY_STRING=myfunc=execexample&exampleTestCase=test3&nocache=1585772261270
+ myFunc=execexample 
+JSON IS: ["test3/CS351_tmp35112","mydata2.dat","mydata3.dat","mydata.dat"]START doMyParse verticesSTART QUERY_STRING=myfunc=execexample&exampleTestCase=test3&nocache=1585772662284
+ myFunc=execexample 
+JSON IS: ["test3/CS351_tmp4142","mydata2.dat","mydata3.dat","mydata.dat"]START doMyParse verticesSTART QUERY_STRING=myfunc=execexample&exampleTestCase=test3&nocache=1585772998449
+ myFunc=execexample 
+JSON IS: ["test3/CS351_tmp6399","mydata2.dat","mydata3.dat","mydata.dat"]START doMyParse verticesSTART QUERY_STRING=myfunc=execexample&exampleTestCase=test3&nocache=1585773203993
+ myFunc=execexample 
+JSON IS: ["test3/CS351_tmp10361","mydata2.dat","mydata3.dat","mydata.dat"]START doMyParse verticesSTART QUERY_STRING=myfunc=execexample&exampleTestCase=test3&nocache=1585773305377
+ myFunc=execexample 
+JSON IS: ["test3/CS351_tmp673","mydata2.dat","mydata3.dat","mydata.dat"]START doMyParse verticesSTART QUERY_STRING=myfunc=execexample&exampleTestCase=test3&nocache=1585773361257
+ myFunc=execexample 
+JSON IS: ["test3/CS351_tmp36631","mydata2.dat","mydata3.dat","mydata.dat"]START doMyParse verticesSTART QUERY_STRING=myfunc=execexample&exampleTestCase=test3&nocache=1585773690099
+ myFunc=execexample 
+JSON IS: ["test3/CS351_tmp77010","mydata2.dat","mydata3.dat","mydata.dat"]START doMyParse verticesSTART QUERY_STRING=myrunid=mydata2.dat&myfunc=vertices&nocache=1585773883143
+ myFunc=vertices 
+
+ myFunc=vertices myRunid=mydata2.dat myDat= 
+call doMyParse 1 verticescall doMyParse 2 verticesls of DATA vertices mydat_500
+myData1
+mydata.dat
+mydata.dat_Apr26
+mydata.dat_BKP
+mydata.dat_lines
+mydata.dat_mesh
+mydata.dat_other
+mydata.dat_test
+mydata.dat_Week5Works
+README
+simp3dpt_lines.dat
+tecplot_brick.tec.dat
+TEST28FEB2018
+START doMyParse verticesSTART QUERY_STRING=myrunid=test3/CS351_tmp77010&myfunc=faces&nocache=1585774095864
+ myFunc=faces 
+START doMyParse verticesSTART QUERY_STRING=num=1&nocache=1586378240560START doMyParse verticesSTART QUERY_STRING=num=2&nocache=1586378242563START doMyParse verticesSTART QUERY_STRING=num=3&nocache=1586378244568START doMyParse verticesSTART QUERY_STRING=num=5&nocache=1586378248574START doMyParse verticesSTART QUERY_STRING=num=1&nocache=1586378341164START doMyParse verticesSTART QUERY_STRING=num=2&nocache=1586378343166START doMyParse verticesSTART QUERY_STRING=num=3&nocache=1586378345169START doMyParse verticesSTART QUERY_STRING=num=4&nocache=1586378347173START doMyParse verticesSTART QUERY_STRING=num=5&nocache=1586378349177START doMyParse verticesSTART QUERY_STRING=num=1&nocache=1586378360475START doMyParse verticesSTART QUERY_STRING=num=2&nocache=1586378362478START doMyParse verticesSTART QUERY_STRING=num=3&nocache=1586378364480START doMyParse verticesSTART QUERY_STRING=num=4&nocache=1586378366482START doMyParse verticesSTART QUERY_STRING=num=5&nocache=1586378368484START doMyParse verticesSTART QUERY_STRING=num=1&nocache=1586380185292START doMyParse verticesSTART QUERY_STRING=num=2&nocache=1586380187295START doMyParse verticesSTART QUERY_STRING=num=3&nocache=1586380189297START doMyParse verticesSTART QUERY_STRING=num=4&nocache=1586380191300START doMyParse verticesSTART QUERY_STRING=num=5&nocache=1586380193305START doMyParse verticesSTART QUERY_STRING=num=1&nocache=1586380214333START doMyParse verticesSTART QUERY_STRING=num=2&nocache=1586380216335START doMyParse verticesSTART QUERY_STRING=num=3&nocache=1586380218337START doMyParse verticesSTART QUERY_STRING=num=4&nocache=1586380220339START doMyParse verticesSTART QUERY_STRING=num=5&nocache=1586380222341START doMyParse verticesSTART QUERY_STRING=num=1&nocache=1586381242418START doMyParse verticesSTART QUERY_STRING=num=2&nocache=1586381244421START doMyParse verticesSTART QUERY_STRING=num=3&nocache=1586381246426START doMyParse verticesSTART QUERY_STRING=num=4&nocache=1586381248429START doMyParse verticesSTART QUERY_STRING=num=5&nocache=1586381250440START doMyParse verticesSTART QUERY_STRING=num=1&nocache=1586381758561START doMyParse verticesSTART QUERY_STRING=num=2&nocache=1586381760563START doMyParse verticesSTART QUERY_STRING=num=3&nocache=1586381762568START doMyParse verticesSTART QUERY_STRING=num=4&nocache=1586381764570START doMyParse verticesSTART QUERY_STRING=num=5&nocache=1586381766571START doMyParse verticesSTART QUERY_STRING=num=1&nocache=1586381857955START doMyParse verticesSTART QUERY_STRING=num=2&nocache=1586381859960START doMyParse verticesSTART QUERY_STRING=num=3&nocache=1586381861963START doMyParse verticesSTART QUERY_STRING=num=4&nocache=1586381863965START doMyParse verticesSTART QUERY_STRING=num=5&nocache=1586381865970START doMyParse verticesSTART QUERY_STRING=0START doMyParse verticesSTART QUERY_STRING=BLOG CS351 2
+START doMyParse verticesSTART QUERY_STRING=nocache=1586788921918BLOG CS351 2
+START doMyParse verticesSTART QUERY_STRING=nocache=1586788983553BLOG CS351 2
+START doMyParse verticesSTART QUERY_STRING=nocache=1586789198581BLOG CS351 2
+START doMyParse verticesSTART QUERY_STRING=nocache=1586792052657BLOG CS351 2
+START doMyParse verticesSTART QUERY_STRING=nocache=1586794389353BLOG CS351 2
+START doMyParse verticesSTART QUERY_STRING=nocache=1586794401856BLOG CS351 2
+START doMyParse verticesSTART QUERY_STRING=nocache=1586796587850BLOG CS351 2
+START doMyParse verticesSTART QUERY_STRING=nocache=1586796720307BLOG CS351 2
+START doMyParse verticesSTART QUERY_STRING=nocache=1586796813303BLOG CS351 2
+START doMyParse verticesSTART QUERY_STRING=nocache=1586796895512BLOG CS351 2
+START doMyParse verticesSTART QUERY_STRING=nocache=1586797130113BLOG CS351 2
+START doMyParse verticesSTART QUERY_STRING=nocache=1586797400526BLOG CS351 2
+START doMyParse verticesSTART QUERY_STRING=nocache=1586797708795BLOG CS351 2
+START doMyParse verticesSTART QUERY_STRING=nocache=1586797845283BLOG CS351 2
+START doMyParse verticesSTART QUERY_STRING=nocache=1586797947358BLOG CS351 2
+START doMyParse verticesSTART QUERY_STRING=nocache=1586798647387BLOG CS351 2
+START doMyParse verticesSTART QUERY_STRING=nocache=1586798955748BLOG CS351 2
+START doMyParse verticesSTART QUERY_STRING=nocache=1586799145980BLOG CS351 2
+START doMyParse verticesSTART QUERY_STRING=nocache=1586799895091BLOG CS351 2
+START doMyParse verticesSTART QUERY_STRING=nocache=1586799969961BLOG CS351 2
+START doMyParse verticesSTART QUERY_STRING=nocache=1586800165876BLOG CS351 2
+START doMyParse verticesSTART QUERY_STRING=nocache=1586800421408BLOG CS351 2
+START doMyParse verticesSTART QUERY_STRING=nocache=1586800928637BLOG CS351 2
+START doMyParse verticesSTART QUERY_STRING=nocache=1586801044846BLOG CS351 2
+START doMyParse verticesSTART QUERY_STRING=num=1&nocache=1586801421498START doMyParse verticesSTART QUERY_STRING=num=2&nocache=1586801423500START doMyParse verticesSTART QUERY_STRING=num=3&nocache=1586801425504START doMyParse verticesSTART QUERY_STRING=num=4&nocache=1586801427505START doMyParse verticesSTART QUERY_STRING=num=5&nocache=1586801429507START doMyParse verticesSTART QUERY_STRING=num=1&nocache=1586801928228START doMyParse verticesSTART QUERY_STRING=num=2&nocache=1586801930230START doMyParse verticesSTART QUERY_STRING=num=3&nocache=1586801932233START doMyParse verticesSTART QUERY_STRING=num=4&nocache=1586801934234START doMyParse verticesSTART QUERY_STRING=num=5&nocache=1586801936236START doMyParse verticesSTART QUERY_STRING=num=1&nocache=1586801960958START doMyParse verticesSTART QUERY_STRING=num=2&nocache=1586801962962START doMyParse verticesSTART QUERY_STRING=num=3&nocache=1586801964965START doMyParse verticesSTART QUERY_STRING=num=4&nocache=1586801966966START doMyParse verticesSTART QUERY_STRING=num=5&nocache=1586801968973START doMyParse verticesSTART QUERY_STRING=nocache=1586802546617BLOG CS351 2
+START doMyParse verticesSTART QUERY_STRING=nocache=1586808863426BLOG CS351 2
+START doMyParse verticesSTART QUERY_STRING=nocache=1586809340468BLOG CS351 2
+START doMyParse verticesSTART QUERY_STRING=num=1&nocache=1586810877643START doMyParse verticesSTART QUERY_STRING=num=2&nocache=1586810879646START doMyParse verticesSTART QUERY_STRING=num=3&nocache=1586810881648START doMyParse verticesSTART QUERY_STRING=num=4&nocache=1586810883648START doMyParse verticesSTART QUERY_STRING=num=5&nocache=1586810885652START doMyParse verticesSTART QUERY_STRING=num=1&nocache=1586811561963START doMyParse verticesSTART QUERY_STRING=num=2&nocache=1586811563968START doMyParse verticesSTART QUERY_STRING=num=3&nocache=1586811565969START doMyParse verticesSTART QUERY_STRING=num=4&nocache=1586811567972START doMyParse verticesSTART QUERY_STRING=num=5&nocache=1586811569974START doMyParse verticesSTART QUERY_STRING=num=1&nocache=1586811819512START doMyParse verticesSTART QUERY_STRING=num=2&nocache=1586811821517START doMyParse verticesSTART QUERY_STRING=num=3&nocache=1586811823519START doMyParse verticesSTART QUERY_STRING=num=4&nocache=1586811825521START doMyParse verticesSTART QUERY_STRING=num=5&nocache=1586811827523START doMyParse verticesSTART QUERY_STRING=num=1&nocache=1586811922043START doMyParse verticesSTART QUERY_STRING=num=2&nocache=1586811924057START doMyParse verticesSTART QUERY_STRING=num=3&nocache=1586811926083START doMyParse verticesSTART QUERY_STRING=num=4&nocache=1586811928098START doMyParse verticesSTART QUERY_STRING=num=5&nocache=1586811930100START doMyParse verticesSTART QUERY_STRING=num=1&nocache=1586812368591START doMyParse verticesSTART QUERY_STRING=num=2&nocache=1586812370594START doMyParse verticesSTART QUERY_STRING=num=3&nocache=1586812372596START doMyParse verticesSTART QUERY_STRING=num=4&nocache=1586812374598START doMyParse verticesSTART QUERY_STRING=num=5&nocache=1586812376600START doMyParse verticesSTART QUERY_STRING=num=1&nocache=1586812837080START doMyParse verticesSTART QUERY_STRING=num=2&nocache=1586812839084START doMyParse verticesSTART QUERY_STRING=num=3&nocache=1586812841085START doMyParse verticesSTART QUERY_STRING=num=4&nocache=1586812843087START doMyParse verticesSTART QUERY_STRING=num=5&nocache=1586812845091START doMyParse verticesSTART QUERY_STRING=num=1&nocache=1586812881734START doMyParse verticesSTART QUERY_STRING=num=2&nocache=1586812883737START doMyParse verticesSTART QUERY_STRING=num=3&nocache=1586812885740START doMyParse verticesSTART QUERY_STRING=num=4&nocache=1586812887743START doMyParse verticesSTART QUERY_STRING=num=5&nocache=1586812889745START doMyParse verticesSTART QUERY_STRING=num=1&nocache=1586813033499START doMyParse verticesSTART QUERY_STRING=num=2&nocache=1586813035505START doMyParse verticesSTART QUERY_STRING=num=3&nocache=1586813037510START doMyParse verticesSTART QUERY_STRING=num=4&nocache=1586813039513START doMyParse verticesSTART QUERY_STRING=num=5&nocache=1586813041514START doMyParse verticesSTART QUERY_STRING=num=1&nocache=1586813064078START doMyParse verticesSTART QUERY_STRING=num=2&nocache=1586813066079START doMyParse verticesSTART QUERY_STRING=num=3&nocache=1586813068082START doMyParse verticesSTART QUERY_STRING=num=4&nocache=1586813070083START doMyParse verticesSTART QUERY_STRING=num=5&nocache=1586813072085START doMyParse verticesSTART QUERY_STRING=num=1&nocache=1586813105507START doMyParse verticesSTART QUERY_STRING=num=2&nocache=1586813107513START doMyParse verticesSTART QUERY_STRING=num=3&nocache=1586813109515START doMyParse verticesSTART QUERY_STRING=num=4&nocache=1586813111517START doMyParse verticesSTART QUERY_STRING=num=5&nocache=1586813113519START doMyParse verticesSTART QUERY_STRING=num=1&nocache=1586813144633START doMyParse verticesSTART QUERY_STRING=num=2&nocache=1586813146636START doMyParse verticesSTART QUERY_STRING=num=3&nocache=1586813148638START doMyParse verticesSTART QUERY_STRING=num=4&nocache=1586813150640START doMyParse verticesSTART QUERY_STRING=num=5&nocache=1586813152643START doMyParse verticesSTART QUERY_STRING=num=1&nocache=1586813212636START doMyParse verticesSTART QUERY_STRING=num=2&nocache=1586813214640START doMyParse verticesSTART QUERY_STRING=num=3&nocache=1586813216643START doMyParse verticesSTART QUERY_STRING=num=4&nocache=1586813218646START doMyParse verticesSTART QUERY_STRING=num=5&nocache=1586813220647START doMyParse verticesSTART QUERY_STRING=num=1&nocache=1586965694084START doMyParse verticesSTART QUERY_STRING=num=2&nocache=1586965696085START doMyParse verticesSTART QUERY_STRING=num=3&nocache=1586965698088START doMyParse verticesSTART QUERY_STRING=num=4&nocache=1586965700088START doMyParse verticesSTART QUERY_STRING=num=5&nocache=1586965702092START doMyParse verticesSTART QUERY_STRING=myfunc=execexample&exampleTestCase=test5&nocache=1644877519794
+ myFunc=execexample 
+JSON IS: ["test5/CS351_tmp51307","mydata2.dat","mydata3.dat","mydata.dat"]START doMyParse verticesSTART QUERY_STRING=myfunc=execexample&exampleTestCase=test3&nocache=1644878070647
+ myFunc=execexample 
+JSON IS: ["test3/CS351_tmp2469","mydata2.dat","mydata3.dat","mydata.dat"]START doMyParse verticesSTART QUERY_STRING=myrunid=&myDat=&myfunc=vertices&nocache=1644878093199
+ myFunc=vertices 
+
+ myFunc=vertices myRunid= myDat= 
+call doMyParse 1 verticescall doMyParse 2 verticesls of DATA vertices mydat_500
+myData1
+mydata.dat
+mydata.dat_Apr26
+mydata.dat_BKP
+mydata.dat_lines
+mydata.dat_mesh
+mydata.dat_other
+mydata.dat_test
+mydata.dat_Week5Works
+README
+simp3dpt_lines.dat
+tecplot_brick.tec.dat
+TEST28FEB2018
+START doMyParse verticesSTART QUERY_STRING=myrunid=&myDat=&myfunc=faces&nocache=1644878109015
+ myFunc=faces 
+START doMyParse verticesSTART QUERY_STRING=myfunc=execexample&exampleTestCase=test4&nocache=1645034505907
+ myFunc=execexample 
+JSON IS: ["test4/CS351_tmp50927","mydata2.dat","mydata3.dat","mydata.dat"]START doMyParse verticesSTART QUERY_STRING=myrunid=mydata2.dat&myDat=mydata2.dat&myfunc=vertices&nocache=1645035420479
+ myFunc=vertices 
+
+ myFunc=vertices myRunid=mydata2.dat myDat=mydata2.dat 
+call doMyParse 1 verticescall doMyParse 2 verticesls of DATA vertices mydat_500
+myData1
+mydata.dat
+mydata.dat_Apr26
+mydata.dat_BKP
+mydata.dat_lines
+mydata.dat_mesh
+mydata.dat_other
+mydata.dat_test
+mydata.dat_Week5Works
+README
+simp3dpt_lines.dat
+tecplot_brick.tec.dat
+TEST28FEB2018
+START doMyParse verticesSTART QUERY_STRING=myrunid=mydata2.dat&myDat=mydata2.dat&myfunc=faces&nocache=1645035429648
+ myFunc=faces 
+START doMyParse verticesSTART QUERY_STRING=myfunc=execexample&exampleTestCase=test4&nocache=1645036320719
+ myFunc=execexample 
+JSON IS: ["test4/CS351_tmp53462","mydata2.dat","mydata3.dat","mydata.dat"]START doMyParse verticesSTART QUERY_STRING=myfunc=execexample&exampleTestCase=test4&nocache=1645036486985
+ myFunc=execexample 
+JSON IS: ["test4/CS351_tmp57531","mydata2.dat","mydata3.dat","mydata.dat"]START doMyParse verticesSTART QUERY_STRING=myrunid=&myDat=&myfunc=vertices&nocache=1645036511772
+ myFunc=vertices 
+
+ myFunc=vertices myRunid= myDat= 
+call doMyParse 1 verticescall doMyParse 2 verticesls of DATA vertices mydat_500
+myData1
+mydata.dat
+mydata.dat_Apr26
+mydata.dat_BKP
+mydata.dat_lines
+mydata.dat_mesh
+mydata.dat_other
+mydata.dat_test
+mydata.dat_Week5Works
+README
+simp3dpt_lines.dat
+tecplot_brick.tec.dat
+TEST28FEB2018
+START doMyParse verticesSTART QUERY_STRING=myrunid=&myDat=&myfunc=faces&nocache=1645036514032
+ myFunc=faces 
+START doMyParse verticesSTART QUERY_STRING=myrunid=&myDat=&myfunc=vertices&nocache=1645036533800
+ myFunc=vertices 
+
+ myFunc=vertices myRunid= myDat= 
+call doMyParse 1 verticescall doMyParse 2 verticesls of DATA vertices mydat_500
+myData1
+mydata.dat
+mydata.dat_Apr26
+mydata.dat_BKP
+mydata.dat_lines
+mydata.dat_mesh
+mydata.dat_other
+mydata.dat_test
+mydata.dat_Week5Works
+README
+simp3dpt_lines.dat
+tecplot_brick.tec.dat
+TEST28FEB2018
+START doMyParse verticesSTART QUERY_STRING=myrunid=&myDat=&myfunc=faces&nocache=1645036535837
+ myFunc=faces 
+START doMyParse verticesSTART QUERY_STRING=myfunc=execexample&exampleTestCase=test3&nocache=1645037179200
+ myFunc=execexample 
+JSON IS: ["test3/CS351_tmp82691","mydata2.dat","mydata3.dat","mydata.dat"]START doMyParse verticesSTART QUERY_STRING=myfunc=execexample&exampleTestCase=test4&nocache=1645037260718
+ myFunc=execexample 
+JSON IS: ["test4/CS351_tmp98353","mydata2.dat","mydata3.dat","mydata.dat"]START doMyParse verticesSTART QUERY_STRING=myfunc=execexample&exampleTestCase=test5&nocache=1645038182266
+ myFunc=execexample 
+JSON IS: ["test5/CS351_tmp19594","mydata2.dat","mydata3.dat","mydata.dat"]START doMyParse verticesSTART QUERY_STRING=myrunid=mydata2.dat&myDat=mydata2.dat&myfunc=vertices&nocache=1645038208183
+ myFunc=vertices 
+
+ myFunc=vertices myRunid=mydata2.dat myDat=mydata2.dat 
+call doMyParse 1 verticescall doMyParse 2 verticesls of DATA vertices mydat_500
+myData1
+mydata.dat
+mydata.dat_Apr26
+mydata.dat_BKP
+mydata.dat_lines
+mydata.dat_mesh
+mydata.dat_other
+mydata.dat_test
+mydata.dat_Week5Works
+README
+simp3dpt_lines.dat
+tecplot_brick.tec.dat
+TEST28FEB2018
+START doMyParse verticesSTART QUERY_STRING=myrunid=mydata2.dat&myDat=mydata2.dat&myfunc=faces&nocache=1645038212750
+ myFunc=faces 
+START doMyParse verticesSTART QUERY_STRING=myfunc=execexample&exampleTestCase=test4&nocache=1645038517074
+ myFunc=execexample 
+JSON IS: ["test4/CS351_tmp95697","mydata2.dat","mydata3.dat","mydata.dat"]START doMyParse verticesSTART QUERY_STRING=myrunid=mydata2.dat&myDat=mydata2.dat&myfunc=vertices&nocache=1645038537324
+ myFunc=vertices 
+
+ myFunc=vertices myRunid=mydata2.dat myDat=mydata2.dat 
+call doMyParse 1 verticescall doMyParse 2 verticesls of DATA vertices mydat_500
+myData1
+mydata.dat
+mydata.dat_Apr26
+mydata.dat_BKP
+mydata.dat_lines
+mydata.dat_mesh
+mydata.dat_other
+mydata.dat_test
+mydata.dat_Week5Works
+README
+simp3dpt_lines.dat
+tecplot_brick.tec.dat
+TEST28FEB2018
+START doMyParse verticesSTART QUERY_STRING=myrunid=mydata2.dat&myDat=mydata2.dat&myfunc=faces&nocache=1645038545006
+ myFunc=faces 
+START doMyParse verticesSTART QUERY_STRING=myfunc=execexample&exampleTestCase=undefined&nocache=1645038862676
+ myFunc=execexample 
+JSON IS: ["undefined/CS351_tmp38482","mydata2.dat","mydata3.dat","mydata.dat"]START doMyParse verticesSTART QUERY_STRING=myrunid=mydata2.dat&myDat=mydata2.dat&myfunc=vertices&nocache=1645039132457
+ myFunc=vertices 
+
+ myFunc=vertices myRunid=mydata2.dat myDat=mydata2.dat 
+call doMyParse 1 verticescall doMyParse 2 verticesls of DATA vertices mydat_500
+myData1
+mydata.dat
+mydata.dat_Apr26
+mydata.dat_BKP
+mydata.dat_lines
+mydata.dat_mesh
+mydata.dat_other
+mydata.dat_test
+mydata.dat_Week5Works
+README
+simp3dpt_lines.dat
+tecplot_brick.tec.dat
+TEST28FEB2018
+START doMyParse verticesSTART QUERY_STRING=myrunid=mydata2.dat&myDat=mydata2.dat&myfunc=faces&nocache=1645039139270
+ myFunc=faces 
+START doMyParse verticesSTART QUERY_STRING=myfunc=execexample&exampleTestCase=test3&nocache=1645039307480
+ myFunc=execexample 
+JSON IS: ["test3/CS351_tmp59988","mydata2.dat","mydata3.dat","mydata.dat"]START doMyParse verticesSTART QUERY_STRING=myrunid=mydata2.dat&myDat=mydata2.dat&myfunc=vertices&nocache=1645039340223
+ myFunc=vertices 
+
+ myFunc=vertices myRunid=mydata2.dat myDat=mydata2.dat 
+call doMyParse 1 verticescall doMyParse 2 verticesls of DATA vertices mydat_500
+myData1
+mydata.dat
+mydata.dat_Apr26
+mydata.dat_BKP
+mydata.dat_lines
+mydata.dat_mesh
+mydata.dat_other
+mydata.dat_test
+mydata.dat_Week5Works
+README
+simp3dpt_lines.dat
+tecplot_brick.tec.dat
+TEST28FEB2018
+START doMyParse verticesSTART QUERY_STRING=myrunid=mydata2.dat&myDat=mydata2.dat&myfunc=faces&nocache=1645039367322
+ myFunc=faces 
+START doMyParse verticesSTART QUERY_STRING=myfunc=execexample&exampleTestCase=test3&nocache=1645039661400
+ myFunc=execexample 
+JSON IS: ["test3/CS351_tmp77403","mydata2.dat","mydata3.dat","mydata.dat"]START doMyParse verticesSTART QUERY_STRING=myrunid=mydata2.dat&myDat=mydata2.dat&myfunc=vertices&nocache=1645039678635
+ myFunc=vertices 
+
+ myFunc=vertices myRunid=mydata2.dat myDat=mydata2.dat 
+call doMyParse 1 verticescall doMyParse 2 verticesls of DATA vertices mydat_500
+myData1
+mydata.dat
+mydata.dat_Apr26
+mydata.dat_BKP
+mydata.dat_lines
+mydata.dat_mesh
+mydata.dat_other
+mydata.dat_test
+mydata.dat_Week5Works
+README
+simp3dpt_lines.dat
+tecplot_brick.tec.dat
+TEST28FEB2018
+START doMyParse verticesSTART QUERY_STRING=myrunid=mydata2.dat&myDat=mydata2.dat&myfunc=faces&nocache=1645039687646
+ myFunc=faces 
+START doMyParse verticesSTART QUERY_STRING=myfunc=execexample&exampleTestCase=test5&nocache=1645039809078
+ myFunc=execexample 
+JSON IS: ["test5/CS351_tmp64814","mydata2.dat","mydata3.dat","mydata.dat"]START doMyParse verticesSTART QUERY_STRING=myrunid=mydata2.dat&myDat=mydata2.dat&myfunc=vertices&nocache=1645039825161
+ myFunc=vertices 
+
+ myFunc=vertices myRunid=mydata2.dat myDat=mydata2.dat 
+call doMyParse 1 verticescall doMyParse 2 verticesls of DATA vertices mydat_500
+myData1
+mydata.dat
+mydata.dat_Apr26
+mydata.dat_BKP
+mydata.dat_lines
+mydata.dat_mesh
+mydata.dat_other
+mydata.dat_test
+mydata.dat_Week5Works
+README
+simp3dpt_lines.dat
+tecplot_brick.tec.dat
+TEST28FEB2018
+START doMyParse verticesSTART QUERY_STRING=myrunid=mydata2.dat&myDat=mydata2.dat&myfunc=faces&nocache=1645039830764
+ myFunc=faces 
+START doMyParse verticesSTART QUERY_STRING=myfunc=execexample&exampleTestCase=test5&nocache=1645040116612
+ myFunc=execexample 
+JSON IS: ["test5/CS351_tmp85214","mydata2.dat","mydata3.dat","mydata.dat"]START doMyParse verticesSTART QUERY_STRING=myrunid=mydata2.dat&myDat=mydata2.dat&myfunc=vertices&nocache=1645040135635
+ myFunc=vertices 
+
+ myFunc=vertices myRunid=mydata2.dat myDat=mydata2.dat 
+call doMyParse 1 verticescall doMyParse 2 verticesls of DATA vertices mydat_500
+myData1
+mydata.dat
+mydata.dat_Apr26
+mydata.dat_BKP
+mydata.dat_lines
+mydata.dat_mesh
+mydata.dat_other
+mydata.dat_test
+mydata.dat_Week5Works
+README
+simp3dpt_lines.dat
+tecplot_brick.tec.dat
+TEST28FEB2018
+START doMyParse verticesSTART QUERY_STRING=myrunid=mydata2.dat&myDat=mydata2.dat&myfunc=faces&nocache=1645040140502
+ myFunc=faces 
+START doMyParse verticesSTART QUERY_STRING=myrunid=mydata2.dat&myDat=mydata2.dat&myfunc=vertices&nocache=1645040284864
+ myFunc=vertices 
+
+ myFunc=vertices myRunid=mydata2.dat myDat=mydata2.dat 
+call doMyParse 1 verticescall doMyParse 2 verticesls of DATA vertices mydat_500
+myData1
+mydata.dat
+mydata.dat_Apr26
+mydata.dat_BKP
+mydata.dat_lines
+mydata.dat_mesh
+mydata.dat_other
+mydata.dat_test
+mydata.dat_Week5Works
+README
+simp3dpt_lines.dat
+tecplot_brick.tec.dat
+TEST28FEB2018
+START doMyParse verticesSTART QUERY_STRING=myrunid=mydata2.dat&myDat=mydata2.dat&myfunc=vertices&nocache=1645040296787
+ myFunc=vertices 
+
+ myFunc=vertices myRunid=mydata2.dat myDat=mydata2.dat 
+call doMyParse 1 verticescall doMyParse 2 verticesls of DATA vertices mydat_500
+myData1
+mydata.dat
+mydata.dat_Apr26
+mydata.dat_BKP
+mydata.dat_lines
+mydata.dat_mesh
+mydata.dat_other
+mydata.dat_test
+mydata.dat_Week5Works
+README
+simp3dpt_lines.dat
+tecplot_brick.tec.dat
+TEST28FEB2018
+START doMyParse verticesSTART QUERY_STRING=myfunc=execexample&exampleTestCase=test4&nocache=1645040341483
+ myFunc=execexample 
+JSON IS: ["test4/CS351_tmp5488","mydata2.dat","mydata3.dat","mydata.dat"]START doMyParse verticesSTART QUERY_STRING=myrunid=mydata2.dat&myDat=mydata2.dat&myfunc=vertices&nocache=1645040357049
+ myFunc=vertices 
+
+ myFunc=vertices myRunid=mydata2.dat myDat=mydata2.dat 
+call doMyParse 1 verticescall doMyParse 2 verticesls of DATA vertices mydat_500
+myData1
+mydata.dat
+mydata.dat_Apr26
+mydata.dat_BKP
+mydata.dat_lines
+mydata.dat_mesh
+mydata.dat_other
+mydata.dat_test
+mydata.dat_Week5Works
+README
+simp3dpt_lines.dat
+tecplot_brick.tec.dat
+TEST28FEB2018
+START doMyParse verticesSTART QUERY_STRING=myrunid=mydata2.dat&myDat=mydata2.dat&myfunc=faces&nocache=1645040363334
+ myFunc=faces 
+START doMyParse verticesSTART QUERY_STRING=myfunc=execexample&exampleTestCase=test3&nocache=1645051213831
+ myFunc=execexample 
+JSON IS: ["test3/CS351_tmp2903","mydata2.dat","mydata3.dat","mydata.dat"]START doMyParse verticesSTART QUERY_STRING=myrunid=mydata2.dat&myDat=mydata2.dat&myfunc=vertices&nocache=1645051247997
+ myFunc=vertices 
+
+ myFunc=vertices myRunid=mydata2.dat myDat=mydata2.dat 
+call doMyParse 1 verticescall doMyParse 2 verticesls of DATA vertices mydat_500
+myData1
+mydata.dat
+mydata.dat_Apr26
+mydata.dat_BKP
+mydata.dat_lines
+mydata.dat_mesh
+mydata.dat_other
+mydata.dat_test
+mydata.dat_Week5Works
+README
+simp3dpt_lines.dat
+tecplot_brick.tec.dat
+TEST28FEB2018
+START doMyParse verticesSTART QUERY_STRING=myrunid=mydata2.dat&myDat=mydata2.dat&myfunc=faces&nocache=1645051258806
+ myFunc=faces 
+START doMyParse verticesSTART QUERY_STRING=nocache=1645385177646BLOG CS351 2
+START doMyParse verticesSTART QUERY_STRING=myfunc=execexample&exampleTestCase=test4&nocache=1645479811063
+ myFunc=execexample 
+JSON IS: ["test4/CS351_tmp74875","mydata2.dat","mydata3.dat","mydata.dat"]START doMyParse verticesSTART QUERY_STRING=myrunid=mydata2.dat&myDat=mydata2.dat&myfunc=vertices&nocache=1645479876302
+ myFunc=vertices 
+
+ myFunc=vertices myRunid=mydata2.dat myDat=mydata2.dat 
+call doMyParse 1 verticescall doMyParse 2 verticesls of DATA vertices mydat_500
+myData1
+mydata.dat
+mydata.dat_Apr26
+mydata.dat_BKP
+mydata.dat_lines
+mydata.dat_mesh
+mydata.dat_other
+mydata.dat_test
+mydata.dat_Week5Works
+README
+simp3dpt_lines.dat
+tecplot_brick.tec.dat
+TEST28FEB2018
+START doMyParse verticesSTART QUERY_STRING=myrunid=mydata2.dat&myDat=mydata2.dat&myfunc=faces&nocache=1645479895839
+ myFunc=faces 
+START doMyParse verticesSTART QUERY_STRING=nocache=1646688007453BLOG CS351 2

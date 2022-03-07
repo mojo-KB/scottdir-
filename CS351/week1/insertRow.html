@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>JS Demo</title>
+  <meta charset="utf-8">
+      <script>
+         function rowFunction(x) {
+            var a = document.getElementById(x).insertRow(0);
+            var b = a.insertCell(0);
+            var c = a.insertCell(1);
+            b.innerHTML = c.innerHTML = 
+		document.getElementById("inText").value;
+		//document.getElementByName("inText").value;
+         }
+      </script>
+   </head>
+   <body>
+      <input id=inText width=20 value="hello" name=mytext>
+      <table style="border:2px solid black" id="newtable">
+         <tr>
+            <td>One</td>
+            <td>Two</td>
+         </tr>
+         <tr>
+            <td>Three</td>
+            <td>Four</td>
+         </tr>
+         <tr>
+            <td>Five</td>
+            <td>Six</td>
+         </tr>
+      </table>
+      <p>
+         <input type="button" onclick="rowFunction('newtable')" value="Add a row">
+      </p>
+   </body>
+</html>

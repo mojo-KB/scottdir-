@@ -1,0 +1,5 @@
+127.0.0.1 - - [27/Apr/2020 18:43:42] "GET /week6/showfileEdit.html HTTP/1.1" 200 -
+127.0.0.1 - - [27/Apr/2020 18:43:43] "GET /week6/fileEdit.html HTTP/1.1" 200 -
+127.0.0.1 - - [27/Apr/2020 18:43:43] "GET /week6/fileEdit.html HTTP/1.1" 200 -
+127.0.0.1 - - [27/Apr/2020 18:43:43] code 404, message File not found
+127.0.0.1 - - [27/Apr/2020 18:43:43] "GET /favicon.ico HTTP/1.1" 404 -

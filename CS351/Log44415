@@ -1,0 +1,28 @@
+127.0.0.1 - - [20/Feb/2022 19:26:01] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2022 19:26:02] code 404, message File not found
+127.0.0.1 - - [20/Feb/2022 19:26:02] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [20/Feb/2022 19:26:13] "GET /week7/ HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2022 19:26:16] "GET /week7/blog.html HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2022 19:26:16] "GET /week7/bandmember.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2022 19:26:16] "GET /week7/bird.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2022 19:26:21] "GET /cgi-bin/getblog.cgi?nocache=1645385177646 HTTP/1.1" 200 -
+Unquoted string "myblogs" may clash with future reserved word at /home/faculty/scott/www/CS351/cgi-bin/getblog.cgi line 40.
+Unquoted string "myblogs" may clash with future reserved word at /home/faculty/scott/www/CS351/cgi-bin/getblog.cgi line 46.
+Unquoted string "myprods" may clash with future reserved word at /home/faculty/scott/www/CS351/cgi-bin/getblog.cgi line 54.
+Name "main::myprods" used only once: possible typo at /home/faculty/scott/www/CS351/cgi-bin/getblog.cgi line 54.
+127.0.0.1 - - [20/Feb/2022 19:28:31] "GET /week5 HTTP/1.1" 301 -
+127.0.0.1 - - [20/Feb/2022 19:28:31] "GET /week5/ HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2022 19:28:39] "GET /week5/week5.html HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2022 19:28:39] "GET /week5/build/three.js HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2022 19:28:39] "GET /week5/js/controls/OrbitControls.js HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2022 19:28:40] "GET /week5/js/SkyShader.js HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2022 19:28:40] "GET /week5/js/Detector.js HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2022 19:28:40] "GET /week5/PMS/jquery-3.1.1.js HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2022 19:28:40] "GET /week5/js/libs/dat.gui.min.js HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2022 19:28:40] code 404, message File not found
+127.0.0.1 - - [20/Feb/2022 19:28:40] "GET /week5/CS351Welcome2.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [20/Feb/2022 19:28:40] code 404, message File not found
+127.0.0.1 - - [20/Feb/2022 19:28:40] "GET /week5/CS351Welcome2.jpg HTTP/1.1" 404 -
+127.0.0.1 - - [20/Feb/2022 19:30:12] "GET /week5/ HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2022 20:11:54] "GET /week5/ HTTP/1.1" 200 -
+127.0.0.1 - - [20/Feb/2022 20:13:03] "GET /week5/bs.html HTTP/1.1" 200 -

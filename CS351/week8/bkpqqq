@@ -1,0 +1,71 @@
+<table Width=100% BORDER=4 CELLSPACING=5 CELLPADDING=4 BGCOLOR="#FFFF99" NOSAVE >
+<tr>
+<td align=center>
+<table Width=50% BORDER=4 CELLSPACING=5 CELLPADDING=4 BGCOLOR="#FFFF99" NOSAVE >
+<tr>
+<td colspan=4 align=center>
+ <B>ScottBook Messaging System</B>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+<tr>
+<td align=center>
+<table Width=50% BORDER=4 CELLSPACING=5 CELLPADDING=4 BGCOLOR="#FFFF99" NOSAVE >
+<tr>
+<td colspan=4 align=center>
+ <B>ScottBook Messaging System</B>
+</td>
+</tr>
+
+<tr>
+<div id="myradios">
+<td>
+ <input type="checkbox" name="testcase" value="Tim" id="testcase1" /><label for="testcase1">Tim</label>
+</td>
+<td>
+ <input type="checkbox" name="testcase" value="Kim" id="testcase2" checked /><label for="testcase2">Kim</label>
+</td>
+<td>
+ <input type="checkbox" name="testcase" value="Joe" id="testcase3" checked /><label for="testcase3">Joe</label>
+</td>
+<td>
+ <input type="button" id="mybutton" onClick="doclicktestcase()" value="Pick Friends">
+</td>
+</div>
+</tr>
+
+<tr>
+<div id="mymsgs">
+<td colspan=4>
+Kim: Last Mesg
+<br>
+Joe: Joe Here
+</td>
+</div>
+</tr>
+<tr>
+<td colspan=3>
+ <input id="myinput" type="text" name="testcase" value="My Next Post" id="testcase1" /><label for="testcase1"></label>
+</td>
+<td>
+ <input type="button" id="mybutton" onClick="doclicktestcase()" value="Post Message">
+</td>
+</tr>
+
+<tr>
+<td colspan=3>
+ Connected User: <B><div id="username"> Tim </div></B>
+</td>
+<td>
+ <input type="button" id="mybutton" onClick="doclicktestcase()" value="Update Display">
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+
+</table>

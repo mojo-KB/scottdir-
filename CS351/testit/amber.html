@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Store Categories with Javascript</title>
+</head>
+
+<body>
+<h2>Welcome to your Store!~</h2>
+<form id="categoryDropdownForm">
+<label for="categoryInputPrompt">Please add categories for your items:</label>
+<input type="text" name="categoryInput" id="categoryInput" ></input>
+<button type="button" onclick="addCategory(categoryList)">Add Category</button><br>
+
+<label for="categorySelectionPrompt">Now, select a category to add items to it:</label>
+<select id="categoryDropdown" onchange="categorySelected();"></select>
+<label id="array"> </label><br>
+<div id="categorySelectedText" style="display: none">
+Category: <label for ="selectedCategory" id="selectedCategoryLabel">""</label>
+</div>
+
+<label for="itemInputPrompt">&emsp;Add item:</label>
+<input type="text" name="itemInput" id="itemInput" ></input>
+<button type="button" onclick="addItem(categorySelected)">Add Item</button><br>
+<label for="itemListLabel">Items Show up here!~</label><br>
+<div id="itemListDiv"> </div>
+
+
+
+
+<script>
+
+  const categoryList = [];
+  const itemList = [];
+  const theList = [];
+
+  function addCategory(categoryArray) { 
+    var cInput = document.getElementById("categoryInput").value;
+    var cDropdown = document.getElementById("categoryDropdown");
+    var option = document.createElement("option"); 
+
+    option.text = cInput;
+    categoryList.push(cInput);
+    cDropdown.add(option);
+    document.getElementById('categoryInput').value = "";
+    
+    document.getElementById("array").innerHTML = categoryList; //Displaying the array list
+  }
+
+
+  function categorySelected(){ 
+    var cateDropDown = document.getElementById("categoryDropdown");
+    var theCategory = cateDropDown.options[cateDropDown.selectedIndex].value;
+    var displayCSelectTextDiv = document.getElementById("categorySelectedText");
+    displayCSelectTextDiv.style.display = "block";
+    var displayLabel = document.getElementById("selectedCategoryLabel");
+    displayLabel.innerHTML = cateDropDown.options[cateDropDown.selectedIndex].text;
+
+    return theCategory;
+  }
+
+  function addItem(categorySelected) {  
+    var iInput = document.getElementById("itemInput").value;
+    var theCategorySelected = categorySelected.value;
+    itemList.push([theCategorySelected,iInput]);
+
+
+    var div = document.getElementById("itemListDiv");
+      itemList.forEach((category) => {
+        category.forEach((item) => {
+          div.innerHTML = itemList; //"Items for " + theCategorySelected.value + " is: " + iInput;//Shows what was entered
+        });
+      });
+
+      document.getElementById('itemInput').value = ""; 
+
+  }
+</script>
+</form>
+</body>
+</html> 

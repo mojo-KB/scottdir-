@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<head>
+  <title>Bootstrap File Edit</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<!-- <script src="PMS/jquery-3.1.1.js"></script> -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      background-color: #ff0000;
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 150px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+    }
+  </style>
+</head>
+
+
+<script type="text/javascript">
+var debug = 1;
+function createRequestObject() { 
+  var req; 
+  if (window.XMLHttpRequest) { // Firefox, Safari, Opera... 
+    req = new XMLHttpRequest(); 
+//    alert('Detected a modern browser - very good!'); 
+  } else if (window.ActiveXObject) { // Internet Explorer 5+ 
+    req = new ActiveXObject("Microsoft.XMLHTTP"); 
+    alert('Detected an old IE browser'); 
+  } else { 
+    // error creating the request object, 
+    // (maybe an old browser is being used?)
+    alert('There was a problem creating the XMLHttpRequest object'); 
+    req = '';
+  }
+  return req; 
+} 
+// Make the XMLHttpRequest object 
+var http = createRequestObject(); 
+     
+function getRadioVal2() {
+    var val;
+        //alert('getRadioVal');
+       var thisForm = document.getElementById("editForm");
+    //var radios = form.elements[name];
+    //var radios = form.elements;
+        //radios = form.getElementsByName(name)
+//alert('radios length='+ radios.length);
+var y = document.getElementsByName("filecase");
+var getFiles;
+        //alert('getRadioVal y=' + y);
+    var fname, newfval, fval;
+    // loop through list of radio buttons
+    for (var i=0, len=y.length; i<len; i++) {
+        //alert('getRadioVal=' + i + "name=" + y[i].value);
+        if ( y[i].checked ) { // radio checked?
+           //if( val == '') {
+	   //(fname,fval)=y[i].value.split(";");
+	   getFiles=y[i].value.split(";");
+	   fname=getFiles[0];
+	   fval=getFiles[1];
+	   newfval = document.getElementById(fval).value;
+	   //alert('fname' + fname);
+	   //alert('newfval' + newfval);
+           if (typeof val === "undefined") {
+            //val = y[i].value ; // if so, hold its value in val
+	    val = fname + "%3D" + newfval;
+		
+	
+	    
+           }
+           else {
+            //val = y[i].value + '%3B' + val; // if so, hold its value in val
+	    val = fname + "%3D" + newfval + '%26' + val;
+           }
+           //alert('found getRadioVal=' + val);
+           //break; // and break out of for loop
+        }
+        else {
+           //alert('NOTCHECKED getRadioVal=' + y[i].value);
+
+        }
+    }
+    //alert('RETURN getRadioVal=' + val);
+    return val; // return value of checked radio or undefined if none checked
+}
+function getRadioVal() {
+    var val;
+        //alert('getRadioVal');
+       var thisForm = document.getElementById("cbform");
+    //var radios = form.elements[name];
+    //var radios = form.elements;
+        //radios = form.getElementsByName(name)
+//alert('radios length='+ radios.length);
+var y = document.getElementsByName("testcase");
+        //alert('getRadioVal y=' + y);
+
+    // loop through list of radio buttons
+    for (var i=0, len=y.length; i<len; i++) {
+        //alert('getRadioVal=' + i + "name=" + y[i].value);
+        if ( y[i].checked ) { // radio checked?
+           //if( val == '') {
+           if (typeof val === "undefined") {
+            val = y[i].value ; // if so, hold its value in val
+           }
+           else {
+            val = y[i].value + '%3B' + val; // if so, hold its value in val
+           }
+           //alert('found getRadioVal=' + val);
+           //break; // and break out of for loop
+        }
+        else {
+           //alert('NOTCHECKED getRadioVal=' + y[i].value);
+
+        }
+    }
+    //alert('RETURN getRadioVal=' + val);
+    return val; // return value of checked radio or undefined if none checked
+}
+
+     
+function sendRequest() { 
+  var now = new Date();
+  //http.open('get', 'http://www.myhostname.com/cgi-bin/myscript.pl?nocache='+now.getTime()); 
+  //alert('before send');
+  http.open('get', '/cgi-bin/fileEdit.cgi?myfunc=getfilenames&nocache='+now.getTime()); 
+  //http.open('get', 'http://localhost:55555/cgi-bin/ajaxdemo.cgi?nocache='+now.getTime()); 
+  //http.open('get', 'http://localhost/cgi-bin/ajaxdemo.cgi'); 
+  http.onreadystatechange = handleResponse; 
+  http.send(null); 
+} 
+function sendRequest3(theList) { 
+  var now = new Date();
+  //alert('before send3');
+  http.open('get', '/cgi-bin/fileEdit.cgi?myfunc=saveContents&getTheList='
+	+ theList + '&nocache='+now.getTime()); 
+  http.onreadystatechange = handleResponse3; 
+  http.send(null); 
+} 
+function handleResponse3() { 
+  if(http.readyState == 4 && http.status == 200){ 
+     var response = http.responseText; // Text returned FROM perl script 
+     //alert('in handleResponse3' + response);
+     if(response) { // UPDATE ajaxTest content 
+ //alert('response3 was' + response);
+      document.getElementById("ajaxstuff").innerHTML = response; 
+	$( "#mainrow" ).show();
+	$( "#editRows" ).hide();
+	$( "#checkboxes" ).hide();
+  	var x = document.getElementById("getfiles");
+  	x.disabled = false;
+  	var y = document.getElementById("getcontent");
+  	y.disabled = true;
+  	var z = document.getElementById("savecontent");
+  	z.disabled = true;
+
+      //setTimeout('wipeout()', 2000); // wait 2 seconds, then clear message
+    } 
+  } 
+} 
+
+function sendRequest2(theList) { 
+  var now = new Date();
+  //alert('before send2');
+  http.open('get', '/cgi-bin/fileEdit.cgi?myfunc=getContents&getTheList='
+	+ theList + '&nocache='+now.getTime()); 
+  http.onreadystatechange = handleResponse2; 
+  http.send(null); 
+} 
+     
+function handleResponse2() { 
+  if(http.readyState == 4 && http.status == 200){ 
+     var response = http.responseText; // Text returned FROM perl script 
+     //alert('in handleResponse2' + response);
+     if(response) { // UPDATE ajaxTest content 
+ //alert('response2 was' + response);
+      document.getElementById("ajaxstuff").innerHTML = response; 
+          myvals = response.split("&");
+ 	  var newvals;
+          for (var i = 0; i < myvals.length; i++) {
+               console.log("value " + i + " is " + myvals[i]);
+		//myFunction(myvals[i]);
+          	newvals = myvals[i].split("=");
+		//alert("Send newvals+ " + newvals[0] + " @ " + newvals[1]);
+		rowFunction("editRows",newvals[0],newvals[1]);
+          }
+        //if (debug) {
+		//$( "#mainrow" ).show();
+ 	//}
+//alert('enable editrows');
+	$( "#editRows" ).show();
+	$( "#checkboxes" ).hide();
+  	var x = document.getElementById("getfiles");
+  	x.disabled = true;
+  	var y = document.getElementById("getcontent");
+  	y.disabled = true;
+  	var z = document.getElementById("savecontent");
+  	z.disabled = false;
+
+    } 
+  } 
+} 
+function handleResponse() { 
+  if(http.readyState == 4 && http.status == 200){ 
+     var response = http.responseText; // Text returned FROM perl script 
+     //alert('in handleResponse' + response);
+     if(response) { // UPDATE ajaxTest content 
+ //alert('response was' + response);
+      document.getElementById("ajaxstuff").innerHTML = response; 
+          myvals = response.split(";");
+          for (var i = 0; i < myvals.length-1; i++) {
+               console.log("value " + i + " is " + myvals[i]);
+	//alert('call myFunction');
+		myFunction(myvals[i]);
+	//alert('after call myFunction');
+          }
+        //if (debug) {
+		//$( "#mainrow" ).show();
+ 	//}
+	$( "#editRows" ).hide();
+	//alert('before show checkboxes');
+	$( "#checkboxes" ).show();
+  	var x = document.getElementById("getfiles");
+  	x.disabled = true;
+  	var y = document.getElementById("getcontent");
+  	y.disabled = false;
+  	var z = document.getElementById("savecontent");
+  	z.disabled = true;
+
+      //setTimeout('wipeout()', 2000); // wait 2 seconds, then clear message
+    } 
+  } 
+} 
+
+function wipeout() {
+  document.getElementById("ajaxstuff").innerHTML = ''; 
+  x = document.getElementById("getfiles");
+  x.disabled = false;
+}
+
+function doclick3() {
+//alert("doClick3");
+  var myradios=getRadioVal2();
+  sendRequest3(myradios);
+  return true;
+}
+function doclick2() {
+//alert("doClick2");
+var myradios=getRadioVal();
+  sendRequest2(myradios);
+  return true;
+}
+function doclick() {
+  x = document.getElementById("getfiles");
+  x.disabled = true;
+  document.getElementById("ajaxstuff").innerHTML = '<b>working...</b>'; 
+  sendRequest();
+  return true;
+}
+
+function myFunction(mytext) {
+    var newCheckBox = document.createElement('input');
+    newCheckBox.type = 'checkbox';
+	    newCheckBox.id = 'testcase'; // need unique Ids!
+	    newCheckBox.name = 'testcase'; // need unique Ids!
+	    //newCheckBox.value = check_value[count] + '<br/>';
+  var x = document.createElement("P");
+  var t = document.createTextNode(mytext);
+  x.appendChild(t);
+    newCheckBox.value = mytext;
+    x.appendChild(newCheckBox);
+
+  var myCheckboxes = document.getElementById('checkboxes').insertRow(0);
+    myCheckboxes.appendChild(x);
+    //document.body.appendChild(x);
+    //document.body.appendChild(newCheckBox);
+}
+
+</script>
+      <script>
+var cntRows=1;
+function rowFunction(x,fname,fcontent) {
+//alert("rowFunction" + fname);
+            //var myvals = invals.split("=");
+            var a = document.getElementById(x).insertRow(0);
+            var b = a.insertCell(0);
+            var c = a.insertCell(1);
+            var d = a.insertCell(2);
+            var newInput = document.createElement('input');
+		newInput.type='text';
+		newInput.value=fcontent;
+		newInput.id="row" + cntRows;
+            d.appendChild(newInput);
+
+            c.innerHTML = fname;
+            //d.innerHTML = fcontent;
+		//c.innerHTML =invals;
+                //document.getElementById("inText").value;
+                //document.getElementByName("inText").value;
+            var newCheckBox = document.createElement('input');
+            newCheckBox.type = 'checkbox';
+	    newCheckBox.id = 'filecase'; // need unique Ids!
+	    newCheckBox.name = 'filecase'; // need unique Ids!
+    	    newCheckBox.value = fname + ";" + newInput.id;
+            b.appendChild(newCheckBox);
+		cntRows++;
+//alert("rowFunctionEnd" + fname);
+}
+      </script>
+</head>
+<body>
+
+
+<H2>File Editor</H2>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">File<br>Editor</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a value="#Home" href="#Home">Home</a></li>
+        <li><a value="#About" href="#About">About</a></li>
+        <li><a value="#Help" href="#Help">Help</a></li>
+        <li><a value="#Contact" href="#Contact">Contact</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+	<div id=getfilesdiv>
+	<form><input type="button" id="getfiles" onClick="doclick()" value="Get Files!"></form>
+	</div>
+    </div>
+    <div class="col-sm-8 text-left"> 
+      <div id=welcome>
+      <h1>Welcome to the File Editor</h1>
+      </div>
+      <div id=helpRow>
+      </div>
+      <div id=contactRow>
+      </div>
+      <div id=aboutRow>
+      </div>
+      <table style="border:2px solid black" id="editRows">
+      </table>
+      <table style="border:2px solid black" id="checkboxes">
+      </table>
+    </div>
+    <div class="col-sm-2 sidenav">
+
+	<form id=cbform>
+	<div id=getcontentdiv>
+	<input type="button" id="getcontent" onClick="doclick2()" value="Get Contents!">
+	</div>
+	<div id=savecontentdiv>
+	<input type="button" id="savecontent" onClick="doclick3()" value="Save Contents!">
+	</div>
+	</form>
+    </div>
+  </div>
+</div>
+
+<footer class="container-fluid text-center">
+	<table id=mytable width=100%>
+	<tr id="mainrow">
+	<td align=center bgcolor=tan>
+	<hr/>
+	<p><em><div id="ajaxstuff" > &nbsp; </div></em></p>
+	<hr/>
+	</td>
+	</tr>
+	</table>
+<!--
+<div id="menu">
+   <ul class="nav navbar-nav">
+        <li class="active"><a href="index.html">Home</a></li>
+        <li><a href="#">Gallery</a></li>
+        <li><a href="#">videos</a></li>
+        <li><a href="#">Comment</a></li>
+        <li><a href="#">About</a></li>
+        <li ><a href="contact_us.html">Contact</a></li>
+    </ul>
+<div>
+-->
+</footer>
+
+</body>
+</html>
+
+
+
+
+<script>
+
+//$('#menu > ul.navbar-nav li').click(function(e) {
+    //$('.navbar li.active').removeClass('active');
+    //var $this = $(this);
+    //if (!$this.hasClass('active')) {
+        //$this.addClass('active');
+    //}
+    //e.preventDefault();
+//});
+
+var homeLoaded = false;
+var helpLoaded = false;
+var contactLoaded = false;
+var aboutLoaded = false;
+var doWelcome = true;
+
+$( "#helpRow" ).hide();
+$( "#contactRow" ).hide();
+$( "#aboutRow" ).hide();
+
+// This code makes sure the navbar tab that you want to start active
+// is set active and runs the startup code for it
+
+var initialNavTab = '#Home';
+//var initialNavTab = 'display';
+//var initialNavTab = 'help';
+
+
+
+//$("ul.nav li").each( function() {
+$("ul.navbar-nav li").each( function() {
+        $(this).removeClass("active"); 
+//alert('THIS' + $(this).find('a').attr('value'));
+//this doesn't work: alert('THIS2' + $(this).find('a:display'));
+        //if ( ($this).find('a:display') ) {
+        if ($(this).find('a').attr('value') == initialNavTab) {
+                $(this).addClass('active');
+		// Turn off welcome banner on first click of nav bar
+        	if ( '#Home' == initialNavTab ) {
+                	initHome();
+        	}
+        	if ( '#About' == initialNavTab ) {
+                	initAbout();
+        	}
+        	if ( '#Help' == initialNavTab ) {
+                	initHelp();
+        	}
+        	if ( '#Contact' == initialNavTab ) {
+                	initContact();
+        	}
+   	}
+	})
+
+                //alert('FOUND IT');
+//$(".nav li a:active").removeClass('active');//remove pseudo class
+//}
+//$(".nav li#display").addClass('active');
+//$(".nav #display").addClass('active');
+
+function initHome() { 
+	if (doWelcome==true)
+	   $( "#welcome" ).show();
+	$( "#editRows" ).hide();
+	$( "#checkboxes" ).hide();
+	$( "#helpRow" ).hide();
+        $( "#contactRow" ).hide();
+	$( "#aboutRow" ).hide();
+	$( "#editRows" ).hide();
+	$( "#checkboxes" ).hide();
+	$( "#helpRow" ).hide();
+	$( "#mainrow" ).hide();
+	$( "#editRows" ).hide();
+	$( "#checkboxes" ).hide();
+	document.getElementById("getcontent").disabled=true;
+	document.getElementById("savecontent").disabled=true;
+        //alert('it was home');
+}
+function initAbout() { 
+	if (doWelcome==true)
+	   $( "#welcome" ).show();
+	$( "#helpRow" ).hide();
+        $( "#contactRow" ).hide();
+	$( "#editRows" ).hide();
+	$( "#checkboxes" ).hide();
+	$( "#mainrow" ).hide();
+	$( "#editRows" ).hide();
+	$( "#checkboxes" ).hide();
+        $( "#aboutRow" ).show();
+        if (aboutLoaded == false) {
+                $( "#aboutRow" ).load("fileEditAbout");
+                aboutLoaded = true;
+        //alert('it was about');
+        }
+}
+function initHelp() { 
+	if (doWelcome==true)
+	   $( "#welcome" ).show();
+        $( "#contactRow" ).hide();
+	$( "#aboutRow" ).hide();
+	$( "#editRows" ).hide();
+	$( "#checkboxes" ).hide();
+	$( "#mainrow" ).hide();
+	$( "#editRows" ).hide();
+	$( "#checkboxes" ).hide();
+        //alert('it was help');
+        $( "#helpRow" ).show();
+        if (helpLoaded == false) {
+                $( "#helpRow" ).load("fileEditHelp");
+                helpLoaded = true;
+        //alert('it was help');
+        }
+}
+function initContact() { 
+	if (doWelcome==true)
+	   $( "#welcome" ).show();
+	$( "#aboutRow" ).hide();
+	$( "#editRows" ).hide();
+	$( "#checkboxes" ).hide();
+	$( "#helpRow" ).hide();
+	$( "#mainrow" ).hide();
+	$( "#editRows" ).hide();
+	$( "#checkboxes" ).hide();
+        $( "#contactRow" ).show();
+        if (contactLoaded == false) {
+        	$( "#contactRow" ).load("fileEditContact");
+        	contactLoaded = true;
+        //alert('it was contact');
+        }
+}
+// **********************
+$(document).ready(function () {
+        $('ul.nav > li').click(function (e) {
+            e.preventDefault();
+            $('ul.nav > li').removeClass('active');
+            $(this).addClass('active');                
+ 	    var myValue=$(this).find('a').attr('value');
+ 	    //alert('READY2' + myValue);
+	    doWelcome=false;
+	    $( "#welcome" ).hide();
+	    if (myValue == '#Home') {
+		initHome();
+	    }
+	    if (myValue == '#About') {
+		initAbout();
+	    }
+	    if (myValue == '#Contact') {
+		initContact();
+	    }
+	    if (myValue == '#Help') {
+		initHelp();
+	    }
+	});            
+    });
+
+</script>
+
+
+</body> 
+</html>

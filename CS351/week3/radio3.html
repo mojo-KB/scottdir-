@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>CS351 Form Store</title>
+<meta charset="utf-8">
+</head>
+
+<script src="PMS/jquery-3.1.1.js"></script>
+
+<script>
+
+function doclicktestcase() {
+alert('Form elements=' );
+var y = document.getElementById("Form");
+var x = y.elements.length;
+alert('Form elements=' + x);
+  var text = "";
+  var i;
+  for (i = 0; i < y.length; i++) {
+    text += document.forms["Form"].elements[i].value + "<br>";
+    alert('ho' + text);
+  }
+  alert('ho' + text);
+  //var val = getRadioVal( document.forms["Form"], 'testcase' );
+  var val = getRadioVal( y, 'testcase' );
+  //alert(val); //you can pass this value as parameter
+  alert('doclicktestcase ' + val); //you can pass this value as parameter
+  return true;
+}
+function doclicktestcase2() {
+alert('Form elements=' );
+var y = document.getElementById("cbexampleForm");
+var x = y.elements.length;
+alert('cbexampleForm elements=' + x);
+  var text = "";
+  var i;
+  for (i = 0; i < y.length; i++) {
+    text += document.forms["cbexampleForm"].elements[i].value + "<br>";
+     alert('ho' + text);
+  }
+  //var val = getRadioVal( document.forms["Form"], 'testcase' );
+  //var val = getRadioVal2( document.forms["cbexampleForm"], 'item' );
+  var val = getRadioVal( y, 'testcase' );
+  //alert(val); //you can pass this value as parameter
+  alert('doclicktestcase2' + val); //you can pass this value as parameter
+  //sendRequest2(val);
+  return true;
+}
+function doclicktestcase3() {
+alert('Form elements=' );
+var y = document.getElementById("textForm");
+var x = y.elements.length;
+alert('textForm elements=' + x);
+  var text = "";
+  var i;
+  for (i = 0; i < y.length; i++) {
+    text += document.forms["textForm"].elements[i].value + "<br>";
+     alert('ho' + text);
+  }
+  //var val = getRadioVal( y, 'testcase' );
+  alert('doclicktestcase3' + val); //you can pass this value as parameter
+  return true;
+}
+
+function getRadioVal(form, name) {
+    var val;
+	alert('getRadioVal=' + name);
+	document.getElementsByName(name)
+    var radios = form.elements[name];
+    //var radios = form.elements;
+	//radios = form.getElementsByName(name)
+alert('radios length='+ radios.length);
+
+    // loop through list of radio buttons
+    for (var i=0, len=radios.length; i<len; i++) {
+	alert('getRadioVal=' + i + "name=" + name);
+        if ( radios[i].checked ) { // radio checked?
+           //if( val == '') {
+           if (typeof val === "undefined") {
+            val = radios[i].value ; // if so, hold its value in val
+	   }
+	   else {
+            val = radios[i].value + '%3B' + val; // if so, hold its value in val
+           }
+	   alert('found getRadioVal=' + val);
+           //break; // and break out of for loop
+        }
+	else {
+	   alert('NOTCHECKED getRadioVal=' + radios[i].value);
+		
+	}
+    }
+    return val; // return value of checked radio or undefined if none checked
+}
+// **************************************************************
+// Gets values from checkboxes - Code from week3/testElements.html
+// **************************************************************
+function getRadioVal2(form, name) {
+    var val;
+alert('getRadioVal2=' + name);
+//alert('getRadioVal=' + form.getElementById[name]);
+    // get list of radio buttons with specified name
+    //var radios = form.elements[name];
+    //var myradios = document.getElementsByName[name];
+    //var radios = document.forms["cbexampleForm"].elements ;
+    var radios = form.elements;
+alert('getRadioVal2 radios Length=' + radios.length);
+
+    // loop through list of radio buttons
+    for (var i=0, len=radios.length; i<len; i++) {
+alert('getRadioVal2=' + i + "name=" + name + " value=" + radios[i].value);
+        if ( radios[i].checked ) { // radio checked?
+           //if( val == '') {}
+           if (typeof val === "undefined") {
+            val = radios[i].value ; // if so, hold its value in val
+           }
+           else {
+            val = radios[i].value + '%3B' + val; // if so, hold its value in val
+           }
+alert('found getRadioVal=' + val);
+            //break; // and break out of for loop
+        }
+    }
+    return val; // return value of checked radio or undefined if none checked
+}
+
+
+var thiscategory;
+
+</script>
+
+<script language="javascript" type="text/javascript">
+$(document).ready(function () {
+$("#btnSubmit").click(function(){
+var selectedFood = new Array();
+$('input[name="testcase"]:checked').each(function() {
+selectedFood.push(this.value);
+});
+alert("Number of selected Food: "+selectedFood.length+"\n"+"And, they are: "+selectedFood);
+});
+});
+
+</script>
+
+
+<body>
+
+<table>
+<tr>
+<td>
+<div id="listElements">
+<form id="cbexampleForm">
+ <input type="checkbox" name="testcase" value="food1" id="food1" >food1</input>
+ <input type="checkbox" name="testcase" value="beverage1" id="beverage1" >beverage1</input>
+ <input type="checkbox" name="testcase" value="snack1" id="snack1" >snack1</input>
+
+<input id="btnSubmit" type="button" value="Jquery Get CB Values" />
+</form>
+<!-- 
+<select name="listElements" id="mylistElements" multiple>
+<option value="TEXT">Plain Text</option>
+<option value="HTML">HTML</option>
+</select>
+-->
+<input type="button" id="mybutton" onClick="doclicktestcase2()" value="Select Item">
+</div>
+
+</td>
+</tr>
+<tr>
+<td>
+
+<form id="textForm">
+ <input type="text" name="testcase" value="junkfood" id="junkfood" >junkfood</input>
+ <input type="text" name="testcase" value="beverage" id="beverage" >beverage</input>
+ <input type="text" name="testcase" value="snack" id="snack" >snack</input>
+<br>
+<input type="button" id="mybutton" onClick="doclicktestcase3()" value="Select Type of foof">
+</form>
+
+</td>
+</tr>
+<tr>
+<td>
+
+<form id="Form">
+ <input type="radio" name="testcase" value="food" id="food" >food</input>
+ <input type="radio" name="testcase" value="beverage" id="beverage" >beverage</input>
+ <input type="radio" name="testcase" value="snack" id="snack" >snack</input>
+<br>
+<input type="button" id="mybutton" onClick="doclicktestcase()" value="Select Type of Product">
+</form>
+
+</td>
+</tr>
+<tr>
+<td>
+
+<div id="ajaxstuff">CS351</div>
+
+
+<script>
+alert("before ready");
+$(document).onload(document.getElementById('ajaxstuff').innerHTML = "SUNY");
+alert("after ready");
+$(document).ready(document.getElementById('ajaxstuff').innerHTML = "SCOTT");
+</script>
+
+<script>
+//We could access the desired element in this way:
+var listelements = document.getElementsByName('listElements');
+alert('js elements=' + listelements);
+$( "#listElements" ).hide();
+alert('js elements2=' + listelements);
+$( "#listElements" ).show();
+</script>
+</td>
+</tr>
+</table>
+
+</body>
+</html>

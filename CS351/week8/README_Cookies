@@ -1,0 +1,27 @@
+scott@gaben:~/.mozilla/firefox/zkcsi589.default$ sqlite3 cookies.sqlite
+SQLite version 3.22.0 2018-01-22 18:45:57
+Enter ".help" for usage hints.
+sqlite> .tables
+moz_cookies
+sqlite> .databases
+main: /home/faculty/scott/.mozilla/firefox/zkcsi589.default/cookies.sqlite
+sqlite> .show moz_cookies
+Usage: .show
+sqlite> .show
+        echo: off
+         eqp: off
+     explain: auto
+     headers: off
+        mode: list
+   nullvalue: ""
+      output: stdout
+colseparator: "|"
+rowseparator: "\n"
+       stats: off
+       width:
+    filename: cookies.sqlite
+sqlite> select * from moz_cookies
+   ...> ;
+1|google.com||ACCOUNT_CHOOSER|AFx_qI63cRhmVeGRVfSaimKbOlVtvujbwyJR2xhnD8YwUhb0kj0tyFkk8LngVelynGFgn3aAGOCZKbpfgxXqFjP_k-i9hw2ry29jlF7hmTlUYeZlmgywGzDLzoJ4g1m2gSzWPp37PPhx|accounts.google.com|/|1600986381|1546045957090370|1537914381752065|1|1|0|0
+2|google.com||OSID|hgbqkZwwxY0OWxGgfHzBDUif2c8_fXS65yy59j62kZi5pvPcq6brhHcRLcmthjJmYhe8AA.|notifications.google.com|/|1600986390|1545422367740038|1537914390988348|1|1|0|0
+

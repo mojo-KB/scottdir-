@@ -1,0 +1,25 @@
+$("ul.nav li").each( function() {
+        $(this).removeClass("active"); 
+alert('THIS' + $(this).find('a').attr('value'));
+//this doesn't work: alert('THIS2' + $(this).find('a:display'));
+        //if ( ($this).find('a:display') ) {
+        if ($(this).find('a').attr('value') == initialNavTab) {
+                $(this).addClass('active');
+        if ( 'cs351' == initialNavTab ) {
+                initHome();
+        }
+        if ( 'run' == initialNavTab ) {
+                initRun();
+        }
+        if ( 'display' == initialNavTab ) {
+alert('THIS' + $(this).find('a').attr('value'));
+                initDisplay();
+        }
+        if ( 'help' == initialNavTab ) {
+                initHelp();
+        }
+        if ( 'contact' == initialNavTab ) {
+                initContact();
+        }
+   }
+})

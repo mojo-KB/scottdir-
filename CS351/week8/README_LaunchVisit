@@ -1,0 +1,14 @@
+C:\cygwin64\home\spetka>visit -cli -assume-format tecplot
+
+
+OpenComputeEngine("localhost","serial")
+
+OpenDatabase("mydata.tec")
+
+
+AddPlot("Mesh","mesh")
+
+AddPlot("Pseudocolor","patch")
+
+DrawPlots()
+

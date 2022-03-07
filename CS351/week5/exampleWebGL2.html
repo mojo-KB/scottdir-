@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html>
+        <head>
+                <meta charset=utf-8>
+                <title>My second three.js app</title>
+                <style>
+                        body { margin: 0; }
+                        canvas { width: 100%; height: 100% }
+                </style>
+        </head>
+        <body>
+<script src="../build/three.js"></script>
+<script src="js/controls/OrbitControls.js"></script>
+<script src="js/SkyShader.js"></script>
+<script src="js/Detector.js"></script>
+<script src="js/libs/dat.gui.min.js"></script>
+<script src="PMS/jquery-3.1.1.js"></script>
+
+
+<script>
+
+
+
+
+function doclickrun() {
+	var y = document.getElementById("single");
+	//var x = y.elements.length;
+  	var text = "";
+  	var i;
+  	alert('LENGTH=' + y.length);
+  	for (i = 0; i < y.length; i++) {
+    	  //text += document.getElementById('single').elements[i].value + "<br>";
+	  text += $('#single').val();
+  	  alert('TEXT IS' + text);
+        }
+  	alert('CALL getRadioVal');
+  	//var val = getRadioVal( document.forms['single'], 'datfile' );
+  //var val = getSelectVal( document.forms['exampleForm'], 'single' );
+  var val = $( "#single option:selected" ).text();
+ 
+  // myResultPick = $( "#singleRender option:selected" ).text();
+  // $("#singleRender option:selected").remove();
+  // var option = new Option(myResultPick, myResultPick);
+  //    $( "#renderedOutputs" ).append($(option));
+
+
+  	alert('VALIS2:' + val);
+  	sendRequest2(val);
+  	return true;
+}
+function doclicktestcase() {
+
+var y = document.getElementById("exampleForm");
+//var x = y.elements.length;
+//alert('exampleForm elements=' + x);
+  //var x = document.forms["exampleForm"];
+  var text = "";
+  var i;
+  for (i = 0; i < y.length; i++) {
+    text += document.getElementById("exampleForm").elements[i].value + "<br>";
+//alert('ho ' + text);
+  }
+  //alert(' myform=' + myform.getElementById['testcase']);
+  //var val = getRadioVal( document.getElementById('exampleForm'), 'testcase' );
+  var val = getRadioVal( document.forms['exampleForm'], 'testcase' );
+  //alert('VALIS:' + val);
+  //return val; // return value of checked radio or undefined if none checked
+  sendRequest1(val);
+  return true;
+}
+//function doclick() {
+  //x = document.getElementById("mybutton");
+  //x.disabled = true;
+
+  ////document.getElementById("ajaxstuff").innerHTML = 'sending request to execute...'; 
+  //sendRequest1();
+  //return true;
+//}
+function doclick2() {
+  x = document.getElementById("mybutton4");
+  if (x.value == "Show Faces") {
+        x.value = "Hide Faces";
+        for (var i = 0; i < faceData.length; i++) {
+                var counter = faceData[i];
+                document.getElementById("faces").innerHTML += counter + "--"; 
+        }
+  }
+  else {
+        x.value = "Show Faces";
+        document.getElementById("faces").innerHTML = "";
+  }
+}
+function doclick3() {
+  x = document.getElementById("mybutton3");
+  if (x.value == "Show Vertices") {
+        x.value = "Hide Vertices";
+        for (var i = 0; i < vertexData.length; i++) {
+                var counter = vertexData[i];
+                document.getElementById("vertices").innerHTML += counter + "--"; 
+        }
+  }
+  else {
+        x.value = "Show Vertices";
+        document.getElementById("vertices").innerHTML = "";
+  }
+}
+
+</script>
+
+<table BORDER=5 CELLSPACING=3 CELLPADDING=5 COLS=4 BGCOLOR="#FFFF99">
+
+<tr id=selectrow>
+<td colspan = 2>
+
+<form id="exampleForm2">
+
+  <select id="single">
+    <!--<option>Single</option>
+    <option>Single2</option> -->
+  </select>
+</form>
+
+</td>
+<td colspan = 2>
+ <input type="button" id="mybutton2" onClick="doclickrun()" value="run Testcase">
+</td>
+</tr>
+
+
+<tr id="radiorow">
+<td colspan = 4>
+
+<form id="exampleForm">
+
+ <input type="radio" name="testcase" value="test1" id="testcase1" >test1</input>
+ <input type="radio" name="testcase" value="test2" id="testcase2" >test2</input>
+ <input type="radio" name="testcase" value="test3" id="testcase3" >test3</input>
+ <input type="radio" name="testcase" value="test4" id="testcase4" >test4</input>
+ <input type="radio" name="testcase" value="test5" id="testcase5" >test5</input>
+ <input type="radio" name="testcase" value="test6" id="testcase6" >test6</input>
+ <input type="button" id="mybutton" onClick="doclicktestcase()" value="Pick Testcase">
+</form>
+</td>
+</tr>
+
+
+<tr>
+
+<td>
+<table>
+<tr>
+<td>
+RunID: 
+</td>
+<td>
+<div id="examplerunid" > &nbsp; </div>
+</td>
+</tr>
+</table>
+</td>
+
+<!-- <td>
+<form><input type="button" id="mybutton" onClick="doclick()" value="Go!"><form>
+</td> -->
+<td>
+<form><input type="button" id="mybutton4" onClick="doclick2()" value="Show Faces"><form>
+</td>
+<td>
+<form><input type="button" id="mybutton3" onClick="doclick3()" value="Show Vertices"><form>
+</td>
+
+</td>
+</tr>
+
+
+<tr>
+<td colspan=4>
+<div id="faces" > &nbsp; </div>
+</td>
+</tr>
+<tr>
+<td colspan=4>
+<div id="vertices" > &nbsp; </div>
+</td>
+</tr>
+</table>
+
+<script>
+
+function getSelectVal(form, name) {
+    var val;
+alert('getSelectVal=' + name);
+alert('getSelectVal=' + form.getElementById[name]);
+    // get list of radio buttons with specified name
+    //var radios = form.elements[name];
+    var radios = form.elements[name];
+
+    // loop through list of radio buttons
+    for (var i=0, len=radios.length; i<len; i++) {
+alert('getSelectVal=' + i + "name=" + name);
+        if ( radios[i].checked ) { // radio checked?
+            val = radios[i].value; // if so, hold its value in val
+alert('found getSelectVal=' + name);
+            break; // and break out of for loop
+        }
+    }
+    return val; // return value of checked radio or undefined if none checked
+}
+function getRadioVal(form, name) {
+    var val;
+alert('getRadioVal=' + name);
+//alert('getRadioVal=' + form.getElementById[name]);
+    // get list of radio buttons with specified name
+    //var radios = form.elements[name];
+    var radios = form.elements[name];
+
+    // loop through list of radio buttons
+    for (var i=0, len=radios.length; i<len; i++) {
+//alert('getRadioVal=' + i + "name=" + name);
+        if ( radios[i].checked ) { // radio checked?
+            val = radios[i].value; // if so, hold its value in val
+//alert('found getRadioVal=' + name);
+            break; // and break out of for loop
+        }
+    }
+    return val; // return value of checked radio or undefined if none checked
+}
+
+</script>
+
+<!-- <hr/> 
+<p><em><div id="ajaxstuff" > &nbsp; </div></em></p>
+<hr/> 
+-->
+
+
+<hr/> 
+
+
+<script type="text/javascript">
+      var faces;
+      var vetices;
+      var geom ;
+      var scene;
+      var renderer;
+
+      var rotation_increment;
+      var camera;
+      var controls;
+
+function doRenderWebGL() {
+//$( "#exampleForm2" ).hide();
+      geom = new THREE.Geometry();
+                        rotation_increment = 0.01;
+//alert('before scene');
+                        scene = new THREE.Scene();
+//alert('after scene');
+
+                        var helper = new THREE.GridHelper( 5000, 2, 0xffffff, 0xffffff );
+                        scene.add( helper );
+
+                        camera = new THREE.PerspectiveCamera( 110, window.innerWidth/window.innerHeight, 0.1, 5000 );
+
+                        controls = null;
+                        renderer = new THREE.WebGLRenderer();
+                        renderer.setSize( window.innerWidth, window.innerHeight );
+                        // Set the background color of the scene.
+                        // doesn''t work, from treehouse renderer.setClearColorHex(0x333F47, 1);
+                        renderer.setClearColor( 0x505050 ); // make background gray instead of black
+                        document.body.appendChild( renderer.domElement );
+                        //document.body.appendChild( controls);
+
+}
+
+
+function initMesh() {
+
+                                // Add Sky Mesh
+                                sky = new THREE.Sky();
+                                scene.add( sky.mesh );
+
+                                /// GUI
+
+                                var effectController  = {
+                                        turbidity: 10,
+                                        rayleigh: 2,
+                                        mieCoefficient: 0.005,
+                                        mieDirectionalG: 0.8,
+                                        luminance: 1,
+                                        inclination: 0.49, // elevation / inclination
+                                        azimuth: 0.25, // Facing front,
+                                        sun: ! true
+                                };
+
+                                var distance = 400000;
+
+                                function guiChanged() {
+
+                                        if (rotation_increment == 0.01)
+                                             rotation_increment = 0.00;
+                                        else rotation_increment = 0.01;
+                                        var uniforms = sky.uniforms;
+                                        uniforms.turbidity.value = effectController.turbidity;
+                                        uniforms.rayleigh.value = effectController.rayleigh;
+                                        uniforms.luminance.value = effectController.luminance;
+                                        uniforms.mieCoefficient.value = effectController.mieCoefficient;
+                                        uniforms.mieDirectionalG.value = effectController.mieDirectionalG;
+
+                                        var theta = Math.PI * ( effectController.inclination - 0.5 );
+                                        var phi = 2 * Math.PI * ( effectController.azimuth - 0.5 );
+
+                                        //sunSphere.position.x = distance * Math.cos( phi );
+                                        //sunSphere.position.y = distance * Math.sin( phi ) * Math.sin( theta );
+                                        //sunSphere.position.z = distance * Math.sin( phi ) * Math.cos( theta );
+
+                                        //sunSphere.visible = effectController.sun;
+
+                                        //sky.uniforms.sunPosition.value.copy( sunSphere.position );
+
+                                        renderer.render( scene, camera );
+
+                                }
+
+                                var gui = new dat.GUI();
+
+                                gui.add( effectController, "turbidity", 1.0, 20.0, 0.1 ).onChange( guiChanged );
+                                gui.add( effectController, "rayleigh", 0.0, 4, 0.001 ).onChange( guiChanged );
+                                gui.add( effectController, "mieCoefficient", 0.0, 0.1, 0.001 ).onChange( guiChanged );
+                                gui.add( effectController, "mieDirectionalG", 0.0, 1, 0.001 ).onChange( guiChanged );
+                                gui.add( effectController, "luminance", 0.0, 2 ).onChange( guiChanged );
+                                gui.add( effectController, "inclination", 0, 1, 0.0001 ).onChange( guiChanged );
+                                gui.add( effectController, "azimuth", 0, 1, 0.0001 ).onChange( guiChanged );
+                                gui.add( effectController, "sun" ).onChange( guiChanged );
+
+                                guiChanged();
+}
+
+function createRequestObject() { 
+  var req; 
+  if (window.XMLHttpRequest) { // Firefox, Safari, Opera... 
+    req = new XMLHttpRequest(); 
+//    alert('Detected a modern browser - very good!'); 
+  } else if (window.ActiveXObject) { // Internet Explorer 5+ 
+    req = new ActiveXObject("Microsoft.XMLHTTP"); 
+//    alert('Detected an old IE browser'); 
+  } else { 
+    // error creating the request object, 
+    // (maybe an old browser is being used?)
+    alert('There was a problem creating the XMLHttpRequest object'); 
+    req = '';
+  }
+  return req; 
+} 
+     
+// Make the XMLHttpRequest object 
+var http = createRequestObject(); 
+     
+function sendRequest1(theTestCase) { 
+  var now = new Date();
+  http.open('get', '/cgi-bin/exampleWebGL2.cgi?myfunc=execexample&exampleTestCase=' + theTestCase + '&nocache='+now.getTime()); 
+  http.onreadystatechange = handleResponse1; 
+  http.send(null); 
+} 
+function sendRequest2(myDat) { 
+  var now = new Date();
+  alert('sendRequest2 got:' + myDat);
+  //http.open('get', 'http://www.myhostname.com/cgi-bin/myscript.pl?nocache='+now.getTime()); 
+  //http.open('get', 'http://localhost:55555/cgi-bin/ajaxdemo.cgi?nocache='+now.getTime()); 
+  myRunID = document.getElementById("examplerunid").innerHTML;
+  alert('sendRequest2: myRunID=' + myRunID + ' myDat=' + myDat);
+  http.open('get', 'http://localhost:55555/cgi-bin/exampleWebGL2.cgi?myDat=' + example_runid + '&myRunID=' + myRunID + '&myfunc=vertices&nocache='+now.getTime()); 
+  //http.open('get', 'http://localhost:55555/cgi-bin/ajaxdemo.cgi'); 
+  http.onreadystatechange = handleResponse2; 
+  //http.send("myfunc=vertices"); 
+  http.send(null); 
+} 
+function sendRequest3(example_runid) { 
+  var now = new Date();
+  //http.open('get', 'http://www.myhostname.com/cgi-bin/myscript.pl?nocache='+now.getTime()); 
+  //http.open('get', 'http://localhost:55555/cgi-bin/ajaxdemo.cgi?nocache='+now.getTime()); 
+  http.open('get', 'http://localhost:55555/cgi-bin/exampleWebGL2.cgi?myrunid=' + example_runid + '&myfunc=faces&nocache='+now.getTime()); 
+  //http.open('get', 'http://localhost:55555/cgi-bin/ajaxdemo.cgi'); 
+  http.onreadystatechange = handleResponse3; 
+  //http.send("myfunc=vertices"); 
+  http.send(null); 
+} 
+     
+function handleResponse1() { 
+  if(http.readyState == 4 && http.status == 200){ 
+    var response = http.responseText; // Text returned FROM perl script 
+    var option ;
+    if(response) { // UPDATE ajaxTest content 
+      //document.getElementById("ajaxstuff").innerHTML = response; 
+      //setTimeout('wipeout()', 2000); // wait 2 seconds, then clear message
+      //var jsonData = eval ("(" + txt + ")");
+      //alert("DOjsonData");
+
+     response = response.replace(/&quot;/g, '"');
+     alert('Response1:' + response);
+
+      //jsonData = JSON.parse(this.responseText);
+      jsonData = JSON.parse(response);
+         alert('JSON DATA IS:' + jsonData);
+      for (var i = 1; i < jsonData.length; i++) { // Start with 1 to skip the output directory name
+         //var counter = jsonData[i];
+         //document.getElementById("vertices").innerHTML += counter + "--"; 
+         //console.log(counter.counter_name);
+         alert(jsonData[i]);
+        //option = new Option(text, value);
+        option = new Option(jsonData[i], jsonData[i]);
+        //option = new Option("datfile", jsonData[i]);
+        //option = new Option(jsonData[i], "datfile");
+        $( "#single" ).append($(option));
+        //$('select').append($(option));
+
+         //if (var == 0) {
+             //$( "#single" ).val( jsonData[i] ); // set defaule value
+         //}
+      }
+		$( "#selectrow" ).show();
+        //$( "#exampleForm2" ).show();
+        $( "#radiorow" ).hide();
+
+      //alert("AFTER DOjsonData1");
+      //alert(jsonData[0]);
+      //alert("AFTER DOjsonData2");
+      //document.getElementById("examplerunid").innerHTML += jsonData[0] + "--"; 
+
+      //document.getElementById("examplerunid").innerHTML = jsonData[0] ;
+
+      //alert("handleresponde1 AFTER DOjsonData3 RUNID");
+
+      document.getElementById("examplerunid").innerHTML = jsonData[0];
+      //alert('BOX ID:' + document.getElementById("examplerunid"));
+
+      //sendRequest2(jsonData[0]);
+      //return jsonData[0];
+
+    } 
+  } 
+} 
+function handleResponse2() { 
+  if(http.readyState == 4 && http.status == 200){ 
+    var response = http.responseText; // Text returned FROM perl script 
+    if(response) { // UPDATE ajaxTest content 
+    	vertices = response;
+      	alert("handleResponse2 DOjsonData" + vertices);
+     	response = response.replace(/&quot;/g, '"');
+
+    //jsonData = JSON.parse(this.responseText);
+      //alert("AFTER DOjsonData1");
+      //alert(jsonData);
+      //alert("AFTER DOjsonData2");
+    //for (var i = 0; i < jsonData.length; i++) {
+         //var counter = jsonData[i];
+         //document.getElementById("vertices").innerHTML += counter + "--"; 
+         //console.log(counter.counter_name);
+         //alert(counter);
+    //}
+      // tried to grab the runid from the form, but may need to parse it.
+      //alert('handleResponse2 sendRequest3' + document.getElementById("examplerunid").value);
+      
+      //sendRequest3(document.getElementById("examplerunid").innerHTML);
+      var element = document.getElementById("examplerunid");
+        value = element.innerHTML;
+      //console.log(value);
+      alert('handleResponse2 sendRequest3' + value);
+      sendRequest3(value);
+
+    } 
+  } 
+} 
+function handleResponse3() { 
+  if(http.readyState == 4 && http.status == 200){ 
+    var response = http.responseText; // Text returned FROM perl script 
+    if(response) { // UPDATE ajaxTest content 
+      faces = response;
+      //document.getElementById("faces").innerHTML = response; 
+
+
+      //setTimeout('wipeout()', 2000); // wait 2 seconds, then clear message
+      //var jsonData = eval ("(" + txt + ")");
+      alert("handleResponse3 DOjsonData " + faces);
+
+     //response = response.replace(/&quot;/g, '"');
+    //jsonData = JSON.parse(this.responseText);
+      //alert("AFTER DOjsonData1");
+      //alert(jsonData);
+      //alert("AFTER DOjsonData2");
+      //for (var i = 0; i < jsonData.length; i++) {
+        //var counter = jsonData[i];
+        //document.getElementById("faces").innerHTML += counter + "--"; 
+        //console.log(counter.counter_name);
+        //alert(counter);
+      //}
+      //alert("AFTER DOjsonData3");
+
+      alert("CALL SENDWEBGL faces=" + faces);
+      alert("CALL SENDWEBGL vertices=" + vertices);
+
+     sendWebGL();
+
+    } 
+  } 
+} 
+function sendWebGL() { 
+
+      doRenderWebGL()
+
+      //var element = document.getElementById("faces");
+      //value = element.innerHTML;
+      //faceData = JSON.parse(value);
+alert('sendWebGL faces=' + faces);
+      faceData = JSON.parse(faces);
+      //alert("sendWebGL FACES:" + faceData);
+      //alert(faceData);
+      var allfaces;
+      var myvals;
+      for (var i = 0; i < faceData.length; i++) {
+        var counter = faceData[i];
+        allfaces += " ## " + counter;
+        //document.getElementById("faces").innerHTML += counter + "--"; 
+        //geom.faces.push( new THREE.Face3( counter ));
+        //alert('FACE' + counter );
+        //myvals = faceData[i].toString().split(";");
+        myvals = counter.split(";");
+        geom.faces.push( new THREE.Face3(myvals[0],myvals[1],myvals[2]) );
+      }
+      //alert("sendWebGL FACES[0]:" + faceData[0]);
+      //alert("sendWebGL FACES2:" + allfaces);
+      //alert("sendWebGL FACES2:" + document.getElementById("faces").innerHTML);
+
+      //var element = document.getElementById("vertices");
+      //value = element.innerHTML;
+      //vertexData = JSON.parse(value);
+      vertexData = JSON.parse(vertices);
+
+      //alert("sendWebGL VERTICES:" + vertexData);
+      //alert(vertexData);
+      var allvertices;
+      for (var i = 0; i < vertexData.length; i++) {
+        var counter = vertexData[i];
+        allvertices += " ## " + counter;
+        //document.getElementById("vertices").innerHTML += counter + "--"; 
+        //alert('VERTEX' + counter );
+        //myvals = vertexData[i].toString().split(";");
+        myvals = counter.split(";");
+        geom.vertices.push( new THREE.Vector3(myvals[0],myvals[1],myvals[2]) );
+      }
+      //alert("sendWebGL VERTICES[0]:" + vertexData[0]);
+      alert("sendWebGL VERTICES2:" + allvertices);
+      //alert("sendWebGL VERTICES2:" + document.getElementById("faces").innerHTML);
+
+
+      //geom.vertices.push( new THREE.Vector3( 0.900812E-04, 0.000000E+00, -0.292807E-06 ));
+      //geom.faces.push( new THREE.Face3( 1, 3, 2 ));
+
+      geom.computeBoundingSphere();
+
+
+
+//alert('call initMesh');
+                        initMesh();
+//alert('after call initMesh');
+
+                        // Create an event listener that resizes the renderer with the browser window.
+                        window.addEventListener('resize', function() {
+                                                var WIDTH = window.innerWidth,
+                                                        HEIGHT = window.innerHeight;
+                                                renderer.setSize(WIDTH, HEIGHT);
+                                                camera.aspect = WIDTH / HEIGHT;
+                                                camera.updateProjectionMatrix();
+                        });
+
+ 
+                        // Create a light, set its position, and add it to the scene.
+                        var light = new THREE.PointLight(0xffffff);
+                        light.position.set(-100,200,100);
+                        scene.add(light);
+
+
+                        var object = new THREE.Mesh( geom, new THREE.MeshNormalMaterial() );
+                        //object.scale.set(3,3,3);
+                        object.scale.set(16,16,16);
+
+                        object.position.z = -10;//move a bit back - size of 500 is a bit big
+                        object.rotation.y = -Math.PI * .5;//triangle is pointing in depth, rotate it -90 degrees on Y
+
+                        scene.add(object);
+
+       //alert('camera position');
+                        camera.position.x = 10;
+                        camera.position.z = -10;
+                        camera.position.y = -10;
+
+                         // Add OrbitControls so that we can pan around with the mouse.
+                        //controls = new THREE.OrbitControls(camera, renderer.domElement);
+                        controls = new THREE.OrbitControls( camera, renderer.domElement );
+
+       //alert('controls');
+                        object.rotation.z += Math.PI -1
+
+       var cnt=0;
+                        var render = function () {
+
+       //alert('requestAnimationFrame');
+       //console.log('requestAnimationFrame' + cnt++);
+                                requestAnimationFrame( render );
+
+                                object.rotation.y += rotation_increment;
+                                //object.rotation.y += 0.01;
+                                //object.rotation.x += 0.01;
+                                //object.rotation.z += 0.01;
+
+                                renderer.render(scene, camera);
+                                controls.update();
+                        };
+
+       //alert('render');
+                        render();
+
+
+
+} 
+
+function wipeout() {
+  document.getElementById("ajaxstuff").innerHTML = ''; 
+  x = document.getElementById("mybutton");
+  x.disabled = false;
+}
+
+
+$( "#selectrow" ).hide();
+
+</script>
+</head>
+</html>

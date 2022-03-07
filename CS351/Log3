@@ -1,0 +1,64 @@
+127.0.0.1 - - [03/Feb/2020 22:28:25] "GET /cgi-bin HTTP/1.1" 301 -
+127.0.0.1 - - [03/Feb/2020 22:28:25] code 403, message CGI script is not a plain file ('/cgi-bin/')
+127.0.0.1 - - [03/Feb/2020 22:28:25] "GET /cgi-bin/ HTTP/1.1" 403 -
+127.0.0.1 - - [03/Feb/2020 22:28:25] code 404, message File not found
+127.0.0.1 - - [03/Feb/2020 22:28:25] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [03/Feb/2020 22:29:19] "GET /README_startup_python_httpd HTTP/1.1" 200 -
+127.0.0.1 - - [03/Feb/2020 22:30:54] "GET /hello.cgi HTTP/1.1" 200 -
+127.0.0.1 - - [03/Feb/2020 22:34:27] "GET /cgi-bin/hello.cgi HTTP/1.1" 200 -
+127.0.0.1 - - [03/Feb/2020 22:34:51] "GET /cgi-bin/hello.cgi HTTP/1.1" 200 -
+127.0.0.1 - - [03/Feb/2020 22:34:51] code 404, message File not found
+127.0.0.1 - - [03/Feb/2020 22:34:51] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [03/Feb/2020 22:35:03] "GET /cgi-bin/hello.cgi HTTP/1.1" 200 -
+syntax error at /home/faculty/scott/www/CS351/cgi-bin/hello.cgi line 10, near "print"
+Execution of /home/faculty/scott/www/CS351/cgi-bin/hello.cgi aborted due to compilation errors.
+127.0.0.1 - - [03/Feb/2020 22:35:03] CGI script exit status 0xff00
+127.0.0.1 - - [03/Feb/2020 22:35:03] code 404, message File not found
+127.0.0.1 - - [03/Feb/2020 22:35:03] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [03/Feb/2020 22:35:06] "GET /cgi-bin/hello.cgi HTTP/1.1" 200 -
+syntax error at /home/faculty/scott/www/CS351/cgi-bin/hello.cgi line 10, near "print"
+Execution of /home/faculty/scott/www/CS351/cgi-bin/hello.cgi aborted due to compilation errors.
+127.0.0.1 - - [03/Feb/2020 22:35:06] CGI script exit status 0xff00
+127.0.0.1 - - [03/Feb/2020 22:35:06] code 404, message File not found
+127.0.0.1 - - [03/Feb/2020 22:35:06] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [03/Feb/2020 22:35:27] "GET /cgi-bin/hello.cgi HTTP/1.1" 200 -
+127.0.0.1 - - [03/Feb/2020 22:35:27] code 404, message File not found
+127.0.0.1 - - [03/Feb/2020 22:35:27] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [03/Feb/2020 22:36:29] "GET /cgi-bin/hello.cgi HTTP/1.1" 200 -
+127.0.0.1 - - [03/Feb/2020 22:36:29] code 404, message File not found
+127.0.0.1 - - [03/Feb/2020 22:36:29] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [03/Feb/2020 22:38:16] "GET /cgi-bin/hello.cgi HTTP/1.1" 200 -
+syntax error at /home/faculty/scott/www/CS351/cgi-bin/hello.cgi line 10, near "print"
+Execution of /home/faculty/scott/www/CS351/cgi-bin/hello.cgi aborted due to compilation errors.
+127.0.0.1 - - [03/Feb/2020 22:38:16] CGI script exit status 0xff00
+127.0.0.1 - - [03/Feb/2020 22:38:16] code 404, message File not found
+127.0.0.1 - - [03/Feb/2020 22:38:16] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [03/Feb/2020 22:38:28] "GET /cgi-bin/hello.cgi HTTP/1.1" 200 -
+syntax error at /home/faculty/scott/www/CS351/cgi-bin/hello.cgi line 10, near "print"
+Execution of /home/faculty/scott/www/CS351/cgi-bin/hello.cgi aborted due to compilation errors.
+127.0.0.1 - - [03/Feb/2020 22:38:28] CGI script exit status 0xff00
+127.0.0.1 - - [03/Feb/2020 22:38:28] code 404, message File not found
+127.0.0.1 - - [03/Feb/2020 22:38:28] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [03/Feb/2020 22:40:15] "GET /cgi-bin/hello.cgi HTTP/1.1" 200 -
+127.0.0.1 - - [03/Feb/2020 22:40:15] CGI script exit status 0xff00
+127.0.0.1 - - [03/Feb/2020 22:40:15] code 404, message File not found
+127.0.0.1 - - [03/Feb/2020 22:40:15] "GET /favicon.ico HTTP/1.1" 404 -
+Serving HTTP on 0.0.0.0 port 55555 ...
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/runpy.py", line 174, in _run_module_as_main
+    "__main__", fname, loader, pkg_name)
+  File "/usr/lib/python2.7/runpy.py", line 72, in _run_code
+    exec code in run_globals
+  File "/usr/lib/python2.7/CGIHTTPServer.py", line 378, in <module>
+    test()
+  File "/usr/lib/python2.7/CGIHTTPServer.py", line 374, in test
+    SimpleHTTPServer.test(HandlerClass, ServerClass)
+  File "/usr/lib/python2.7/SimpleHTTPServer.py", line 231, in test
+    BaseHTTPServer.test(HandlerClass, ServerClass)
+  File "/usr/lib/python2.7/BaseHTTPServer.py", line 610, in test
+    httpd.serve_forever()
+  File "/usr/lib/python2.7/SocketServer.py", line 231, in serve_forever
+    poll_interval)
+  File "/usr/lib/python2.7/SocketServer.py", line 150, in _eintr_retry
+    return func(*args)
+KeyboardInterrupt

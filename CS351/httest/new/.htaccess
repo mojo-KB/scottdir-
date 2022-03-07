@@ -1,0 +1,8 @@
+AuthUserFile /home/faculty/scott/www/CS351/httest/mypasswds
+AuthName "PASSWD for cat or dog"
+AuthType Basic
+<Limit GET POST>
+require valid-user
+</Limit>
+errordocument 404 /~scott/404.html
+errordocument 500 /~scott/500.html

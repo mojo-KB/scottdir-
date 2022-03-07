@@ -1,0 +1,80 @@
+python -m CGIHTTPServer 55555
+python -m CGIHTTPServer 55555 >& Log &
+ps axuww | grep scott
+kill -9 [process id]
+pkill -9 python
+
+wget http://localhost:8010/cgi-bin/hello.cgi
+scott@gaben1:~/www/CS351$ wget http://localhost:55555/cgi-bin/hello.cgi
+--2020-02-03 22:02:29--  http://localhost:55555/cgi-bin/hello.cgi
+Resolving localhost (localhost)... ::1, 127.0.0.1
+Connecting to localhost (localhost)|::1|:55555... failed: Connection refused.
+Connecting to localhost (localhost)|127.0.0.1|:55555... connected.
+HTTP request sent, awaiting response... 200 Script output follows
+Length: unspecified [text/html]
+Saving to: ‘hello.cgi’
+
+hello.cgi               [ <=>                ]      55  --.-KB/s    in 0s
+
+2020-02-03 22:02:29 (5.84 MB/s) - ‘hello.cgi’ saved [55]
+
+scott@gaben1:~/www/CS351$
+---------------------------------------------------------------
+
+https://people.sc.fsu.edu/~jburkardt/data/tec/tec.html
+
+
+python3 -m http.server --cgi
+python3 -m http.server --cgi 8010
+
+------------------------------------------------------------------------------------------------------------
+Run Web server with CGI under Python2. I have python3 installed on my cygwin on Windows, but that isn't working. So I did the easy patch to/lib/python2.7 /CGIHTTPServer.py
+
+  513  whereis python
+  514  find /lib/python2.7 | grep CGIHTTPServer
+  515  cd /lib/python2.7/
+  518  ls -l  CGIHTTPServer.py*
+  519  mv CGIHTTPServer.py CGIHTTPServer.py_ORIG
+  520  cp CGIHTTPServer.py_ORIG CGIHTTPServer.py
+  521  vi CGIHTTPServer.py
+
+
+Search for:
+CGIHTTPServer.py", line 248, in run_cgi os.setuid(nobody) OverflowError: user id is greater than maximum cygwin
+
+How to run a simple local web server - webtools - Postbit
+webtools.postbit.com/how-to-run-a-simple-local-web-server.html
+Aug 30, 2014 - I am using cygwin command line under Windows 7 and I got an error ... OverflowError: user id is greater than maximum ... Just change the error line (line 247 in the script CGIHTTPServer.py):. Change from this: os.setuid(nobody). to this: os.setuid(0). Then the python web server will be able to run cgi scripts.
+------------------------------------------------------------------------------------------------------------
+
+scott@fang:~/www/cgi-bin/cgi-bin>python3 -m http.server --help
+usage: server.py [-h] [--cgi] [--bind ADDRESS] [port]
+
+positional arguments:
+  port                  Specify alternate port [default: 8000]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --cgi                 Run as CGI Server
+  --bind ADDRESS, -b ADDRESS
+                        Specify alternate bind address [default: all
+                        interfaces]
+scott@fang:~/www/cgi-bin/cgi-bin>
+
+
+    98  17:09   cd ~/www/cgi-bin
+    99  17:09   ls
+   100  17:09   ls -l three.js-master
+   101  17:09   ls -ld three.js-master/examples/js/
+   102  17:10   ls -l three.js-master/examples/js/
+   103  17:10   pwd
+   104  17:10   /home/f/csci/scott/www/cgi-bin/three.js-master/examples/js
+   105  17:10   cd week4
+   106  17:10   ln -s /home/f/csci/scott/www/cgi-bin/three.js-master/examples/js
+   107  17:11   ls ../pms
+   108  17:11   ls ../PMS
+   109  17:12   ln -s ../PMS
+   110  17:12   cd ..
+   111  17:12   ls three.js-master/
+   112  17:12   ln -s three.js-master/build/
+

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+        <head>
+                <meta charset=utf-8>
+                <title>My second three.js app</title>
+                <style>
+                        body { margin: 0; }
+                        canvas { width: 100%; height: 100% }
+                </style>
+        </head>
+        <body>
+
+<!-- <script src="js/Detector.js"></script> -->
+<script src="PMS/jquery-3.1.1.js"></script>
+
+<script>
+function createRequestObject() {
+  var req;
+  if (window.XMLHttpRequest) { // Firefox, Safari, Opera...
+    req = new XMLHttpRequest();
+//    alert('Detected a modern browser - very good!');
+  } else if (window.ActiveXObject) { // Internet Explorer 5+
+    req = new ActiveXObject("Microsoft.XMLHTTP");
+//    alert('Detected an old IE browser');
+  } else {
+    // error creating the request object,
+    // (maybe an old browser is being used?)
+    alert('There was a problem creating the XMLHttpRequest object');
+    req = '';
+  }
+  return req;
+}
+
+// Make the XMLHttpRequest object
+var http = createRequestObject();
+var myuser;
+
+function dologin() {
+  var now = new Date();
+  myuser=document.getElementById("myinput").value;
+  document.getElementById("username").innerHTML = myuser;;
+alert('dologin VALUE' + myuser);
+  http.open('get', 'http://localhost:55555/cgi-bin/exammid.cgi?myfunc=login&user=' + myuser + '&nocache='+now.getTime());
+  http.onreadystatechange = handleResponse1;
+  http.send(null);
+}
+
+function doPostMessage() {
+  var now = new Date();
+  var mypost=document.getElementById("mypost").value;
+  //document.getElementById("username").innerHTML = myuser;;
+//alert('dologin VALUE' + myuser);
+  http.open('get', 'http://localhost:55555/cgi-bin/exammid.cgi?myfunc=post&mypost=' + mypost + '&user='+ myuser  + '&nocache='+now.getTime());
+  http.onreadystatechange = handleResponse2;
+  http.send(null);
+}
+
+function doGetMessages() {
+  var now = new Date();
+  var val;
+
+    //var chkbxs = document.myradios["friend"];
+
+	var thisform=document.forms['myradios'];
+
+	//var chkbxs = document.getElementById("friend");
+	var chkbxs = thisform['friend'];
+    // loop through list of checkboxes
+    for (var i=0, len=chkbxs.length; i<len; i++) {
+//alert('getSelectVal=' + i + 'name=' + name);
+
+alert('getSelectVal=' + chkbxs[i].value);
+        if ( chkbxs[i].checked ) { // chkbxs checked?
+	    if (defined(val)) {
+            val = chkbxs[i].value; // if so, hold its value in val
+	    }
+	    else {
+            val += ':' + chkbxs[i].value; // if so, hold its value in val
+	    }
+alert('found getSelectVal=' + val);
+            //break; // and break out of for loop
+        }
+    }
+
+  //document.getElementById("username").innerHTML = myuser;;
+alert('doGetMessages VALUE' + val);
+  http.open('get', 'http://localhost:55555/cgi-bin/exammid.cgi?myfunc=getfriendmsgs&friends=' + val + '&nocache='+now.getTime());
+  http.onreadystatechange = handleResponse3;
+  http.send(null);
+}
+
+function handleResponse3() { 
+  if(http.readyState == 4 && http.status == 200){ 
+    var response = http.responseText; // Text returned FROM perl script 
+    alert('friend messages' + response);
+  }
+}
+
+function handleResponse2() { 
+  if(http.readyState == 4 && http.status == 200){ 
+    var response = http.responseText; // Text returned FROM perl script 
+    alert('post message response' + response);
+  }
+}
+function handleResponse1() { 
+  if(http.readyState == 4 && http.status == 200){ 
+    var response = http.responseText; // Text returned FROM perl script 
+    var option ;
+    if(response) { // UPDATE ajaxTest content 
+     response = response.replace(/&quot;/g, '"');
+     //alert('Response1:' + response);
+
+      //jsonData = JSON.parse(this.responseText);
+      jsonData = JSON.parse(response);
+         //alert('JSON DATA IS:' + jsonData);
+      for (var i = 0; i < jsonData.length; i++) { // Start with 1 to skip the output directory name
+         //alert(jsonData[i]);
+        //option = new Option(jsonData[i], jsonData[i]);
+        //$( "#single" ).append($(option));
+
+var myhtml = ' <input type="checkbox" id="friend" value="' + 
+		jsonData[i] + '"  >' + jsonData[i] + '</input> \n';
+      document.getElementById("myradios").innerHTML += myhtml;
+
+ //alert('add innerhtml ' + myhtml);
+        
+ //<input type="radio" name="testcase" value="test1" id="testcase1" >test1</input>
+      }
+	$( "#mainrow" ).show();
+	$( "#loginrow" ).hide();
+
+
+      //document.getElementById("examplerunid").innerHTML = jsonData[0];
+      //alert('BOX ID:' + document.getElementById("examplerunid"));
+
+    } 
+  } 
+} 
+
+</script>
+
+
+<table Width=100% BORDER=4 CELLSPACING=5 CELLPADDING=4 BGCOLOR="#FFFF99" NOSAVE >
+<tr id="loginrow">
+<td align=center>
+<table Width=50% BORDER=4 CELLSPACING=5 CELLPADDING=4 BGCOLOR="#FFFF99" NOSAVE >
+<tr>
+<td colspan=4 align=center>
+ <B>ScottBook Messaging System Login</B>
+</td>
+</tr>
+<tr>
+<td align=center>
+ <input type="button" id="mylogin" onClick="dologin()" value="Login:">
+ <input id="myinput" type="text" name="testcase" value="joe"  /><label for="testcase1"></label>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+
+
+
+<tr id="mainrow">
+<td align=center>
+<table Width=50% BORDER=4 CELLSPACING=5 CELLPADDING=4 BGCOLOR="#FFFF99" NOSAVE >
+<tr>
+<td colspan=4 align=center>
+ <B>ScottBook Messaging System</B>
+</td>
+</tr>
+
+<tr>
+<td>
+<form id=myradios>
+<!--
+<div id="myradios">
+</div>
+-->
+</form>
+</td>
+</tr>
+
+<tr>
+<div id="mymsgs">
+<td colspan=4>
+Kim: Last Mesg
+<br>
+Joe: Joe Here
+</td>
+</div>
+</tr>
+<tr>
+<td colspan=3>
+ <input id="mypost" type="text" name="testcase" value="My Next Post" id="testcase1" /><label for="testcase1"></label>
+</td>
+<td>
+ <input type="button" id="mybutton" onClick="doPostMessage()" value="Post Message">
+</td>
+</tr>
+
+<tr>
+<td colspan=3>
+ Connected User: <B><div id="username"> Tim </div></B>
+</td>
+<td>
+ <input type="button" id="mybutton" onClick="doGetMessages()" value="Update Display">
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+
+</table>
+
+<script>
+
+$( "#mainrow" ).hide();
+
+
+</script>
+</head>
+</html>
+

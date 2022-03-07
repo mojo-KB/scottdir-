@@ -1,0 +1,197 @@
+127.0.0.1 - - [31/Jan/2022 21:00:13] "GET /cgi-bin/hello.cgi HTTP/1.1" 200 -
+127.0.0.1 - - [31/Jan/2022 21:02:20] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [31/Jan/2022 21:10:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [31/Jan/2022 21:19:10] code 403, message CGI script is not executable ('/cgi-bin/ajaxdemo.cgi')
+127.0.0.1 - - [31/Jan/2022 21:19:10] "GET /cgi-bin/ajaxdemo.cgi HTTP/1.1" 403 -
+127.0.0.1 - - [31/Jan/2022 21:19:34] "GET /cgi-bin/ajaxdemo.cgi HTTP/1.1" 200 -
+127.0.0.1 - - [31/Jan/2022 21:19:38] "GET /cgi-bin/ajaxdemo.cgi HTTP/1.1" 200 -
+127.0.0.1 - - [31/Jan/2022 21:19:40] code 404, message File not found
+127.0.0.1 - - [31/Jan/2022 21:19:40] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [31/Jan/2022 21:20:23] "GET /cgi-bin/ajaxdemo.cgi HTTP/1.1" 200 -
+syntax error at /home/faculty/scott/www/CS351/cgi-bin/ajaxdemo.cgi line 6, near "print"
+Execution of /home/faculty/scott/www/CS351/cgi-bin/ajaxdemo.cgi aborted due to compilation errors.
+127.0.0.1 - - [31/Jan/2022 21:20:23] CGI script exit status 0xff00
+127.0.0.1 - - [31/Jan/2022 21:20:23] code 404, message File not found
+127.0.0.1 - - [31/Jan/2022 21:20:23] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [31/Jan/2022 21:21:39] "GET /cgi-bin/ajaxdemo.cgi HTTP/1.1" 200 -
+127.0.0.1 - - [31/Jan/2022 21:21:51] "GET /cgi-bin/ajaxdemo2.cgi HTTP/1.1" 200 -
+Unrecognized escape \B passed through at /home/faculty/scott/www/CS351/cgi-bin/ajaxdemo2.cgi line 28.
+Unrecognized escape \B passed through at /home/faculty/scott/www/CS351/cgi-bin/ajaxdemo2.cgi line 30.
+127.0.0.1 - - [31/Jan/2022 21:35:07] "GET /cgi-bin/ajaxdemo2.cgi HTTP/1.1" 200 -
+Unrecognized escape \B passed through at /home/faculty/scott/www/CS351/cgi-bin/ajaxdemo2.cgi line 28.
+Unrecognized escape \B passed through at /home/faculty/scott/www/CS351/cgi-bin/ajaxdemo2.cgi line 30.
+127.0.0.1 - - [31/Jan/2022 21:36:24] "GET /cgi-bin/ajaxdemo.cgi HTTP/1.1" 200 -
+127.0.0.1 - - [31/Jan/2022 21:39:07] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [31/Jan/2022 21:39:12] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [31/Jan/2022 21:39:17] "GET /week2/ HTTP/1.1" 200 -
+127.0.0.1 - - [31/Jan/2022 21:39:26] "GET /week2/ajaxdemo.html HTTP/1.1" 200 -
+127.0.0.1 - - [31/Jan/2022 21:39:32] "GET /week2/ajaxdemo.html HTTP/1.1" 200 -
+127.0.0.1 - - [31/Jan/2022 22:16:43] "GET /cgi-bin/ajaxdemo.cgi?nocache=1643667387208 HTTP/1.1" 200 -
+127.0.0.1 - - [31/Jan/2022 22:19:07] "GET /week2/ajaxdemo2.html HTTP/1.1" 200 -
+127.0.0.1 - - [31/Jan/2022 22:19:31] "GET /cgi-bin/ptest.cgi?testcase=hello%20CS351&testcase=SCOTT&myfunc=vertices&nocache=1643667562079 HTTP/1.1" 200 -
+127.0.0.1 - - [31/Jan/2022 22:20:19] "GET /cgi-bin/ajaxdemo2.cgi HTTP/1.1" 200 -
+Unrecognized escape \B passed through at /home/faculty/scott/www/CS351/cgi-bin/ajaxdemo2.cgi line 28.
+Unrecognized escape \B passed through at /home/faculty/scott/www/CS351/cgi-bin/ajaxdemo2.cgi line 30.
+127.0.0.1 - - [31/Jan/2022 22:20:37] "GET /week2/ HTTP/1.1" 200 -
+127.0.0.1 - - [31/Jan/2022 22:20:41] "GET /week2/ajaxdemo2.html HTTP/1.1" 200 -
+127.0.0.1 - - [31/Jan/2022 22:20:49] "GET /cgi-bin/ptest.cgi?testcase=hello%20CS351&testcase=SCOTT&myfunc=vertices&nocache=1643667643944 HTTP/1.1" 200 -
+127.0.0.1 - - [31/Jan/2022 22:26:38] "GET /week2/ajaxdemo2.html HTTP/1.1" 200 -
+127.0.0.1 - - [31/Jan/2022 22:26:38] code 404, message File not found
+127.0.0.1 - - [31/Jan/2022 22:26:38] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [31/Jan/2022 22:26:43] "GET /cgi-bin/ptest.cgi?testcase=hello%20CS351&testcase=SCOTT&myfunc=vertices&testcase=Feb2022CS351&nocache=1643668001631 HTTP/1.1" 200 -
+127.0.0.1 - - [31/Jan/2022 22:29:59] "GET /cgi-bin/ptest.cgi?testcase=hello%20CS351&testcase=SCOTT&myfunc=vertices&testcase=Feb2022CS351&nocache=1643668197270 HTTP/1.1" 200 -
+127.0.0.1 - - [31/Jan/2022 22:31:43] code 404, message File not found
+127.0.0.1 - - [31/Jan/2022 22:31:43] "GET /week2/printenv.cgi HTTP/1.1" 404 -
+127.0.0.1 - - [31/Jan/2022 22:42:30] "GET /week2/ajaxdemo.html HTTP/1.1" 200 -
+127.0.0.1 - - [31/Jan/2022 22:42:34] "GET /cgi-bin/ajaxdemo.cgi?nocache=1643668952789 HTTP/1.1" 200 -
+127.0.0.1 - - [31/Jan/2022 22:42:38] "GE/Feb/2022 20:58:17] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [09/Feb/2022 21:59:37] code 403, message CGI script is not a plain file ('/cgi-bin/')
+127.0.0.1 - - [09/Feb/2022 21:59:37] "GET /cgi-bin/ HTTP/1.1" 403 -
+127.0.0.1 - - [09/Feb/2022 21:59:55] code 404, message No such CGI script ('/cgi-bin/store5.html')
+127.0.0.1 - - [09/Feb/2022 21:59:55] "GET /cgi-bin/store5.html HTTP/1.1" 404 -
+127.0.0.1 - - [09/Feb/2022 22:04:35] "GET /week4/ HTTP/1.1" 200 -
+127.0.0.1 - - [09/Feb/2022 22:04:39] "GET /week4/store5.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Feb/2022 22:05:22] "GET /cgi-bin/mystore3.cgi?category=beverage&myfunc=category&nocache=1644444311385 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Feb/2022 22:10:53] "GET /week4/store5.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Feb/2022 22:10:53] "GET /week4/PMS/jquery-3.1.1.js HTTP/1.1" 200 -
+127.0.0.1 - - [09/Feb/2022 22:10:54] code 404, message File not found
+127.0.0.1 - - [09/Feb/2022 22:10:54] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [09/Feb/2022 22:11:06] "GET /cgi-bin/mystore4.cgi?category=beverage&myfunc=category&nocache=1644444665677 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Feb/2022 22:20:21] "GET /week4/store5.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Feb/2022 22:20:21] "GET /week4/PMS/jquery-3.1.1.js HTTP/1.1" 200 -
+127.0.0.1 - - [09/Feb/2022 22:20:22] code 404, message File not found
+127.0.0.1 - - [09/Feb/2022 22:20:22] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [09/Feb/2022 22:20:34] "GET /cgi-bin/mystore4.cgi?category=beverage&myfunc=category&nocache=1644445233692 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Feb/2022 22:24:02] "GET /week4/store5.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Feb/2022 22:24:02] "GET /week4/PMS/jquery-3.1.1.js HTTP/1.1" 200 -
+127.0.0.1 - - [09/Feb/2022 22:24:03] code 404, message File not found
+127.0.0.1 - - [09/Feb/2022 22:24:03] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [09/Feb/2022 22:24:13] "GET /cgi-bin/mystore4.cgi?category=beverage&myfunc=category&nocache=1644445452927 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Feb/2022 22:25:51] "GET /week4/store5.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Feb/2022 22:25:51] "GET /week4/PMS/jquery-3.1.1.js HTTP/1.1" 200 -
+127.0.0.1 - - [09/Feb/2022 22:25:52] code 404, message File not found
+127.0.0.1 - - [09/Feb/2022 22:25:52] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [09/Feb/2022 22:26:02] "GET /cgi-bin/mystore4.cgi?category=snack&myfunc=category&nocache=1644445561518 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Feb/2022 22:29:57] "GET /week4/store5.html HTTP/1.1" 200 -
+127.0.0.1 - - [09/Feb/2022 22:29:57] "GET /week4/PMS/jquery-3.1.1.js HTTP/1.1" 200 -
+127.0.0.1 - - [09/Feb/2022 22:29:58] code 404, message File not found
+127.0.0.1 - - [09/Feb/2022 22:29:58] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [09/Feb/2022 22:33:07] "GET /cgi-bin/mystore4.cgi?category=beverage&myfunc=category&nocache=1644445987073 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Feb/2022 22:38:41] "GET /cgi-bin/mystore4.cgi?items=beverage:pepsi:2%3Bbeverage:coke:6&myfunc=items&nocache=1644446321486 HTTP/1.1" 200 -
+127.0.0.1 - - [09/Feb/2022 22:50:39] code 403, message CGI script is not a plain file ('/cgi-bin/')
+127.0.0.1 - - [09/Feb/2022 22:50:39] "GET /cgi-bin/ HTTP/1.1" 403 -
+127.0.0.1 - - [14/Feb/2022 21:03:44] "GET /week4/store5.html HTTP/1.1" 200 -
+127.0.0.1 - - [14/Feb/2022 21:06:30] "GET /cgi-bin/mystore4.cgi?category=beverage&myfunc=category&nocache=1644872789050 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Feb/2022 21:28:11] "GET /cgi-bin/mystore4.cgi?items=beverage:pepsi:4%3Bbeverage:snapple:3&myfunc=items&nocache=1644874090783 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Feb/2022 21:29:34] "GET /week4/store5.html HTTP/1.1" 200 -
+127.0.0.1 - - [14/Feb/2022 21:29:34] "GET /week4/PMS/jquery-3.1.1.js HTTP/1.1" 200 -
+127.0.0.1 - - [14/Feb/2022 21:29:35] code 404, message File not found
+127.0.0.1 - - [14/Feb/2022 21:29:35] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [14/Feb/2022 21:30:09] "GET /cgi-bin/mystore4.cgi?category=beverage&myfunc=category&nocache=1644874208341 HTTP/1.1" 200 -
+127.0.0.1 - - [14/Feb/2022 21:42:52] "GET /week4/store5.html HTTP/1.1" 200 -
+127.0.0.1 - - [14/Feb/20                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       127.0.0.1 - - [12/Feb/2022 10:45:46] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [12/Feb/2022 10:54:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [12/Feb/2022 10:59:06] "GET /cgi-bin/hello.cgi HTTP/1.1" 200 -
+127.0.0.1 - - [14/Feb/2022 21:41:41] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [14/Feb/2022 21:41:41] code 404, message File not found
+127.0.0.1 - - [14/Feb/2022 21:41:41] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [14/Feb/2022 21:41:44] code 403, message CGI script is not a plain file ('/cgi-bin/')
+127.0.0.1 - - [14/Feb/2022 21:41:44] "GET /cgi-bin/ HTTP/1.1" 403 -
+127.0.0.1 - - [14/Feb/2022 21:42:10] code 404, message File not found
+127.0.0.1 - - [14/Feb/2022 21:42:10] "GET /~taman/CS351/cgi-bin/hello.cgi HTTP/1.1" 404 -
+127.0.0.1 - - [14/Feb/2022 21:42:24] "GET /cgi-bin/hello.cgi HTTP/1.1" 200 -
+127.0.0.1 - - [21/Feb/2022 15:30:31] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [21/Feb/2022 15:30:31] code 404, message File not found
+127.0.0.1 - - [21/Feb/2022 15:30:31] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [21/Feb/2022 15:31:02] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [21/Feb/2022 21:50:59] "GET /cgi-bin/hello.cgi HTTP/1.1" 200 -
+127.0.0.1 - - [21/Feb/2022 21:51:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [21/Feb/2022 21:51:37] code 404, message File not found
+127.0.0.1 - - [21/Feb/2022 21:51:37] "GET /~taman/www/CS351/cgi-bin/hello.cgi HTTP/1.1" 404 -
+127.0.0.1 - - [21/Feb/2022 21:51:40] code 404, message File not found
+127.0.0.1 - - [21/Feb/2022 21:51:40] "GET /~taman/www/CS351/cgi-bin/hello.cgi HTTP/1.1" 404 -
+127.0.0.1 - - [21/Feb/2022 22:10:40] "GET /hello.cgi HTTP/1.1" 200 -
+127.0.0.1 - - [21/Feb/2022 22:10:52] "GET / HTTP/1.1" 200 -
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               te symbolic link 'mydata2.dat': File exists
+ln: failed to create symbolic link 'mydata3.dat': File exists
+127.0.0.1 - - [14/Feb/2022 22:28:51] "GET /cgi-bin/exampleWebGL.cgi?myrunid=mydata3.dat&myDat=mydata3.dat&myfunc=vertices&nocache=1644877677673 HTTP/1.1" 200 -
+JSON::encode_json() called too early to check prototype at /home/faculty/scott/www/CS351/cgi-bin/exampleWebGL.cgi line 97.
+JSON::encode_json() called too early to check prototype at /home/faculty/scott/www/CS351/cgi-bin/exampleWebGL.cgi line 166.
+127.0.0.1 - - [14/Feb/2022 22:28:52] CGI script exit status 0xd00
+127.0.0.1 - - [14/Feb/2022 22:29:35] "GET /cgi-bin/exampleWebGL.cgi?myrunid=mydata3.dat&myDat=mydata3.dat&myfunc=faces&nocache=1644877758546 HTTP/1.1" 200 -
+JSON::encode_json() called too early to check prototype at /home/faculty/scott/www/CS351/cgi-bin/exampleWebGL.cgi line 97.
+JSON::encode_json() called too early to check prototype at /home/faculty/scott/www/CS351/cgi-bin/exampleWebGL.cgi line 166.
+127.0.0.1 - - [14/Feb/2022 22:29:35] CGI script exit status 0xd00
+127.0.0.1 - - [14/Feb/2022 22:31:42] "GET /cgi-bin/exampleWebGL.cgi?myrunid=mydata3.dat&myDat=mydata3.dat&myfunc=vertices&nocache=1644877901953 HTTP/1.1" 200 -
+JSON::encode_json() called too early to check prototype at /home/faculty/scott/www/CS351/cgi-bin/exampleWebGL.cgi line 97.
+JSON::encode_json() called too early to check prototype at /home/faculty/scott/www/CS351/cgi-bin/exampleWebGL.cgi line 166.
+127.0.0.1 - - [14/Feb/2022 22:31:43] CGI script exit status 0xd00
+127.0.0.1 - - [14/Feb/2022 22:34:10] "GET /cgi-bin/exampleWebGL.cgi?myrunid=mydata3.dat&myDat=mydata3.dat&myfunc=faces&nocache=1644878050360 HTTP/1.1" 200 -
+JSON::encode_json() called too early to check prototype at /home/faculty/scott/www/CS351/cgi-bin/exampleWebGL.cgi line 97.
+JSON::encode_json() called too early to check prototype at /home/faculty/scott/www/CS351/cgi-bin/exampleWebGL.cgi line 166.
+127.0.0.1 - - [14/Feb/2022 22:34:11] CGI script exit status 0xd00
+127.0.0.1 - - [14/Feb/2022 22:34:16] "GET /week4/radioexampleWebGL.html HTTP/1.1" 200 -
+127.0.0.1 - - [14/Feb/2022 22:34:17] "GET /build/three.js HTTP/1.1" 200 -
+127.0.0.1 - - [14/Feb/2022 22:34:17] "GET /week4/js/controls/OrbitControls.js HTTP/1.1" 200 -
+127.0.0.1 - - [14/Feb/2022 22:34:17] "GET /week4/js/SkyShader.js HTTP/1.1" 200 -
+127.0.0.1 - - [14/Feb/2022 22:34:17] "GET /week4/js/libs/dat.gui.min.js HTTP/1.1" 200 -
+127.0.0.1 - - [14/Feb/2022 22:34:17] "GET /week4/js/Detector.js HTTP/1.1" 200 -
+127.0.0.1 - - [14/Feb/2022 22:34:17] "GET /week4/PMS/jquery-3.1.1.js HTTP/1.1" 200 -
+127.0.0.1 - - [14/Feb/2022 22:34:17] code 404, message File not found
+127.0.0.1 - - [14/Feb/2022 22:34:17] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [14/Feb/2022 22:34:31] "GET /cgi-bin/exampleWebGL2.cgi?myfunc=execexample&exampleTestCase=test3&nocache=1644878070647 HTTP/1.1" 200 -
+JSON::encode_json() called too early to check prototype at /home/faculty/scott/www/CS351/cgi-bin/exampleWebGL2.cgi line 105.
+JSON::encode_json() called too early to check prototype at /home/faculty/scott/www/CS351/cgi-bin/exampleWebGL2.cgi line 172.
+ln: failed to create symbolic link './mydata.dat': File exists
+ln: failed to create symbolic link 'mydata2.dat': File exists
+ln: failed to create symbolic link 'mydata3.dat': File exists
+127.0.0.1 - - [14/Feb/2022 22:34:57] "GET /cgi-bin/exampleWebGL2.cgi?myrunid=&myDat=&myfunc=vertices&nocache=1644878093199 HTTP/1.1" 200 -
+JSON::encode_json() called too early to check prototype at /home/faculty/scott/www/CS351/cgi-bin/exampleWebGL2.cgi line 105.
+JSON::encode_json() called too early to check prototype at /home/faculty/scott/www/CS351/cgi-bin/exampleWebGL2.cgi line 172.
+127.0.0.1 - - [14/Feb/2022 22:35:14] "GET /cgi-bin/exampleWebGL2.cgi?myrunid=&myDat=&myfunc=faces&nocache=1644878109015 HTTP/1.1" 200 -
+JSON::encode_json() called too early to check prototype at /home/faculty/scott/www/CS351/cgi-bin/exampleWebGL2.cgi line 105.
+JSON::encode_json() called too early to check prototype at /home/faculty/scott/www/CS351/cgi-bin/exampleWebGL2.cgi line 172.
+127.0.0.1 - - [14/Feb/2022 22:44:17] "GET /week4/radioexampleWebGL.html HTTP/1.1" 200 -
+127.0.0.1 - - [14/Feb/2022 22:44:17] "GET /build/three.js HTTP/1.1" 200 -
+127.0.0.1 - - [14/Feb/2022 22:44:17] "GET /week4/js/SkyShader.js HTTP/1.1" 200 -
+127.0.0.1 - - [14/Feb/2022 22:44:17] "GET /week4/js/controls/OrbitControls.js HTTP/1.1" 200 -
+127.0.0.1 - - [14/Feb/2022 22:44:17] "GET /week4/js/Detector.js HTTP/1.1" 200 -
+127.0.0.1 - - [14/Feb/2022 22:44:17] "GET /week4/js/libs/dat.gui.min.js HTTP/1.1" 200 -
+127.0.0.1 - - [14/Feb/2022 22:44:17] "GET /week4/PMS/jquery-3.1.1.js HTTP/1.1" 200 -
+127.0.0.1 - - [21/Feb/2022 22:18:54] code 404, message File not found
+127.0.0.1 - - [21/Feb/2022 22:18:54] "GET /~taman HTTP/1.1" 404 -
+127.0.0.1 - - [21/Feb/2022 22:19:01] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [21/Feb/2022 22:19:25] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [21/Feb/2022 22:19:26] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [21/Feb/2022 22:19:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [07/Mar/2022 21:19:52] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [07/Mar/2022 21:20:02] "GET /week7/ HTTP/1.1" 200 -
+127.0.0.1 - - [07/Mar/2022 21:20:05] "GET /week7/blog.html HTTP/1.1" 200 -
+127.0.0.1 - - [07/Mar/2022 21:20:05] "GET /week7/bandmember.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [07/Mar/2022 21:20:05] "GET /week7/bird.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [07/Mar/2022 21:20:13] "GET /cgi-bin/getblog.cgi?nocache=1646688007453 HTTP/1.1" 200 -
+Unquoted string "myblogs" may clash with future reserved word at /home/faculty/scott/www/CS351/cgi-bin/getblog.cgi line 40.
+Unquoted string "myblogs" may clash with future reserved word at /home/faculty/scott/www/CS351/cgi-bin/getblog.cgi line 46.
+Unquoted string "myprods" may clash with future reserved word at /home/faculty/scott/www/CS351/cgi-bin/getblog.cgi line 54.
+Name "main::myprods" used only once: possible typo at /home/faculty/scott/www/CS351/cgi-bin/getblog.cgi line 54.
+127.0.0.1 - - [07/Mar/2022 21:24:27] "GET /week7/blog.html HTTP/1.1" 200 -
+127.0.0.1 - - [07/Mar/2022 21:38:43] "GET /week7/tmp.html HTTP/1.1" 200 -
+127.0.0.1 - - [07/Mar/2022 21:42:38] "GET /week7/tmp.html HTTP/1.1" 200 -
+127.0.0.1 - - [07/Mar/2022 21:42:38] "GET /week7/bandmember.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [07/Mar/2022 21:42:38] "GET /week7/bird.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [07/Mar/2022 21:42:39] "GET /week7/tmp.html HTTP/1.1" 200 -
+127.0.0.1 - - [07/Mar/2022 21:42:39] "GET /week7/bandmember.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [07/Mar/2022 21:42:39] "GET /week7/bird.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [07/Mar/2022 21:42:40] code 404, message File not found
+127.0.0.1 - - [07/Mar/2022 21:42:40] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [07/Mar/2022 21:42:42] "GET /week7/tmp.html HTTP/1.1" 200 -
+127.0.0.1 - - [07/Mar/2022 21:42:42] "GET /week7/bird.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [07/Mar/2022 21:42:42] "GET /week7/bandmember.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [07/Mar/2022 21:42:43] code 404, message File not found
+127.0.0.1 - - [07/Mar/2022 21:42:43] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [07/Mar/2022 21:42:55] "GET /week6/ HTTP/1.1" 200 -
+127.0.0.1 - - [07/Mar/2022 21:44:30] "GET /week7 HTTP/1.1" 301 -
+127.0.0.1 - - [07/Mar/2022 21:44:30] "GET /week7/ HTTP/1.1" 200 -
+127.0.0.1 - - [07/Mar/2022 21:44:42] "GET /week7/blog2ang.html HTTP/1.1" 200 -
+127.0.0.1 - - [07/Mar/2022 21:46:42] "GET /week8/ HTTP/1.1" 200 -
+127.0.0.1 - - [07/Mar/2022 21:46:47] "GET /week8/README_Cookies HTTP/1.1" 200 -

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	    	<title id="title">Store Inventory</title>
+		<meta content="text/html; charset=utf-8" />
+	</head>
+
+	<body>
+		
+		<div id="products_div">
+        		<input type="Button" onclick="submit_1()" value="Display Product Listing">
+		</div>
+
+	</body>
+
+	<script>
+                // Performed when you click on Display Product Listing button
+		function submit_1() {
+			var http = createRequestObject();
+			document.getElementById("products_div").innerHTML = "<h3>Working!</h3>";
+			http.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					var response = http.responseText;
+					document.getElementById("products_div").innerHTML = response;
+				}
+			}
+			http.open('get', '/cgi-bin/store.cgi?num=1&selection=all', true);
+			http.send();
+		}
+
+                // Performed when you click on a checkbox and then click on the submit button
+		function submit_2() {
+                        // will store the selected product type selected
+			var itemSubmitted;
+                        // length of the radio buttons in the form with id "getSelected" is assigned to y
+			var y = document.getElementById("getSelected").elements.length;
+                        // radio button elements are assigned to formElements variable
+			var formElements = document.forms["getSelected"].elements["itemType"];
+			document.getElementById("products_div").innerHTML = "<h3>Working!</h3>";
+                        // loop through radio buttons
+			for(var i=0; i<y; i++) {
+				if(formElements[i].checked) {
+                                        // checked radio button value stored in itemSubmitted
+					itemSubmitted = formElements[i].value;
+					break;
+				}
+			}
+			var http = createRequestObject();
+			http.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					var response = http.responseText;
+					document.getElementById("products_div").innerHTML = response;
+				}
+			}
+                        // selected radio button value sent to store.cgi
+			http.open('get', '/cgi-bin/store.cgi?num=2&selection='+itemSubmitted, true);
+			http.send();
+		}
+
+                // Performed when you click on a checkbox and then click on the submit button
+		function submit_3() {
+                        // name of the check box is assigned to checkName (food, beverage, shoes, clothing)
+			var checkName = document.getElementById("elementID").name;
+                        // will store values of all check boxes selected
+			var itemSubmitted = [];
+			var j = 0;
+                        // y is the number of check boxes
+			var y = document.getElementById("checkbox_form").elements.length;
+                        // checkbox elements are assigned to formElements variable
+			var formElements = document.forms["checkbox_form"].elements[checkName];
+                        // loop through the check buttons
+			for(var i=0; i<y; i++) {
+				if(formElements[i].checked) {
+                                        // values of all checkboxes selected are assigned to the itemsSubmitted array
+					itemSubmitted[j] = formElements[i].value;
+					j++;
+				}
+			}
+			document.getElementById("products_div").innerHTML = "<h3>Working!</h3>";
+			var http = createRequestObject();
+			http.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+				var response = http.responseText;
+				document.getElementById("products_div").innerHTML = response;
+				}
+			}
+                        // selected check box values are sent to store.cgi
+			http.open('get', '/cgi-bin/store.cgi?num=3&selection='+itemSubmitted, true);
+			http.send();
+		}
+
+                
+		function createRequestObject() {
+			var req;
+			if (window.XMLHttpRequest) {
+				req = new XMLHttpRequest();
+			} else if (window.ActiveXObject) {
+				req = new ActiveXObject("Microsoft.XMLHTTP");
+			} else {
+				alert('There was a problem creating the XMLHttpRequest object');
+				req = '';
+			}
+			return req;
+		}
+
+	</script>
+</html>

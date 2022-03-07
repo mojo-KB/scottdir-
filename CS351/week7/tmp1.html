@@ -1,0 +1,29 @@
+$("ul.nav li").each( function() {
+        $(this).removeClass("active"); 
+//alert('THIS' + $(this).find('a').attr('value'));
+        //if ( ($this).find('a:display') ) {
+        if ($(this).find('a').attr('value') == initialNavTab) {
+                $(this).addClass('active');
+        if ( 'cs351' == initialNavTab ) {
+                initHome();
+        }
+        if ( 'run' == initialNavTab ) {
+                initRun();
+        }
+        if ( 'display' == initialNavTab ) {
+                initDisplay();
+        }
+        if ( 'help' == initialNavTab ) {
+                initHelp();
+        }
+        if ( 'contact' == initialNavTab ) {
+                initContact();
+        }
+   }
+})
+
+                //alert('FOUND IT');
+//$(".nav li a:active").removeClass('active');//remove pseudo class
+//}
+//$(".nav li#display").addClass('active');
+//$(".nav #display").addClass('active');

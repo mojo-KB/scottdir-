@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+        <head>
+                <meta charset=utf-8>
+                <title>My second three.js app</title>
+                <style>
+                        body { margin: 0; }
+                        canvas { width: 100%; height: 100% }
+                </style>
+        </head>
+        <body>
+
+<!-- <script src="js/Detector.js"></script> -->
+<script src="PMS/jquery-3.1.1.js"></script>
+
+<script>
+function createRequestObject() {
+  var req;
+  if (window.XMLHttpRequest) { // Firefox, Safari, Opera...
+    req = new XMLHttpRequest();
+//    alert('Detected a modern browser - very good!');
+  } else if (window.ActiveXObject) { // Internet Explorer 5+
+    req = new ActiveXObject("Microsoft.XMLHTTP");
+//    alert('Detected an old IE browser');
+  } else {
+    // error creating the request object,
+    // (maybe an old browser is being used?)
+    alert('There was a problem creating the XMLHttpRequest object');
+    req = '';
+  }
+  return req;
+}
+
+// Make the XMLHttpRequest object
+var http = createRequestObject();
+
+function dologin() {
+  var now = new Date();
+  var myuser=document.getElementById("myinput").value;
+alert('dologin VALUE' + myuser);
+  http.open('get', 'http://localhost:55555/cgi-bin/exammid.cgi?myfunc=login&user=' + myuser + '&nocache='+now.getTime());
+  http.onreadystatechange = handleResponse1;
+  http.send(null);
+}
+
+function handleResponse1() { 
+  if(http.readyState == 4 && http.status == 200){ 
+    var response = http.responseText; // Text returned FROM perl script 
+    var option ;
+    if(response) { // UPDATE ajaxTest content 
+     response = response.replace(/&quot;/g, '"');
+     alert('Response1:' + response);
+
+      //jsonData = JSON.parse(this.responseText);
+      jsonData = JSON.parse(response);
+         alert('JSON DATA IS:' + jsonData);
+      for (var i = 0; i < jsonData.length; i++) { // Start with 1 to skip the output directory name
+         alert(jsonData[i]);
+        //option = new Option(jsonData[i], jsonData[i]);
+        //$( "#single" ).append($(option));
+var myhtml = ' <input type="checkbox" name=friend value="' + 
+		jsonData[i] + '"  >' + jsonData[i] + '</input> \n';
+      document.getElementById("myradios").innerHTML += myhtml;
+ alert('add innerhtml ' + myhtml);
+        
+ //<input type="radio" name="testcase" value="test1" id="testcase1" >test1</input>
+      }
+	$( "#mainrow" ).show();
+	$( "#loginrow" ).hide();
+
+
+      //document.getElementById("examplerunid").innerHTML = jsonData[0];
+      //alert('BOX ID:' + document.getElementById("examplerunid"));
+
+    } 
+  } 
+} 
+
+</script>
+
+
+<table Width=100% BORDER=4 CELLSPACING=5 CELLPADDING=4 BGCOLOR="#FFFF99" NOSAVE >
+<tr id="loginrow">
+<td align=center>
+<table Width=50% BORDER=4 CELLSPACING=5 CELLPADDING=4 BGCOLOR="#FFFF99" NOSAVE >
+<tr>
+<td colspan=4 align=center>
+ <B>ScottBook Messaging System Login</B>
+</td>
+</tr>
+<tr>
+<td align=center>
+ <input type="button" id="mylogin" onClick="dologin()" value="Login:">
+ <input id="myinput" type="text" name="testcase" value="My Next Post"  /><label for="testcase1"></label>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+
+
+
+<tr id="mainrow">
+<td align=center>
+<table Width=50% BORDER=4 CELLSPACING=5 CELLPADDING=4 BGCOLOR="#FFFF99" NOSAVE >
+<tr>
+<td colspan=4 align=center>
+ <B>ScottBook Messaging System</B>
+</td>
+</tr>
+
+<tr>
+<div id="myradios">
+<td>
+ <input type="checkbox" name="testcase" value="Tim" id="testcase1" /><label for="testcase1">Tim</label>
+</td>
+<td>
+ <input type="checkbox" name="testcase" value="Kim" id="testcase2" checked /><label for="testcase2">Kim</label>
+</td>
+<td>
+ <input type="checkbox" name="testcase" value="Joe" id="testcase3" checked /><label for="testcase3">Joe</label>
+</td>
+<td>
+ <input type="button" id="mybutton" onClick="doclicktestcase()" value="Pick Friends">
+</td>
+</div>
+</tr>
+
+<tr>
+<div id="mymsgs">
+<td colspan=4>
+Kim: Last Mesg
+<br>
+Joe: Joe Here
+</td>
+</div>
+</tr>
+<tr>
+<td colspan=3>
+ <input id="myinput" type="text" name="testcase" value="My Next Post" id="testcase1" /><label for="testcase1"></label>
+</td>
+<td>
+ <input type="button" id="mybutton" onClick="doclicktestcase()" value="Post Message">
+</td>
+</tr>
+
+<tr>
+<td colspan=3>
+ Connected User: <B><div id="username"> Tim </div></B>
+</td>
+<td>
+ <input type="button" id="mybutton" onClick="doclicktestcase()" value="Update Display">
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+
+</table>
+
+<script>
+
+$( "#mainrow" ).hide();
+
+
+</script>
+</head>
+</html>
+

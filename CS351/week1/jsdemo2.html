@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>JS Demo</title> 
+  <meta charset="utf-8">
+</head>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+<script type="text/javascript">
+
+function wipeout() {
+  document.getElementById("ajaxstuff").innerHTML = ''; 
+  x = document.getElementById("mybutton");
+  x.disabled = false;
+}
+
+function doclick() {
+  x = document.getElementById("mybutton");
+  x.disabled = true;
+
+  document.getElementById("ajaxstuff").innerHTML = 'working...'; 
+  setTimeout('wipeout()', 2000); // wait 2 seconds, then clear message
+  return true;
+}
+
+var hidden=false;
+
+function doclick2() {
+	if (hidden==false) {
+		hidden=true;
+		$( "#mainrow" ).show();
+	}
+	else {
+		$( "#mainrow" ).hide();
+		hidden=false;
+	}
+}
+
+
+</script>
+
+<p>Click here to begin:</p>
+<form><input type="button" id="mybutton" onClick="doclick()" value="Go!"><form>
+
+<p>Click here to show and hide the output:</p>
+<form><input type="button" id="mybutton" onClick="doclick2()" value="Go!"><form>
+
+<table>
+<tr id=mainrow>
+<td>
+<hr/> 
+<p><em><div id="ajaxstuff" > &nbsp; </div></em></p>
+<hr/> 
+</td>
+</tr>
+</table>
+
+</body> 
+</html>

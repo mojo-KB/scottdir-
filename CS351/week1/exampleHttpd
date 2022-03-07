@@ -1,0 +1,36 @@
+scott@fang:~/www/cgi-bin>pwd
+/home/f/csci/scott/www/cgi-bin
+scott@fang:~/www/cgi-bin>cat cgi-bin/hello.cgi 
+#!/usr/bin/perl -T
+
+BEGIN {
+   open (STDERR, ">&STDOUT");
+   select(STDERR); $| = 1;
+   select(STDOUT); $| = 1;
+   print "Content-type: text/html\n\n";
+}
+print "HELLO WORLD";
+scott@fang:~/www/cgi-bin>python3 -m http.server --cgi 8010
+Serving HTTP on 0.0.0.0 port 8010 ...
+127.0.0.1 - - [18/Jan/2017 14:07:17] "GET /cgi-bin/hello.cgi HTTP/1.1" 200 -
+
+^C
+Keyboard interrupt received, exiting.
+scott@fang:~/www/cgi-bin>
+scott@fang:~/www/cgi-bin>cat > /dev/null
+scott@fang:~/TEST>wget http://localhost:8010/cgi-bin/hello.cgi
+--2017-01-18 14:07:17--  http://localhost:8010/cgi-bin/hello.cgi
+Resolving localhost (localhost)... 127.0.0.1, ::1
+Connecting to localhost (localhost)|127.0.0.1|:8010... connected.
+HTTP request sent, awaiting response... 200 Script output follows
+Length: unspecified [text/html]
+Saving to: 'hello.cgi'
+
+hello.cgi                 [ <=>                   ]      11  --.-KB/s    in 0s      
+
+2017-01-18 14:07:17 (2.19 MB/s) - 'hello.cgi' saved [11]
+
+scott@fang:~/TEST>cat hello.c
+hello.c    hello.cgi  
+scott@fang:~/TEST>cat hello.cgi
+HELLO WORLDscott@fang:~/TEST>

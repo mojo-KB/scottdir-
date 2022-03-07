@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>JS Demo</title> 
+  <meta charset="utf-8">
+<script src="PMS/jquery-3.1.1.js"></script>
+<script type="text/javascript">
+//<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+
+function wipeout() {
+  document.getElementById("ajaxstuff").innerHTML = ''; 
+  x = document.getElementById("mybutton");
+  x.disabled = false;
+}
+
+//alert("LOADING");
+
+function doclick() {
+  x = document.getElementById("mybutton");
+  x.disabled = true;
+
+  document.getElementById("ajaxstuff").innerHTML = 'working...'; 
+  setTimeout('wipeout()', 4000); // wait 2 seconds, then clear message
+  //alert("timeout set");
+  return true;
+}
+
+
+function doclick2() {
+//alert("doclick2");
+	if (hidden==false) {
+		hidden=true
+		$( "#mainrow" ).show()
+	}
+	else {
+  		y=document.getElementById("mainrow");
+		y.style.display = "none";
+		//y.style.display = "block";
+	
+		//y.hide();
+		//$( "#mainrow" ).hide();
+		hidden=false;
+	}
+}
+function doclick3() {
+	alert("onload");
+}
+
+function myFunction() {
+  var x = document.createElement("P");
+  var t = document.createTextNode("This is a paragraph.");
+  //var w = document.createTextNode("<br>");
+  var z = document.createTextNode("This is a paragraph2.");
+  x.appendChild(t);
+  //x.appendChild("<br>");
+  var w=document.createElement("br");
+  x.appendChild(w);
+  x.appendChild(z);
+  document.body.appendChild(x);
+}
+
+</script>
+</head>
+<body onload=doclick3()>
+<p>
+<button onclick="myFunction()">Try append paragraph</button>
+
+<p>Click here to begin:</p>
+<input type="button" id="mybutton" onClick="doclick()" value="Go!">
+
+<p>Click here to show and hide the output:</p>
+<form><input type="button" id="mybutton" onClick="doclick2()" value="Go!"><form>
+
+<table id=mytable width=200>
+<tr id="mainrow">
+<td bgcolor=tan>
+<hr/> 
+<p><em><div id="ajaxstuff" > &nbsp; </div></em></p>
+<hr/> 
+</td>
+</tr>
+</table>
+
+<script>
+var hidden=true;
+$( "#mainrow" ).show();
+</script>
+
+</body> 
+</html>

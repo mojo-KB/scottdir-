@@ -1,0 +1,4 @@
+Content-type: text/html
+
+syntax error at ./hello.cgi line 10, near "print"
+Execution of ./hello.cgi aborted due to compilation errors.

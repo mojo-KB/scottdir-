@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+
+<div ng-app="">
+  <form>
+    Check to show a header:
+    <input type="checkbox" ng-model="myVar1">
+    <input type="checkbox" ng-model="myVar2">
+    <input type="checkbox" ng-model="myVar3">
+  </form>
+  <h1 ng-show="myVar1">My Header1</h1>
+  <h1 ng-show="myVar2">My Header2</h1>
+  <h1 ng-show="myVar3">My Header3</h1>
+</div>
+
+<p>The header's ng-show attribute is set to true when the checkbox is checked.</p>
+
+</body>
+</html>
