@@ -26,7 +26,7 @@
             var now = new Date();
             //http.open('get', 'http://www.myhostname.com/cgi-bin/myscript.pl?nocache='+now.getTime()); 
             alert('before send');
-            http.open('get', '/cgi-bin/ajaxdemo.cgi?nocache=' + now.getTime());
+            http.open('get', '/cgi-bin/ajaxdemo2.cgi?nocache=' + now.getTime());
             //http.open('get', 'http://localhost:55555/cgi-bin/ajaxdemo.cgi?nocache='+now.getTime()); 
             //http.open('get', 'http://localhost/cgi-bin/ajaxdemo.cgi'); 
             http.onreadystatechange = handleResponse;
